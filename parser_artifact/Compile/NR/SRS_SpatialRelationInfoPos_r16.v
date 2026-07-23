@@ -1,0 +1,328 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Require Import NR.ServCellIndex.
+
+Opaque ServCellIndex__cond ServCellIndex__Format.
+
+Require Import NR.SSB_Index.
+
+Opaque SSB_Index__cond SSB_Index__Format.
+
+Require Import NR.NZP_CSI_RS_ResourceId.
+
+Opaque NZP_CSI_RS_ResourceId__cond NZP_CSI_RS_ResourceId__Format.
+
+Require Import NR.SRS_ResourceId.
+
+Opaque SRS_ResourceId__cond SRS_ResourceId__Format.
+
+Require Import NR.SRS_PosResourceId_r16.
+
+Opaque SRS_PosResourceId_r16__cond SRS_PosResourceId_r16__Format.
+
+
+Inductive SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type : Set :=
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_ResourceId_r16 : SRS_ResourceId__Type -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_PosResourceId_r16 : SRS_PosResourceId_r16__Type -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type
+.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list : list typ := (
+typ_cons SRS_ResourceId__Type SRS_ResourceId__cond ::
+typ_cons SRS_PosResourceId_r16__Type SRS_PosResourceId_r16__cond ::
+ nil).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond (c : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type) := 
+  match c with
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_ResourceId_r16 t => SRS_ResourceId__cond t 
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_PosResourceId_r16 t => SRS_PosResourceId_r16__cond t 
+  end.
+
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__len_helper1 : to_bit_sz (length SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__len_helper2 : 2 <= length2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list.
+ simpl. lia. Qed.
+Require Import NR.BWP_Id.
+
+Opaque BWP_Id__cond BWP_Id__Format.
+
+Record SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type : Set :=
+  make__SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type {
+    SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16 : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type ;
+    SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__uplinkBWP_r16 : BWP_Id__Type ;
+}.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list := (
+ Nor SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond ::
+ Nor BWP_Id__Type BWP_Id__cond ::
+ nil).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond z := 
+  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16 z) /\
+  BWP_Id__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__uplinkBWP_r16 z) /\
+  True.
+
+
+Inductive SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type : Set :=
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__ssb_IndexServing_r16 : SSB_Index__Type -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__csi_RS_IndexServing_r16 : NZP_CSI_RS_ResourceId__Type -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16 : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type
+.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list : list typ := (
+typ_cons SSB_Index__Type SSB_Index__cond ::
+typ_cons NZP_CSI_RS_ResourceId__Type NZP_CSI_RS_ResourceId__cond ::
+typ_cons SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond ::
+ nil).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond (c : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type) := 
+  match c with
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__ssb_IndexServing_r16 t => SSB_Index__cond t 
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__csi_RS_IndexServing_r16 t => NZP_CSI_RS_ResourceId__cond t 
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16 t => SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond t 
+  end.
+
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__len_helper1 : to_bit_sz (length SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__len_helper2 : 2 <= length2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list.
+ simpl. lia. Qed.
+Record SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type : Set :=
+  make__SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type {
+    SRS_SpatialRelationInfoPos_r16__servingRS_r16__servingCellId : option ServCellIndex__Type ;
+    SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16 : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type ;
+}.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__list := (
+ Opt ServCellIndex__Type ServCellIndex__cond ::
+ Nor SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond ::
+ nil).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond z := 
+  opt_cond ServCellIndex__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__servingCellId z) /\
+  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16 z) /\
+  True.
+
+Require Import NR.SSB_InfoNcell_r16.
+
+Opaque SSB_InfoNcell_r16__cond SSB_InfoNcell_r16__Format.
+
+Require Import NR.DL_PRS_Info_r16.
+
+Opaque DL_PRS_Info_r16__cond DL_PRS_Info_r16__Format.
+
+
+Inductive SRS_SpatialRelationInfoPos_r16__Type : Set :=
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16 : SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type -> SRS_SpatialRelationInfoPos_r16__Type
+  | SRS_SpatialRelationInfoPos_r16__ssb_Ncell_r16 : SSB_InfoNcell_r16__Type -> SRS_SpatialRelationInfoPos_r16__Type
+  | SRS_SpatialRelationInfoPos_r16__dl_PRS_r16 : DL_PRS_Info_r16__Type -> SRS_SpatialRelationInfoPos_r16__Type
+.
+Definition SRS_SpatialRelationInfoPos_r16__list : list typ := (
+typ_cons SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond ::
+typ_cons SSB_InfoNcell_r16__Type SSB_InfoNcell_r16__cond ::
+typ_cons DL_PRS_Info_r16__Type DL_PRS_Info_r16__cond ::
+ nil).
+Definition SRS_SpatialRelationInfoPos_r16__cond (c : SRS_SpatialRelationInfoPos_r16__Type) := 
+  match c with
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16 t => SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond t 
+  | SRS_SpatialRelationInfoPos_r16__ssb_Ncell_r16 t => SSB_InfoNcell_r16__cond t 
+  | SRS_SpatialRelationInfoPos_r16__dl_PRS_r16 t => DL_PRS_Info_r16__cond t 
+  end.
+
+Lemma SRS_SpatialRelationInfoPos_r16__len_helper1 : to_bit_sz (length SRS_SpatialRelationInfoPos_r16__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__len_helper2 : 2 <= length2 SRS_SpatialRelationInfoPos_r16__list.
+ simpl. lia. Qed.
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format_Type := Eval cbn in get_formats SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format_list : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format_Type :=
+  (SRS_ResourceId__Format, (SRS_PosResourceId_r16__Format, unit__Format)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list__Format := Eval compute in choice_format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__len_helper1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__len_helper2  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format_list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F1 (z : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type) : (choice SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list) :=
+  match z with
+   | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_ResourceId_r16 t => existT _ 0 t
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_PosResourceId_r16 t => existT _ 1 t
+  end.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__g := (fun n => typ_set (get_nth_typ SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list n)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F2 (y : choice SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list) : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__g n -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type) with
+    | 0 => fun (t : SRS_ResourceId__Type) => SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_ResourceId_r16 t 
+    | 1 => fun (t : SRS_PosResourceId_r16__Type) => SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__srs_PosResourceId_r16 t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type with end) n0
+           end t0).
+
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__helper2 :  forall (y : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type), SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond y -> choice_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__helper3 :  forall (y : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type), SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F2 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__helper4 : (forall b : choice SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list, choice_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list b -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F2 b) /\ SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F1 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F2.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format : T_Format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond :=
+  (* Eval compute in *) proj2_format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__list__Format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__F2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__helper2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__helper3 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__helper4.
+Opaque SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format.
+
+
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format_Type := Eval cbn in seq_format_prod SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format_list : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format_Type :=
+  (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16__Format, (BWP_Id__Format, unit_format)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list__Format := (*Eval compute in *) seq_format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format_list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1 z :=
+  (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__resourceSelection_r16 z, (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__uplinkBWP_r16 z, tt)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2 (y : seq_type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type i0 i1
+  end.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1F2_cond (z : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type)
+  : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond z ->
+  (seq_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1 z)).
+intro H. unfold SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond in H. simpl. auto. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1F2_cond2 (z : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type)
+ : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2F1_cond (y : seq_type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list)
+  : seq_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list y ->
+ (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2 y)) /\  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond. simpl in *. auto.
+ - simpl. unfold SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format : T_Format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond :=
+        proj2_format  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__list__Format
+    SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1F2_cond  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F1F2_cond2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__F2F1_cond.
+Opaque SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format.
+
+
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format_Type := Eval cbn in get_formats SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format_list : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format_Type :=
+  (SSB_Index__Format, (NZP_CSI_RS_ResourceId__Format, (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Format, unit__Format))).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list__Format := Eval compute in choice_format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__len_helper1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__len_helper2  SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format_list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F1 (z : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type) : (choice SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list) :=
+  match z with
+   | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__ssb_IndexServing_r16 t => existT _ 0 t
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__csi_RS_IndexServing_r16 t => existT _ 1 t
+  | SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16 t => existT _ 2 t
+  end.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__g := (fun n => typ_set (get_nth_typ SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list n)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F2 (y : choice SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list) : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__g n -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type) with
+    | 0 => fun (t : SSB_Index__Type) => SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__ssb_IndexServing_r16 t 
+    | 1 => fun (t : NZP_CSI_RS_ResourceId__Type) => SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__csi_RS_IndexServing_r16 t 
+    | 2 => fun (t : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16__Type) => SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__srs_SpatialRelation_r16 t 
+ | (S (S (S n0))) => (fun (x' : nat) (t'' : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__g (S (S (S x')))) =>let t' :=
+           eq_rect (get_nth_typ SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list (S (S (S x'))))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list (S (S (S x')))
+           (le_n_S _ _ (le_n_S _ _ (le_n_S _ _ (le_0_n x'))))) in match t' return SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type with end) n0
+           end t0).
+
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__helper2 :  forall (y : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type), SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond y -> choice_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__helper3 :  forall (y : SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type), SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F2 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__helper4 : (forall b : choice SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list, choice_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list b -> SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F2 b) /\ SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F1 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F2.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format : T_Format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond :=
+  (* Eval compute in *) proj2_format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__list__Format SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__F2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__helper2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__helper3 SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__helper4.
+Opaque SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format.
+
+
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format_Type := Eval cbn in seq_format_prod SRS_SpatialRelationInfoPos_r16__servingRS_r16__list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format_list : SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format_Type :=
+  (ServCellIndex__Format, (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16__Format, unit_format)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__list__Format := (*Eval compute in *) seq_format SRS_SpatialRelationInfoPos_r16__servingRS_r16__list SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format_list.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1 z :=
+  (SRS_SpatialRelationInfoPos_r16__servingRS_r16__servingCellId z, (SRS_SpatialRelationInfoPos_r16__servingRS_r16__referenceSignal_r16 z, tt)).
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2 (y : seq_type SRS_SpatialRelationInfoPos_r16__servingRS_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type i0 i1
+  end.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1F2_cond (z : SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type)
+  : SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond z ->
+  (seq_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__list (SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1 z)).
+intro H. unfold SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond in H. simpl. auto. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1F2_cond2 (z : SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type)
+ : SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2F1_cond (y : seq_type SRS_SpatialRelationInfoPos_r16__servingRS_r16__list)
+  : seq_cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__list y ->
+ (SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond (SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2 y)) /\  SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1 (SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond. simpl in *. auto.
+ - simpl. unfold SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format : T_Format SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond :=
+        proj2_format  SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__list__Format
+    SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1 SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1F2_cond  SRS_SpatialRelationInfoPos_r16__servingRS_r16__F1F2_cond2 SRS_SpatialRelationInfoPos_r16__servingRS_r16__F2F1_cond.
+Opaque SRS_SpatialRelationInfoPos_r16__servingRS_r16__cond SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format.
+
+
+Definition SRS_SpatialRelationInfoPos_r16__Format_Type := Eval cbn in get_formats SRS_SpatialRelationInfoPos_r16__list.
+Definition SRS_SpatialRelationInfoPos_r16__Format_list : SRS_SpatialRelationInfoPos_r16__Format_Type :=
+  (SRS_SpatialRelationInfoPos_r16__servingRS_r16__Format, (SSB_InfoNcell_r16__Format, (DL_PRS_Info_r16__Format, unit__Format))).
+Definition SRS_SpatialRelationInfoPos_r16__list__Format := Eval compute in choice_format SRS_SpatialRelationInfoPos_r16__list SRS_SpatialRelationInfoPos_r16__len_helper1 SRS_SpatialRelationInfoPos_r16__len_helper2  SRS_SpatialRelationInfoPos_r16__Format_list.
+Definition SRS_SpatialRelationInfoPos_r16__F1 (z : SRS_SpatialRelationInfoPos_r16__Type) : (choice SRS_SpatialRelationInfoPos_r16__list) :=
+  match z with
+   | SRS_SpatialRelationInfoPos_r16__servingRS_r16 t => existT _ 0 t
+  | SRS_SpatialRelationInfoPos_r16__ssb_Ncell_r16 t => existT _ 1 t
+  | SRS_SpatialRelationInfoPos_r16__dl_PRS_r16 t => existT _ 2 t
+  end.
+Definition SRS_SpatialRelationInfoPos_r16__g := (fun n => typ_set (get_nth_typ SRS_SpatialRelationInfoPos_r16__list n)).
+Definition SRS_SpatialRelationInfoPos_r16__F2 (y : choice SRS_SpatialRelationInfoPos_r16__list) : SRS_SpatialRelationInfoPos_r16__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (SRS_SpatialRelationInfoPos_r16__g n -> SRS_SpatialRelationInfoPos_r16__Type) with
+    | 0 => fun (t : SRS_SpatialRelationInfoPos_r16__servingRS_r16__Type) => SRS_SpatialRelationInfoPos_r16__servingRS_r16 t 
+    | 1 => fun (t : SSB_InfoNcell_r16__Type) => SRS_SpatialRelationInfoPos_r16__ssb_Ncell_r16 t 
+    | 2 => fun (t : DL_PRS_Info_r16__Type) => SRS_SpatialRelationInfoPos_r16__dl_PRS_r16 t 
+ | (S (S (S n0))) => (fun (x' : nat) (t'' : SRS_SpatialRelationInfoPos_r16__g (S (S (S x')))) =>let t' :=
+           eq_rect (get_nth_typ SRS_SpatialRelationInfoPos_r16__list (S (S (S x'))))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len SRS_SpatialRelationInfoPos_r16__list (S (S (S x')))
+           (le_n_S _ _ (le_n_S _ _ (le_n_S _ _ (le_0_n x'))))) in match t' return SRS_SpatialRelationInfoPos_r16__Type with end) n0
+           end t0).
+
+Lemma SRS_SpatialRelationInfoPos_r16__helper2 :  forall (y : SRS_SpatialRelationInfoPos_r16__Type), SRS_SpatialRelationInfoPos_r16__cond y -> choice_cond SRS_SpatialRelationInfoPos_r16__list (SRS_SpatialRelationInfoPos_r16__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma SRS_SpatialRelationInfoPos_r16__helper3 :  forall (y : SRS_SpatialRelationInfoPos_r16__Type), SRS_SpatialRelationInfoPos_r16__F2 (SRS_SpatialRelationInfoPos_r16__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma SRS_SpatialRelationInfoPos_r16__helper4 : (forall b : choice SRS_SpatialRelationInfoPos_r16__list, choice_cond SRS_SpatialRelationInfoPos_r16__list b -> SRS_SpatialRelationInfoPos_r16__cond (SRS_SpatialRelationInfoPos_r16__F2 b) /\ SRS_SpatialRelationInfoPos_r16__F1 (SRS_SpatialRelationInfoPos_r16__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length SRS_SpatialRelationInfoPos_r16__F1 SRS_SpatialRelationInfoPos_r16__F2.
+Definition SRS_SpatialRelationInfoPos_r16__Format : T_Format SRS_SpatialRelationInfoPos_r16__Type SRS_SpatialRelationInfoPos_r16__cond :=
+  (* Eval compute in *) proj2_format SRS_SpatialRelationInfoPos_r16__cond SRS_SpatialRelationInfoPos_r16__list__Format SRS_SpatialRelationInfoPos_r16__F1 SRS_SpatialRelationInfoPos_r16__F2 SRS_SpatialRelationInfoPos_r16__helper2 SRS_SpatialRelationInfoPos_r16__helper3 SRS_SpatialRelationInfoPos_r16__helper4.
+Opaque SRS_SpatialRelationInfoPos_r16__cond SRS_SpatialRelationInfoPos_r16__Format.
+

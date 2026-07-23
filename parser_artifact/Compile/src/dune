@@ -1,0 +1,9 @@
+(menhir
+  (modules parser))
+
+(ocamllex lexer)
+
+(data_only_dirs ignore_dir)
+
+(executable
+  (name test_format))

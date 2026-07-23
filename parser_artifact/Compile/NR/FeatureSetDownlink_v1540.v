@@ -1,0 +1,575 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Inductive FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Type : Set :=
+ | FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__supported
+.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__cond := (fun (_ : FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Type) => True).
+Lemma FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__nat__helper.
+
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__supported => 0
+  end.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__supported
+  | _ => FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__supported
+  end.
+Lemma FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1F2 : forall x : FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Type, (FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1 x <= 0) /\ FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F2 (FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1 (FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Type : Set :=
+ | FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__supported
+.
+Definition FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__cond := (fun (_ : FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Type) => True).
+Lemma FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__nat__helper.
+
+Definition FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__supported => 0
+  end.
+Definition FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__supported
+  | _ => FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__supported
+  end.
+Lemma FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1F2 : forall x : FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Type, (FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1 x <= 0) /\ FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F2 (FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1 (FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Type : Set :=
+ | FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__supported
+.
+Definition FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__cond := (fun (_ : FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Type) => True).
+Lemma FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__nat__helper.
+
+Definition FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__supported => 0
+  end.
+Definition FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__supported
+  | _ => FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__supported
+  end.
+Lemma FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1F2 : forall x : FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Type, (FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1 x <= 0) /\ FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F2 (FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1 (FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Type : Set :=
+ | FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__supported
+.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__cond := (fun (_ : FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Type) => True).
+Lemma FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__nat__helper.
+
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__supported => 0
+  end.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__supported
+  | _ => FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__supported
+  end.
+Lemma FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1F2 : forall x : FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Type, (FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1 x <= 0) /\ FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F2 (FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1 (FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Type : Set :=
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set1
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set2
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set3
+.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__cond := (fun (_ : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Type) => True).
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__nat__helper.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set1 => 0
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set2 => 1
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set3 => 2
+  end.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set1
+  | 1 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set2
+  | 2 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set3
+  | _ => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__set1
+  end.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1F2 : forall x : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Type, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1 x <= 2) /\ FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F2 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Type : Set :=
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set1
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set2
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set3
+.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__cond := (fun (_ : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Type) => True).
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__nat__helper.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set1 => 0
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set2 => 1
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set3 => 2
+  end.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set1
+  | 1 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set2
+  | 2 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set3
+  | _ => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__set1
+  end.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1F2 : forall x : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Type, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1 x <= 2) /\ FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F2 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Type : Set :=
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set1
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set2
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set3
+.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__cond := (fun (_ : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Type) => True).
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__nat__helper.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set1 => 0
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set2 => 1
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set3 => 2
+  end.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set1
+  | 1 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set2
+  | 2 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set3
+  | _ => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__set1
+  end.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1F2 : forall x : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Type, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1 x <= 2) /\ FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F2 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Type : Set :=
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set1
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set2
+ | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set3
+.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__cond := (fun (_ : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Type) => True).
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__nat__helper.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set1 => 0
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set2 => 1
+  | FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set3 => 2
+  end.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set1
+  | 1 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set2
+  | 2 => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set3
+  | _ => FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__set1
+  end.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1F2 : forall x : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Type, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1 x <= 2) /\ FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F2 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type : Set :=
+  make__FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type {
+    FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz : option FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Type ;
+    FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz : option FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Type ;
+    FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz : option FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Type ;
+    FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz : option FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Type ;
+}.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list := (
+ Opt FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__cond ::
+ Opt FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__cond ::
+ Opt FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__cond ::
+ Opt FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__cond ::
+ nil).
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond z := 
+  opt_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__cond (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz z) /\
+  opt_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__cond (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz z) /\
+  opt_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__cond (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz z) /\
+  opt_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__cond (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz z) /\
+  True.
+
+Inductive FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Type : Set :=
+ | FeatureSetDownlink_v1540__pdsch_SeparationWithGap__supported
+.
+Definition FeatureSetDownlink_v1540__pdsch_SeparationWithGap__cond := (fun (_ : FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Type) => True).
+Lemma FeatureSetDownlink_v1540__pdsch_SeparationWithGap__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__pdsch_SeparationWithGap__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetDownlink_v1540__pdsch_SeparationWithGap__nat__helper.
+
+Definition FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__pdsch_SeparationWithGap__supported => 0
+  end.
+Definition FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__pdsch_SeparationWithGap__supported
+  | _ => FeatureSetDownlink_v1540__pdsch_SeparationWithGap__supported
+  end.
+Lemma FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1F2 : forall x : FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Type, (FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1 x <= 0) /\ FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F2 (FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1 (FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F2 y) = y. enum_solve H y. Qed.
+
+Require Import NR.ProcessingParameters.
+
+Opaque ProcessingParameters__cond ProcessingParameters__Format.
+
+Require Import NR.ProcessingParameters.
+
+Opaque ProcessingParameters__cond ProcessingParameters__Format.
+
+Require Import NR.ProcessingParameters.
+
+Opaque ProcessingParameters__cond ProcessingParameters__Format.
+
+Record FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type : Set :=
+  make__FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type {
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_15kHz : option ProcessingParameters__Type ;
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_30kHz : option ProcessingParameters__Type ;
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_60kHz : option ProcessingParameters__Type ;
+}.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__list := (
+ Opt ProcessingParameters__Type ProcessingParameters__cond ::
+ Opt ProcessingParameters__Type ProcessingParameters__cond ::
+ Opt ProcessingParameters__Type ProcessingParameters__cond ::
+ nil).
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond z := 
+  opt_cond ProcessingParameters__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_15kHz z) /\
+  opt_cond ProcessingParameters__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_30kHz z) /\
+  opt_cond ProcessingParameters__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_60kHz z) /\
+  True.
+
+Inductive FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Type : Set :=
+ | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto1
+ | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto2
+ | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto4
+ | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto7
+.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__cond := (fun (_ : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Type) => True).
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__nat__helper.
+
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto1 => 0
+  | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto2 => 1
+  | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto4 => 2
+  | FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto7 => 3
+  end.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto1
+  | 1 => FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto2
+  | 2 => FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto4
+  | 3 => FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto7
+  | _ => FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__upto1
+  end.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1F2 : forall x : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Type, (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1 x <= 3) /\ FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F2 (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1 (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type : Set :=
+  make__FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type {
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Type ;
+}.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list := (
+ Nor FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Type FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__cond ::
+ nil).
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond z := 
+  FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz z) /\
+  True.
+
+Inductive FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Type : Set :=
+ | FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__supported
+.
+Definition FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__cond := (fun (_ : FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Type) => True).
+Lemma FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__nat__helper.
+
+Definition FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1 t :=
+  match t with
+  | FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__supported => 0
+  end.
+Definition FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F2 n :=
+  match n with
+  | 0 => FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__supported
+  | _ => FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__supported
+  end.
+Lemma FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1F2 : forall x : FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Type, (FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1 x <= 0) /\ FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F2 (FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1 (FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetDownlink_v1540__Type : Set :=
+  make__FeatureSetDownlink_v1540__Type {
+    FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL : option FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Type ;
+    FeatureSetDownlink_v1540__additionalDMRS_DL_Alt : option FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Type ;
+    FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL : option FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Type ;
+    FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL : option FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Type ;
+    FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap : option FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type ;
+    FeatureSetDownlink_v1540__pdsch_SeparationWithGap : option FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Type ;
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2 : option FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type ;
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited : option FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type ;
+    FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication : option FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Type ;
+}.
+Definition FeatureSetDownlink_v1540__list := (
+ Opt FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Type FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__cond ::
+ Opt FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Type FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__cond ::
+ Opt FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Type FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__cond ::
+ Opt FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Type FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__cond ::
+ Opt FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond ::
+ Opt FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Type FeatureSetDownlink_v1540__pdsch_SeparationWithGap__cond ::
+ Opt FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond ::
+ Opt FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond ::
+ Opt FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Type FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__cond ::
+ nil).
+Definition FeatureSetDownlink_v1540__cond z := 
+  opt_cond FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__cond (FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL z) /\
+  opt_cond FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__cond (FeatureSetDownlink_v1540__additionalDMRS_DL_Alt z) /\
+  opt_cond FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__cond (FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL z) /\
+  opt_cond FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__cond (FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL z) /\
+  opt_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap z) /\
+  opt_cond FeatureSetDownlink_v1540__pdsch_SeparationWithGap__cond (FeatureSetDownlink_v1540__pdsch_SeparationWithGap z) /\
+  opt_cond FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2 z) /\
+  opt_cond FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited z) /\
+  opt_cond FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__cond (FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Format : T_Format FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__nat__Format FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1 FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F2 FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F1F2 FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__F2F1.
+
+Opaque FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__cond FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Format.
+
+Definition FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Format : T_Format FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__nat__Format FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1 FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F2 FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F1F2 FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__F2F1.
+
+Opaque FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__cond FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Format.
+
+Definition FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Format : T_Format FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__nat__Format FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1 FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F2 FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F1F2 FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__F2F1.
+
+Opaque FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__cond FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Format.
+
+Definition FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Format : T_Format FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__nat__Format FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1 FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F2 FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F1F2 FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__F2F1.
+
+Opaque FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__cond FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Format.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Format : T_Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__nat__Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F1F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__F2F1.
+
+Opaque FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Format.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Format : T_Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__nat__Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F1F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__F2F1.
+
+Opaque FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Format.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Format : T_Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__nat__Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F1F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__F2F1.
+
+Opaque FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Format.
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Format : T_Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__nat__Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F1F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__F2F1.
+
+Opaque FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Format.
+
+
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format_Type := Eval cbn in seq_format_prod FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format_list : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format_Type :=
+  (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz__Format, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz__Format, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz__Format, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz__Format, unit_format)))).
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list__Format := (*Eval compute in *) seq_format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format_list.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1 z :=
+  (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_15kHz z, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_30kHz z, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_60kHz z, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__scs_120kHz z, tt)))).
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2 (y : seq_type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type i0 i1 i2 i3
+  end.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1F2_cond (z : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type)
+  : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond z ->
+  (seq_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1 z)).
+intro H. unfold FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond in H. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1F2_cond2 (z : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type)
+ : FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2F1_cond (y : seq_type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list)
+  : seq_cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list y ->
+ (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2 y)) /\  FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1 (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format : T_Format FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Type FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond :=
+        proj2_format  FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__list__Format
+    FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1F2_cond  FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F1F2_cond2 FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__F2F1_cond.
+Opaque FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__cond FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format.
+
+Definition FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Format : T_Format FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__pdsch_SeparationWithGap__nat__Format FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1 FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F2 FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F1F2 FeatureSetDownlink_v1540__pdsch_SeparationWithGap__F2F1.
+
+Opaque FeatureSetDownlink_v1540__pdsch_SeparationWithGap__cond FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Format.
+
+
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format_Type := Eval cbn in seq_format_prod FeatureSetDownlink_v1540__pdsch_ProcessingType2__list.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format_list : FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format_Type :=
+  (ProcessingParameters__Format, (ProcessingParameters__Format, (ProcessingParameters__Format, unit_format))).
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__list__Format := (*Eval compute in *) seq_format FeatureSetDownlink_v1540__pdsch_ProcessingType2__list FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format_list.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1 z :=
+  (FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_15kHz z, (FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_30kHz z, (FeatureSetDownlink_v1540__pdsch_ProcessingType2__scs_60kHz z, tt))).
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2 (y : seq_type FeatureSetDownlink_v1540__pdsch_ProcessingType2__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type i0 i1 i2
+  end.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1F2_cond (z : FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type)
+  : FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond z ->
+  (seq_cond FeatureSetDownlink_v1540__pdsch_ProcessingType2__list (FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1 z)).
+intro H. unfold FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond in H. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1F2_cond2 (z : FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type)
+ : FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2 (FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2F1_cond (y : seq_type FeatureSetDownlink_v1540__pdsch_ProcessingType2__list)
+  : seq_cond FeatureSetDownlink_v1540__pdsch_ProcessingType2__list y ->
+ (FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2 y)) /\  FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1 (FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format : T_Format FeatureSetDownlink_v1540__pdsch_ProcessingType2__Type FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond :=
+        proj2_format  FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond FeatureSetDownlink_v1540__pdsch_ProcessingType2__list__Format
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1 FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2 FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1F2_cond  FeatureSetDownlink_v1540__pdsch_ProcessingType2__F1F2_cond2 FeatureSetDownlink_v1540__pdsch_ProcessingType2__F2F1_cond.
+Opaque FeatureSetDownlink_v1540__pdsch_ProcessingType2__cond FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format.
+
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Format : T_Format FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__nat__Format FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F2 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F1F2 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__F2F1.
+
+Opaque FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__cond FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Format.
+
+
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format_Type := Eval cbn in seq_format_prod FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format_list : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format_Type :=
+  (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz__Format, unit_format).
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list__Format := (*Eval compute in *) seq_format FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format_list.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1 z :=
+  (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__differentTB_PerSlot_SCS_30kHz z, tt).
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2 (y : seq_type FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list) :=
+  match y with
+  | (i0, _)=>
+    make__FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type i0
+  end.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1F2_cond (z : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type)
+  : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond z ->
+  (seq_cond FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1 z)).
+intro H. unfold FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond in H. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1F2_cond2 (z : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type)
+ : FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2 (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2F1_cond (y : seq_type FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list)
+  : seq_cond FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list y ->
+ (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2 y)) /\  FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1 (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format : T_Format FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Type FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond :=
+        proj2_format  FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__list__Format
+    FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1F2_cond  FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F1F2_cond2 FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__F2F1_cond.
+Opaque FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__cond FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format.
+
+Definition FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Format : T_Format FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__nat__Format FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1 FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F2 FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F1F2 FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__F2F1.
+
+Opaque FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__cond FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Format.
+
+
+Definition FeatureSetDownlink_v1540__Format_Type := Eval cbn in seq_format_prod FeatureSetDownlink_v1540__list.
+Definition FeatureSetDownlink_v1540__Format_list : FeatureSetDownlink_v1540__Format_Type :=
+  (FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL__Format, (FeatureSetDownlink_v1540__additionalDMRS_DL_Alt__Format, (FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL__Format, (FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL__Format, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap__Format, (FeatureSetDownlink_v1540__pdsch_SeparationWithGap__Format, (FeatureSetDownlink_v1540__pdsch_ProcessingType2__Format, (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited__Format, (FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication__Format, unit_format))))))))).
+Definition FeatureSetDownlink_v1540__list__Format := (*Eval compute in *) seq_format FeatureSetDownlink_v1540__list FeatureSetDownlink_v1540__Format_list.
+Definition FeatureSetDownlink_v1540__F1 z :=
+  (FeatureSetDownlink_v1540__oneFL_DMRS_TwoAdditionalDMRS_DL z, (FeatureSetDownlink_v1540__additionalDMRS_DL_Alt z, (FeatureSetDownlink_v1540__twoFL_DMRS_TwoAdditionalDMRS_DL z, (FeatureSetDownlink_v1540__oneFL_DMRS_ThreeAdditionalDMRS_DL z, (FeatureSetDownlink_v1540__pdcch_MonitoringAnyOccasionsWithSpanGap z, (FeatureSetDownlink_v1540__pdsch_SeparationWithGap z, (FeatureSetDownlink_v1540__pdsch_ProcessingType2 z, (FeatureSetDownlink_v1540__pdsch_ProcessingType2_Limited z, (FeatureSetDownlink_v1540__dl_MCS_TableAlt_DynamicIndication z, tt))))))))).
+Definition FeatureSetDownlink_v1540__F2 (y : seq_type FeatureSetDownlink_v1540__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, (i5, (i6, (i7, (i8, _)))))))))=>
+    make__FeatureSetDownlink_v1540__Type i0 i1 i2 i3 i4 i5 i6 i7 i8
+  end.
+Lemma FeatureSetDownlink_v1540__F1F2_cond (z : FeatureSetDownlink_v1540__Type)
+  : FeatureSetDownlink_v1540__cond z ->
+  (seq_cond FeatureSetDownlink_v1540__list (FeatureSetDownlink_v1540__F1 z)).
+intro H. unfold FeatureSetDownlink_v1540__cond in H. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__F1F2_cond2 (z : FeatureSetDownlink_v1540__Type)
+ : FeatureSetDownlink_v1540__F2 (FeatureSetDownlink_v1540__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetDownlink_v1540__F2F1_cond (y : seq_type FeatureSetDownlink_v1540__list)
+  : seq_cond FeatureSetDownlink_v1540__list y ->
+ (FeatureSetDownlink_v1540__cond (FeatureSetDownlink_v1540__F2 y)) /\  FeatureSetDownlink_v1540__F1 (FeatureSetDownlink_v1540__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetDownlink_v1540__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetDownlink_v1540__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetDownlink_v1540__Format : T_Format FeatureSetDownlink_v1540__Type FeatureSetDownlink_v1540__cond :=
+        proj2_format  FeatureSetDownlink_v1540__cond FeatureSetDownlink_v1540__list__Format
+    FeatureSetDownlink_v1540__F1 FeatureSetDownlink_v1540__F2 FeatureSetDownlink_v1540__F1F2_cond  FeatureSetDownlink_v1540__F1F2_cond2 FeatureSetDownlink_v1540__F2F1_cond.
+Opaque FeatureSetDownlink_v1540__cond FeatureSetDownlink_v1540__Format.
+

@@ -1,0 +1,9 @@
+T1 ::= INTEGER (1..40)
+
+T2 ::= INTEGER (1..3)
+
+Seq-1 ::= SEQUENCE {
+      w1  ENUMERATED {ok, err, spare},
+      w2  T1
+}
+

@@ -1,0 +1,6 @@
+(library
+ (name jer_deriver)
+ (kind ppx_deriver)
+ (libraries ppxlib yojson ppx_deriving.api)
+ (preprocess
+  (pps ppxlib.metaquot)))

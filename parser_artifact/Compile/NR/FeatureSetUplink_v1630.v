@@ -1,0 +1,248 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Inductive FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Type : Set :=
+ | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__supported
+.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__cond := (fun (_ : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Type) => True).
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__nat__helper.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__supported
+  | _ => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__supported
+  end.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1F2 : forall x : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Type, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1 x <= 0) /\ FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F2 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Type : Set :=
+ | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__supported
+.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__cond := (fun (_ : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Type) => True).
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__nat__helper.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__supported
+  | _ => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__supported
+  end.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1F2 : forall x : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Type, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1 x <= 0) /\ FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F2 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Type : Set :=
+ | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__supported
+.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__cond := (fun (_ : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Type) => True).
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__nat__helper.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__supported
+  | _ => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__supported
+  end.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1F2 : forall x : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Type, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1 x <= 0) /\ FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F2 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Type : Set :=
+ | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__supported
+.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__cond := (fun (_ : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Type) => True).
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__nat__helper.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__supported
+  | _ => FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__supported
+  end.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1F2 : forall x : FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Type, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1 x <= 0) /\ FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F2 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1 (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1630__dummy__Type : Set :=
+ | FeatureSetUplink_v1630__dummy__supported
+.
+Definition FeatureSetUplink_v1630__dummy__cond := (fun (_ : FeatureSetUplink_v1630__dummy__Type) => True).
+Lemma FeatureSetUplink_v1630__dummy__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1630__dummy__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1630__dummy__nat__helper.
+
+Definition FeatureSetUplink_v1630__dummy__F1 t :=
+  match t with
+  | FeatureSetUplink_v1630__dummy__supported => 0
+  end.
+Definition FeatureSetUplink_v1630__dummy__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1630__dummy__supported
+  | _ => FeatureSetUplink_v1630__dummy__supported
+  end.
+Lemma FeatureSetUplink_v1630__dummy__F1F2 : forall x : FeatureSetUplink_v1630__dummy__Type, (FeatureSetUplink_v1630__dummy__F1 x <= 0) /\ FeatureSetUplink_v1630__dummy__F2 (FeatureSetUplink_v1630__dummy__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1630__dummy__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1630__dummy__F1 (FeatureSetUplink_v1630__dummy__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Type : Set :=
+ | FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__supported
+.
+Definition FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__cond := (fun (_ : FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Type) => True).
+Lemma FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__nat__helper.
+
+Definition FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__supported
+  | _ => FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__supported
+  end.
+Lemma FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1F2 : forall x : FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Type, (FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1 x <= 0) /\ FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F2 (FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1 (FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1630__Type : Set :=
+  make__FeatureSetUplink_v1630__Type {
+    FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16 : option FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Type ;
+    FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16 : option FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Type ;
+    FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16 : option FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Type ;
+    FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16 : option FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Type ;
+    FeatureSetUplink_v1630__dummy : option FeatureSetUplink_v1630__dummy__Type ;
+    FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16 : option FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Type ;
+}.
+Definition FeatureSetUplink_v1630__list := (
+ Opt FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Type FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__cond ::
+ Opt FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Type FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__cond ::
+ Opt FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Type FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__cond ::
+ Opt FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Type FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__cond ::
+ Opt FeatureSetUplink_v1630__dummy__Type FeatureSetUplink_v1630__dummy__cond ::
+ Opt FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Type FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1630__cond z := 
+  opt_cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__cond (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16 z) /\
+  opt_cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__cond (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16 z) /\
+  opt_cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__cond (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16 z) /\
+  opt_cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__cond (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16 z) /\
+  opt_cond FeatureSetUplink_v1630__dummy__cond (FeatureSetUplink_v1630__dummy z) /\
+  opt_cond FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__cond (FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16 z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Format : T_Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__nat__Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F1F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__F2F1.
+
+Opaque FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Format.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Format : T_Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__nat__Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F1F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__F2F1.
+
+Opaque FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Format.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Format : T_Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__nat__Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F1F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__F2F1.
+
+Opaque FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Format.
+
+Definition FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Format : T_Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__nat__Format FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F1F2 FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__F2F1.
+
+Opaque FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__cond FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Format.
+
+Definition FeatureSetUplink_v1630__dummy__Format : T_Format FeatureSetUplink_v1630__dummy__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1630__dummy__nat__Format FeatureSetUplink_v1630__dummy__F1 FeatureSetUplink_v1630__dummy__F2 FeatureSetUplink_v1630__dummy__F1F2 FeatureSetUplink_v1630__dummy__F2F1.
+
+Opaque FeatureSetUplink_v1630__dummy__cond FeatureSetUplink_v1630__dummy__Format.
+
+Definition FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Format : T_Format FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__nat__Format FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1 FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F2 FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F1F2 FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__F2F1.
+
+Opaque FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__cond FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Format.
+
+
+Definition FeatureSetUplink_v1630__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1630__list.
+Definition FeatureSetUplink_v1630__Format_list : FeatureSetUplink_v1630__Format_Type :=
+  (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16__Format, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16__Format, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16__Format, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16__Format, (FeatureSetUplink_v1630__dummy__Format, (FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16__Format, unit_format)))))).
+Definition FeatureSetUplink_v1630__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1630__list FeatureSetUplink_v1630__Format_list.
+Definition FeatureSetUplink_v1630__F1 z :=
+  (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_Ant_Switch_fr1_r16 z, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorSingleOcc_fr1_r16 z, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithoutGap_fr1_r16 z, (FeatureSetUplink_v1630__offsetSRS_CB_PUSCH_PDCCH_MonitorAnyOccWithGap_fr1_r16 z, (FeatureSetUplink_v1630__dummy z, (FeatureSetUplink_v1630__partialCancellationPUCCH_PUSCH_PRACH_TX_r16 z, tt)))))).
+Definition FeatureSetUplink_v1630__F2 (y : seq_type FeatureSetUplink_v1630__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, (i5, _))))))=>
+    make__FeatureSetUplink_v1630__Type i0 i1 i2 i3 i4 i5
+  end.
+Lemma FeatureSetUplink_v1630__F1F2_cond (z : FeatureSetUplink_v1630__Type)
+  : FeatureSetUplink_v1630__cond z ->
+  (seq_cond FeatureSetUplink_v1630__list (FeatureSetUplink_v1630__F1 z)).
+intro H. unfold FeatureSetUplink_v1630__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1630__F1F2_cond2 (z : FeatureSetUplink_v1630__Type)
+ : FeatureSetUplink_v1630__F2 (FeatureSetUplink_v1630__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1630__F2F1_cond (y : seq_type FeatureSetUplink_v1630__list)
+  : seq_cond FeatureSetUplink_v1630__list y ->
+ (FeatureSetUplink_v1630__cond (FeatureSetUplink_v1630__F2 y)) /\  FeatureSetUplink_v1630__F1 (FeatureSetUplink_v1630__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1630__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1630__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1630__Format : T_Format FeatureSetUplink_v1630__Type FeatureSetUplink_v1630__cond :=
+        proj2_format  FeatureSetUplink_v1630__cond FeatureSetUplink_v1630__list__Format
+    FeatureSetUplink_v1630__F1 FeatureSetUplink_v1630__F2 FeatureSetUplink_v1630__F1F2_cond  FeatureSetUplink_v1630__F1F2_cond2 FeatureSetUplink_v1630__F2F1_cond.
+Opaque FeatureSetUplink_v1630__cond FeatureSetUplink_v1630__Format.
+

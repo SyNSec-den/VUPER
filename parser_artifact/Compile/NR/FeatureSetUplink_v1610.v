@@ -1,0 +1,1999 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Inductive FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Type : Set :=
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n2
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n3
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n4
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n7
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n8
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n12
+.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__cond := (fun (_ : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__nat__helper : to_bit_sz 5 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__nat__Format : T_Format nat (fun z => (z <= 5)) :=
+  nat_enum_format 5 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n2 => 0
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n3 => 1
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n4 => 2
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n7 => 3
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n8 => 4
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n12 => 5
+  end.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n2
+  | 1 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n3
+  | 2 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n4
+  | 3 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n7
+  | 4 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n8
+  | 5 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n12
+  | _ => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__n2
+  end.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1F2 : forall x : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Type, (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1 x <= 5) /\ FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F2 (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F2F1 : forall (y : nat) (H : y <= 5), FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1 (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Type : Set :=
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interSlotHopping
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interRepetitionHopping
+ | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__both
+.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__cond := (fun (_ : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interSlotHopping => 0
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interRepetitionHopping => 1
+  | FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__both => 2
+  end.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interSlotHopping
+  | 1 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interRepetitionHopping
+  | 2 => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__both
+  | _ => FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__interSlotHopping
+  end.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1F2 : forall x : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Type, (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F2 (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1 (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type {
+    FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16 : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Type ;
+    FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16 : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list := (
+ Nor FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Type FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__cond ::
+ Nor FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Type FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond z := 
+  FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__cond (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16 z) /\
+  FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__cond (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16 z) /\
+  True.
+
+Inductive FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__supported
+.
+Definition FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__supported
+  | _ => FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Type, (FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F2 (FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1 (FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__supported
+.
+Definition FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__supported
+  | _ => FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Type, (FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F2 (FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1 (FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n1
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n2
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n4
+.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n1 => 0
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n2 => 1
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n4 => 2
+  end.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n1
+  | 1 => FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n2
+  | 2 => FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n4
+  | _ => FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__n1
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Type, (FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type {
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list := (
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond z := 
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16 z) /\
+  True.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto2
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto4
+ | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto7
+.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch => 0
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto2 => 1
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto4 => 2
+  | FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto7 => 3
+  end.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch
+  | 1 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto2
+  | 2 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto4
+  | 3 => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__upto7
+  | _ => FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__one_pusch
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type {
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list := (
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond z := 
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16 z) /\
+  True.
+
+Require Import NR.SRS_AllPosResources_r16.
+
+Opaque SRS_AllPosResources_r16__cond SRS_AllPosResources_r16__Format.
+
+Inductive FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Type : Set :=
+ | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__supported
+.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__cond := (fun (_ : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Type) => True).
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__nat__helper.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__supported
+  | _ => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__supported
+  end.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1F2 : forall x : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Type, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1 x <= 0) /\ FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F2 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Type : Set :=
+ | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__supported
+.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__cond := (fun (_ : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__supported
+  | _ => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1F2 : forall x : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Type, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F2 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Type : Set :=
+ | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__supported
+.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__cond := (fun (_ : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Type) => True).
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__nat__helper.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__supported
+  | _ => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__supported
+  end.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1F2 : forall x : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Type, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1 x <= 0) /\ FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F2 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Type : Set :=
+ | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__supported
+.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__cond := (fun (_ : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Type) => True).
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__nat__helper.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__supported
+  | _ => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__supported
+  end.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1F2 : forall x : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Type, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1 x <= 0) /\ FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F2 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Type : Set :=
+ | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__short
+ | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__long
+.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__cond := (fun (_ : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Type) => True).
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__nat__helper.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__short => 0
+  | FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__long => 1
+  end.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__short
+  | 1 => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__long
+  | _ => FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__short
+  end.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1F2 : forall x : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Type, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1 x <= 1) /\ FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F2 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F2F1 : forall (y : nat) (H : y <= 1), FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type {
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy : option FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Type ;
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16 : option FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Type ;
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1 : option FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Type ;
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2 : option FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Type ;
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3 : option FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Type ;
+}.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list := (
+ Opt FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__cond ::
+ Opt FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__cond ::
+ Opt FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__cond ::
+ Opt FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__cond ::
+ Opt FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond z := 
+  opt_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy z) /\
+  opt_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1 z) /\
+  opt_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2 z) /\
+  opt_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3 z) /\
+  True.
+
+Require Import NR.FreqSeparationClassUL_v1620.
+
+Opaque FreqSeparationClassUL_v1620__cond FreqSeparationClassUL_v1620__Format.
+
+Inductive FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Type : Set :=
+ | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set1
+ | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set2
+.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__cond := (fun (_ : FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set1 => 0
+  | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set2 => 1
+  end.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set1
+  | 1 => FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set2
+  | _ => FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__set1
+  end.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1F2 : forall x : FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Type, (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1 x <= 1) /\ FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F2 (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F2F1 : forall (y : nat) (H : y <= 1), FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1 (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Type : Set :=
+ | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set1
+ | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set2
+.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__cond := (fun (_ : FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set1 => 0
+  | FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set2 => 1
+  end.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set1
+  | 1 => FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set2
+  | _ => FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__set1
+  end.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1F2 : forall x : FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Type, (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1 x <= 1) /\ FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F2 (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F2F1 : forall (y : nat) (H : y <= 1), FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1 (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__multiPUCCH_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__multiPUCCH_r16__Type {
+    FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16 : option FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Type ;
+    FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16 : option FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__list := (
+ Opt FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Type FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__cond ::
+ Opt FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Type FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__cond z := 
+  opt_cond FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__cond (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__cond (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16 z) /\
+  True.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type1_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type1_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type1_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type1_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type1_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type1_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type1_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type1_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type2_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type2_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type2_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type2_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type2_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type2_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type2_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type2_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type3_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type3_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type3_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type3_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type3_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type3_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type3_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type3_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type4_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type4_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type4_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type4_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type4_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type4_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type4_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type4_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Type : Set :=
+ | FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__supported
+.
+Definition FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__cond := (fun (_ : FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__supported
+  | _ => FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1F2 : forall x : FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Type, (FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F2 (FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1 (FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__dummy1__Type : Set :=
+ | FeatureSetUplink_v1610__dummy1__supported
+.
+Definition FeatureSetUplink_v1610__dummy1__cond := (fun (_ : FeatureSetUplink_v1610__dummy1__Type) => True).
+Lemma FeatureSetUplink_v1610__dummy1__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__dummy1__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__dummy1__nat__helper.
+
+Definition FeatureSetUplink_v1610__dummy1__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__dummy1__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__dummy1__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__dummy1__supported
+  | _ => FeatureSetUplink_v1610__dummy1__supported
+  end.
+Lemma FeatureSetUplink_v1610__dummy1__F1F2 : forall x : FeatureSetUplink_v1610__dummy1__Type, (FeatureSetUplink_v1610__dummy1__F1 x <= 0) /\ FeatureSetUplink_v1610__dummy1__F2 (FeatureSetUplink_v1610__dummy1__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__dummy1__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__dummy1__F1 (FeatureSetUplink_v1610__dummy1__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__dummy2__Type : Set :=
+ | FeatureSetUplink_v1610__dummy2__supported
+.
+Definition FeatureSetUplink_v1610__dummy2__cond := (fun (_ : FeatureSetUplink_v1610__dummy2__Type) => True).
+Lemma FeatureSetUplink_v1610__dummy2__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__dummy2__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__dummy2__nat__helper.
+
+Definition FeatureSetUplink_v1610__dummy2__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__dummy2__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__dummy2__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__dummy2__supported
+  | _ => FeatureSetUplink_v1610__dummy2__supported
+  end.
+Lemma FeatureSetUplink_v1610__dummy2__F1F2 : forall x : FeatureSetUplink_v1610__dummy2__Type, (FeatureSetUplink_v1610__dummy2__F1 x <= 0) /\ FeatureSetUplink_v1610__dummy2__F2 (FeatureSetUplink_v1610__dummy2__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__dummy2__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__dummy2__F1 (FeatureSetUplink_v1610__dummy2__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type5_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type5_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type5_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type5_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type5_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type5_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type5_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type5_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type6_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type6_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type6_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type6_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type6_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type6_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type6_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type6_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type7_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type7_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type7_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type7_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type7_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type7_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type7_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type7_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type8_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type8_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type8_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type8_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type8_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type8_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type8_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type8_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type9_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type9_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type9_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type9_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type9_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type9_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type9_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type9_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type10_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type10_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type10_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type10_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type10_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type10_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type10_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type10_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Type : Set :=
+ | FeatureSetUplink_v1610__twoPUCCH_Type11_r16__supported
+.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type11_r16__cond := (fun (_ : FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type11_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type11_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__twoPUCCH_Type11_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__twoPUCCH_Type11_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__twoPUCCH_Type11_r16__supported
+  | _ => FeatureSetUplink_v1610__twoPUCCH_Type11_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1F2 : forall x : FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Type, (FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F2 (FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1 (FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym0
+ | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym1
+ | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym2
+.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym0 => 0
+  | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym1 => 1
+  | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym2 => 2
+  end.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym0
+  | 1 => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym1
+  | 2 => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym2
+  | _ => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__sym0
+  end.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Type, (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F2 (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1 (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym0
+ | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym1
+ | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym2
+.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym0 => 0
+  | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym1 => 1
+  | FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym2 => 2
+  end.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym0
+  | 1 => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym1
+  | 2 => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym2
+  | _ => FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__sym0
+  end.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Type, (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F2 (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1 (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type {
+    FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16 : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Type ;
+    FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16 : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list := (
+ Nor FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Type FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__cond ::
+ Nor FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Type FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond z := 
+  FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__cond (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16 z) /\
+  FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__cond (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16 z) /\
+  True.
+
+Inductive FeatureSetUplink_v1610__ul_FullPwrMode_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_FullPwrMode_r16__supported
+.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_FullPwrMode_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__ul_FullPwrMode_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_FullPwrMode_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_FullPwrMode_r16__supported
+  | _ => FeatureSetUplink_v1610__ul_FullPwrMode_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_FullPwrMode_r16__Type, (FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__ul_FullPwrMode_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n1
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n2
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n4
+.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n1 => 0
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n2 => 1
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n4 => 2
+  end.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n1
+  | 1 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n2
+  | 2 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n4
+  | _ => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__n1
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Type, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n1
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n2
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n4
+.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n1 => 0
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n2 => 1
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n4 => 2
+  end.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n1
+  | 1 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n2
+  | 2 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n4
+  | _ => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__n1
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Type, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n1
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n2
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n4
+.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n1 => 0
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n2 => 1
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n4 => 2
+  end.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n1
+  | 1 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n2
+  | 2 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n4
+  | _ => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__n1
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Type, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__n2
+.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__n2 => 0
+  end.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__n2
+  | _ => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__n2
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Type, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__n2
+.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__n2 => 0
+  end.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__n2
+  | _ => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__n2
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Type, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Type : Set :=
+ | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__n2
+.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__cond := (fun (_ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__n2 => 0
+  end.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__n2
+  | _ => FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__n2
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1F2 : forall x : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Type, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type {
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Type ;
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Type ;
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Type ;
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Type ;
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Type ;
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list := (
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__cond ::
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond z := 
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16 z) /\
+  True.
+
+Inductive FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_FullPwrMode1_r16__supported
+.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode1_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode1_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode1_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 FeatureSetUplink_v1610__ul_FullPwrMode1_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_FullPwrMode1_r16__supported => 0
+  end.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_FullPwrMode1_r16__supported
+  | _ => FeatureSetUplink_v1610__ul_FullPwrMode1_r16__supported
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Type, (FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1 x <= 0) /\ FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F2F1 : forall (y : nat) (H : y <= 0), FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_4
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2_4
+.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2 => 0
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_4 => 1
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2_4 => 2
+  end.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2
+  | 1 => FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_4
+  | 2 => FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2_4
+  | _ => FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__p1_2
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Type, (FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1 x <= 2) /\ FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F2F1 : forall (y : nat) (H : y <= 2), FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F2 y) = y. enum_solve H y. Qed.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Type := bit_string_fixed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 2 /\ bit_string_len_prop (fst z) (snd z)).
+Inductive FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g0
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g1
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g2
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g3
+.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__nat__helper : to_bit_sz 3 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__nat__Format : T_Format nat (fun z => (z <= 3)) :=
+  nat_enum_format 3 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g0 => 0
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g1 => 1
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g2 => 2
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g3 => 3
+  end.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g0
+  | 1 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g1
+  | 2 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g2
+  | 3 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g3
+  | _ => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__g0
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Type, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1 x <= 3) /\ FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F2F1 : forall (y : nat) (H : y <= 3), FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Type : Set :=
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g0
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g1
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g2
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g3
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g4
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g5
+ | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g6
+.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__cond := (fun (_ : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Type) => True).
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__nat__helper : to_bit_sz 6 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__nat__Format : T_Format nat (fun z => (z <= 6)) :=
+  nat_enum_format 6 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__nat__helper.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1 t :=
+  match t with
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g0 => 0
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g1 => 1
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g2 => 2
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g3 => 3
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g4 => 4
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g5 => 5
+  | FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g6 => 6
+  end.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F2 n :=
+  match n with
+  | 0 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g0
+  | 1 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g1
+  | 2 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g2
+  | 3 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g3
+  | 4 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g4
+  | 5 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g5
+  | 6 => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g6
+  | _ => FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__g0
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1F2 : forall x : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Type, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1 x <= 6) /\ FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1 x) = x. imp_solve. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F2F1 : forall (y : nat) (H : y <= 6), FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type : Set :=
+  make__FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type {
+    FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list := (
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond z := 
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16 z) /\
+  True.
+
+Record FeatureSetUplink_v1610__Type : Set :=
+  make__FeatureSetUplink_v1610__Type {
+    FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16 : option FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type ;
+    FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16 : option FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Type ;
+    FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16 : option FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type ;
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16 : option FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type ;
+    FeatureSetUplink_v1610__supportedSRS_PosResources_r16 : option SRS_AllPosResources_r16__Type ;
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16 : option FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type ;
+    FeatureSetUplink_v1610__intraBandFreqSeparationUL_v1620 : option FreqSeparationClassUL_v1620__Type ;
+    FeatureSetUplink_v1610__multiPUCCH_r16 : option FeatureSetUplink_v1610__multiPUCCH_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type1_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type2_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type3_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type4_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Type ;
+    FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16 : option FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Type ;
+    FeatureSetUplink_v1610__dummy1 : option FeatureSetUplink_v1610__dummy1__Type ;
+    FeatureSetUplink_v1610__dummy2 : option FeatureSetUplink_v1610__dummy2__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type5_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type6_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type7_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type8_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type9_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type10_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Type ;
+    FeatureSetUplink_v1610__twoPUCCH_Type11_r16 : option FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Type ;
+    FeatureSetUplink_v1610__ul_IntraUE_Mux_r16 : option FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode_r16__Type ;
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16 : option FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode1_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Type ;
+    FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16 : option FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type ;
+}.
+Definition FeatureSetUplink_v1610__list := (
+ Opt FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Type FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Type FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond ::
+ Opt FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond ::
+ Opt SRS_AllPosResources_r16__Type SRS_AllPosResources_r16__cond ::
+ Opt FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond ::
+ Opt FreqSeparationClassUL_v1620__Type FreqSeparationClassUL_v1620__cond ::
+ Opt FeatureSetUplink_v1610__multiPUCCH_r16__Type FeatureSetUplink_v1610__multiPUCCH_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type1_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type2_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type3_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type4_r16__cond ::
+ Opt FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Type FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__cond ::
+ Opt FeatureSetUplink_v1610__dummy1__Type FeatureSetUplink_v1610__dummy1__cond ::
+ Opt FeatureSetUplink_v1610__dummy2__Type FeatureSetUplink_v1610__dummy2__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type5_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type6_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type7_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type8_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type9_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type10_r16__cond ::
+ Opt FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Type FeatureSetUplink_v1610__twoPUCCH_Type11_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode_r16__cond ::
+ Opt FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode1_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__cond ::
+ Opt FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond ::
+ nil).
+Definition FeatureSetUplink_v1610__cond z := 
+  opt_cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__cond (FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__cond (FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16 z) /\
+  opt_cond SRS_AllPosResources_r16__cond (FeatureSetUplink_v1610__supportedSRS_PosResources_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16 z) /\
+  opt_cond FreqSeparationClassUL_v1620__cond (FeatureSetUplink_v1610__intraBandFreqSeparationUL_v1620 z) /\
+  opt_cond FeatureSetUplink_v1610__multiPUCCH_r16__cond (FeatureSetUplink_v1610__multiPUCCH_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type1_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type1_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type2_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type2_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type3_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type3_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type4_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type4_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__cond (FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__dummy1__cond (FeatureSetUplink_v1610__dummy1 z) /\
+  opt_cond FeatureSetUplink_v1610__dummy2__cond (FeatureSetUplink_v1610__dummy2 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type5_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type5_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type6_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type6_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type7_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type7_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type8_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type8_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type9_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type9_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type10_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type10_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__twoPUCCH_Type11_r16__cond (FeatureSetUplink_v1610__twoPUCCH_Type11_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode1_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode1_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16 z) /\
+  opt_cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16 z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Format : T_Format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__nat__Format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F1F2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Format.
+
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Format : T_Format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__nat__Format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F1F2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format_list : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format_Type :=
+  (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16__Format, (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16__Format, unit_format)).
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format_list.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1 z :=
+  (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__maxNumberPUSCH_Tx_r16 z, (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__hoppingScheme_r16 z, tt)).
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2 (y : seq_type FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type i0 i1
+  end.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1F2_cond (z : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type)
+  : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type)
+ : FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2 (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list)
+  : seq_cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list y ->
+ (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2 y)) /\  FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1 (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format : T_Format FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Type FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__list__Format
+    FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1F2_cond  FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F1F2_cond2 FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__cond FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Format : T_Format FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__nat__Format FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1 FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F2 FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F1F2 FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__cond FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Format : T_Format FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__nat__Format FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1 FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F2 FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F1F2 FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__cond FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__nat__Format FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F1F2 FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format_list : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format_Type :=
+  (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16__Format, unit_format)))).
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format_list.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1 z :=
+  (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_15kHz_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_30kHz_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_60kHz_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__scs_120kHz_r16 z, tt)))).
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2 (y : seq_type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type i0 i1 i2 i3
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1F2_cond (z : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type)
+  : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type)
+ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list)
+  : seq_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list y ->
+ (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2 y)) /\  FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__list__Format
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1F2_cond  FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F1F2_cond2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__nat__Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F1F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format_list : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format_Type :=
+  (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16__Format, unit_format)))).
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format_list.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1 z :=
+  (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_15kHz_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_30kHz_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_60kHz_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__scs_120kHz_r16 z, tt)))).
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2 (y : seq_type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type i0 i1 i2 i3
+  end.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1F2_cond (z : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type)
+  : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type)
+ : FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list)
+  : seq_cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list y ->
+ (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2 y)) /\  FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1 (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format : T_Format FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Type FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__list__Format
+    FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1F2_cond  FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F1F2_cond2 FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__cond FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Format : T_Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__nat__Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F1F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__F2F1.
+
+Opaque FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Format.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Format : T_Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__nat__Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F1F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Format.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Format : T_Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__nat__Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F1F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__F2F1.
+
+Opaque FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Format.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Format : T_Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__nat__Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F1F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__F2F1.
+
+Opaque FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Format.
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Format : T_Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__nat__Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F1F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__F2F1.
+
+Opaque FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Format.
+
+
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format_list : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format_Type :=
+  (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy__Format, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16__Format, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1__Format, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2__Format, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3__Format, unit_format))))).
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format_list.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1 z :=
+  (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy z, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__intraFreqTwoTAGs_DAPS_r16 z, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy1 z, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy2 z, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__dummy3 z, tt))))).
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2 (y : seq_type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, _)))))=>
+    make__FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type i0 i1 i2 i3 i4
+  end.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1F2_cond (z : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type)
+  : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type)
+ : FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list)
+  : seq_cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list y ->
+ (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2 y)) /\  FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1 (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format : T_Format FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Type FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__list__Format
+    FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1F2_cond  FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F1F2_cond2 FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__cond FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format.
+
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Format : T_Format FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__nat__Format FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F2 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F1F2 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__cond FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Format.
+
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Format : T_Format FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__nat__Format FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F2 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F1F2 FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__cond FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__multiPUCCH_r16__list.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__Format_list : FeatureSetUplink_v1610__multiPUCCH_r16__Format_Type :=
+  (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16__Format, (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16__Format, unit_format)).
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__multiPUCCH_r16__list FeatureSetUplink_v1610__multiPUCCH_r16__Format_list.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__F1 z :=
+  (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_NCP_r16 z, (FeatureSetUplink_v1610__multiPUCCH_r16__sub_SlotConfig_ECP_r16 z, tt)).
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__F2 (y : seq_type FeatureSetUplink_v1610__multiPUCCH_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__FeatureSetUplink_v1610__multiPUCCH_r16__Type i0 i1
+  end.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__F1F2_cond (z : FeatureSetUplink_v1610__multiPUCCH_r16__Type)
+  : FeatureSetUplink_v1610__multiPUCCH_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__multiPUCCH_r16__list (FeatureSetUplink_v1610__multiPUCCH_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__multiPUCCH_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__multiPUCCH_r16__Type)
+ : FeatureSetUplink_v1610__multiPUCCH_r16__F2 (FeatureSetUplink_v1610__multiPUCCH_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__multiPUCCH_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__multiPUCCH_r16__list)
+  : seq_cond FeatureSetUplink_v1610__multiPUCCH_r16__list y ->
+ (FeatureSetUplink_v1610__multiPUCCH_r16__cond (FeatureSetUplink_v1610__multiPUCCH_r16__F2 y)) /\  FeatureSetUplink_v1610__multiPUCCH_r16__F1 (FeatureSetUplink_v1610__multiPUCCH_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__multiPUCCH_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__multiPUCCH_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__multiPUCCH_r16__Format : T_Format FeatureSetUplink_v1610__multiPUCCH_r16__Type FeatureSetUplink_v1610__multiPUCCH_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__multiPUCCH_r16__cond FeatureSetUplink_v1610__multiPUCCH_r16__list__Format
+    FeatureSetUplink_v1610__multiPUCCH_r16__F1 FeatureSetUplink_v1610__multiPUCCH_r16__F2 FeatureSetUplink_v1610__multiPUCCH_r16__F1F2_cond  FeatureSetUplink_v1610__multiPUCCH_r16__F1F2_cond2 FeatureSetUplink_v1610__multiPUCCH_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__multiPUCCH_r16__cond FeatureSetUplink_v1610__multiPUCCH_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type1_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type1_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type1_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type2_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type2_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type2_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type3_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type3_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type3_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type4_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type4_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type4_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Format.
+
+Definition FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Format : T_Format FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__nat__Format FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1 FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F2 FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F1F2 FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__cond FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Format.
+
+Definition FeatureSetUplink_v1610__dummy1__Format : T_Format FeatureSetUplink_v1610__dummy1__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__dummy1__nat__Format FeatureSetUplink_v1610__dummy1__F1 FeatureSetUplink_v1610__dummy1__F2 FeatureSetUplink_v1610__dummy1__F1F2 FeatureSetUplink_v1610__dummy1__F2F1.
+
+Opaque FeatureSetUplink_v1610__dummy1__cond FeatureSetUplink_v1610__dummy1__Format.
+
+Definition FeatureSetUplink_v1610__dummy2__Format : T_Format FeatureSetUplink_v1610__dummy2__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__dummy2__nat__Format FeatureSetUplink_v1610__dummy2__F1 FeatureSetUplink_v1610__dummy2__F2 FeatureSetUplink_v1610__dummy2__F1F2 FeatureSetUplink_v1610__dummy2__F2F1.
+
+Opaque FeatureSetUplink_v1610__dummy2__cond FeatureSetUplink_v1610__dummy2__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type5_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type5_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type5_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type6_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type6_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type6_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type7_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type7_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type7_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type8_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type8_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type8_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type9_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type9_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type9_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type10_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type10_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type10_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Format.
+
+Definition FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Format : T_Format FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__twoPUCCH_Type11_r16__nat__Format FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1 FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F2 FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F1F2 FeatureSetUplink_v1610__twoPUCCH_Type11_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__twoPUCCH_Type11_r16__cond FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Format : T_Format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__nat__Format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F1F2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Format : T_Format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__nat__Format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F1F2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format_list : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format_Type :=
+  (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16__Format, (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16__Format, unit_format)).
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format_list.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1 z :=
+  (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationLowPriority_r16 z, (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__pusch_PreparationHighPriority_r16 z, tt)).
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2 (y : seq_type FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type i0 i1
+  end.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1F2_cond (z : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type)
+  : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type)
+ : FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2 (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list)
+  : seq_cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list y ->
+ (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2 y)) /\  FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1 (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format : T_Format FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Type FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__list__Format
+    FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1F2_cond  FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F1F2_cond2 FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__cond FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_FullPwrMode_r16__nat__Format FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode_r16__F1F2 FeatureSetUplink_v1610__ul_FullPwrMode_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode_r16__Format.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__nat__Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F1F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__nat__Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F1F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__nat__Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F1F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__nat__Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F1F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__nat__Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F1F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Format.
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__nat__Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F1F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format_list : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format_Type :=
+  (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16__Format, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16__Format, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16__Format, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16__Format, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16__Format, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16__Format, unit_format)))))).
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format_list.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1 z :=
+  (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_120kHz_r16 z, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_60kHz_r16 z, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_120kHz_r16 z, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_15kHz_30kHz_r16 z, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_30kHz_60kHz_r16 z, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__scs_60kHz_120kHz_r16 z, tt)))))).
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2 (y : seq_type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, (i5, _))))))=>
+    make__FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type i0 i1 i2 i3 i4 i5
+  end.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1F2_cond (z : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type)
+  : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type)
+ : FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list)
+  : seq_cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list y ->
+ (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2 y)) /\  FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1 (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format : T_Format FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Type FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__list__Format
+    FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1F2_cond  FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F1F2_cond2 FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__cond FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_FullPwrMode1_r16__nat__Format FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F1F2 FeatureSetUplink_v1610__ul_FullPwrMode1_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode1_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__nat__Format FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F1F2 FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__cond := (* Eval compute in *) bit_string_fixed_format 2.
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__nat__Format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F1F2 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Format.
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__nat__Format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F1F2 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__F2F1.
+
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format_list : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format_Type :=
+  (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16__Format, unit_format))).
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format_list.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1 z :=
+  (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__twoPorts_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsNonCoherent_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__fourPortsPartialCoherent_r16 z, tt))).
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2 (y : seq_type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type i0 i1 i2
+  end.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1F2_cond (z : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type)
+  : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond z ->
+  (seq_cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1F2_cond2 (z : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type)
+ : FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2 (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2F1_cond (y : seq_type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list)
+  : seq_cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list y ->
+ (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2 y)) /\  FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1 (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format : T_Format FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Type FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond :=
+        proj2_format  FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__list__Format
+    FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1F2_cond  FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F1F2_cond2 FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__F2F1_cond.
+Opaque FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__cond FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format.
+
+
+Definition FeatureSetUplink_v1610__Format_Type := Eval cbn in seq_format_prod FeatureSetUplink_v1610__list.
+Definition FeatureSetUplink_v1610__Format_list : FeatureSetUplink_v1610__Format_Type :=
+  (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16__Format, (FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16__Format, (FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16__Format, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16__Format, (SRS_AllPosResources_r16__Format, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16__Format, (FreqSeparationClassUL_v1620__Format, (FeatureSetUplink_v1610__multiPUCCH_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type1_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type2_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type3_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type4_r16__Format, (FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16__Format, (FeatureSetUplink_v1610__dummy1__Format, (FeatureSetUplink_v1610__dummy2__Format, (FeatureSetUplink_v1610__twoPUCCH_Type5_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type6_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type7_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type8_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type9_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type10_r16__Format, (FeatureSetUplink_v1610__twoPUCCH_Type11_r16__Format, (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode_r16__Format, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode1_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16__Format, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16__Format, unit_format)))))))))))))))))))))))))))))).
+Definition FeatureSetUplink_v1610__list__Format := (*Eval compute in *) seq_format FeatureSetUplink_v1610__list FeatureSetUplink_v1610__Format_list.
+Definition FeatureSetUplink_v1610__F1 z :=
+  (FeatureSetUplink_v1610__pusch_RepetitionTypeB_r16 z, (FeatureSetUplink_v1610__ul_CancellationSelfCarrier_r16 z, (FeatureSetUplink_v1610__ul_CancellationCrossCarrier_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode2_MaxSRS_ResInSet_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType1_DifferentTB_PerSlot_r16 z, (FeatureSetUplink_v1610__cbgPUSCH_ProcessingType2_DifferentTB_PerSlot_r16 z, (FeatureSetUplink_v1610__supportedSRS_PosResources_r16 z, (FeatureSetUplink_v1610__intraFreqDAPS_UL_r16 z, (FeatureSetUplink_v1610__intraBandFreqSeparationUL_v1620 z, (FeatureSetUplink_v1610__multiPUCCH_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type1_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type2_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type3_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type4_r16 z, (FeatureSetUplink_v1610__mux_SR_HARQ_ACK_r16 z, (FeatureSetUplink_v1610__dummy1 z, (FeatureSetUplink_v1610__dummy2 z, (FeatureSetUplink_v1610__twoPUCCH_Type5_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type6_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type7_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type8_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type9_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type10_r16 z, (FeatureSetUplink_v1610__twoPUCCH_Type11_r16 z, (FeatureSetUplink_v1610__ul_IntraUE_Mux_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode_r16 z, (FeatureSetUplink_v1610__crossCarrierSchedulingProcessing_DiffSCS_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode1_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode2_SRSConfig_diffNumSRSPorts_r16 z, (FeatureSetUplink_v1610__ul_FullPwrMode2_TPMIGroup_r16 z, tt)))))))))))))))))))))))))))))).
+Definition FeatureSetUplink_v1610__F2 (y : seq_type FeatureSetUplink_v1610__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, (i5, (i6, (i7, (i8, (i9, (i10, (i11, (i12, (i13, (i14, (i15, (i16, (i17, (i18, (i19, (i20, (i21, (i22, (i23, (i24, (i25, (i26, (i27, (i28, (i29, _))))))))))))))))))))))))))))))=>
+    make__FeatureSetUplink_v1610__Type i0 i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11 i12 i13 i14 i15 i16 i17 i18 i19 i20 i21 i22 i23 i24 i25 i26 i27 i28 i29
+  end.
+Lemma FeatureSetUplink_v1610__F1F2_cond (z : FeatureSetUplink_v1610__Type)
+  : FeatureSetUplink_v1610__cond z ->
+  (seq_cond FeatureSetUplink_v1610__list (FeatureSetUplink_v1610__F1 z)).
+intro H. unfold FeatureSetUplink_v1610__cond in H. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__F1F2_cond2 (z : FeatureSetUplink_v1610__Type)
+ : FeatureSetUplink_v1610__F2 (FeatureSetUplink_v1610__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma FeatureSetUplink_v1610__F2F1_cond (y : seq_type FeatureSetUplink_v1610__list)
+  : seq_cond FeatureSetUplink_v1610__list y ->
+ (FeatureSetUplink_v1610__cond (FeatureSetUplink_v1610__F2 y)) /\  FeatureSetUplink_v1610__F1 (FeatureSetUplink_v1610__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold FeatureSetUplink_v1610__cond. simpl in *. auto.
+ - simpl. unfold FeatureSetUplink_v1610__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition FeatureSetUplink_v1610__Format : T_Format FeatureSetUplink_v1610__Type FeatureSetUplink_v1610__cond :=
+        proj2_format  FeatureSetUplink_v1610__cond FeatureSetUplink_v1610__list__Format
+    FeatureSetUplink_v1610__F1 FeatureSetUplink_v1610__F2 FeatureSetUplink_v1610__F1F2_cond  FeatureSetUplink_v1610__F1F2_cond2 FeatureSetUplink_v1610__F2F1_cond.
+Opaque FeatureSetUplink_v1610__cond FeatureSetUplink_v1610__Format.
+

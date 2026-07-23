@@ -1,0 +1,156 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Inductive UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Type : Set :=
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc0
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc2
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc4
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc6
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc8
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc12
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc16
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc20
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc24
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc32
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc40
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc48
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc56
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc64
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc72
+ | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc80
+.
+Definition UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__cond := (fun (_ : UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Type) => True).
+Lemma UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__nat__helper : to_bit_sz 15 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__nat__Format : T_Format nat (fun z => (z <= 15)) :=
+  nat_enum_format 15 UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__nat__helper.
+
+Definition UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1 t :=
+  match t with
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc0 => 0
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc2 => 1
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc4 => 2
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc6 => 3
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc8 => 4
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc12 => 5
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc16 => 6
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc20 => 7
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc24 => 8
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc32 => 9
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc40 => 10
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc48 => 11
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc56 => 12
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc64 => 13
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc72 => 14
+  | UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc80 => 15
+  end.
+Definition UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F2 n :=
+  match n with
+  | 0 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc0
+  | 1 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc2
+  | 2 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc4
+  | 3 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc6
+  | 4 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc8
+  | 5 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc12
+  | 6 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc16
+  | 7 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc20
+  | 8 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc24
+  | 9 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc32
+  | 10 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc40
+  | 11 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc48
+  | 12 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc56
+  | 13 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc64
+  | 14 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc72
+  | 15 => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc80
+  | _ => UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__tc0
+  end.
+Lemma UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1F2 : forall x : UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Type, (UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1 x <= 15) /\ UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F2 (UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1 x) = x. imp_solve. Qed.
+Lemma UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F2F1 : forall (y : nat) (H : y <= 15), UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1 (UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F2 y) = y. enum_solve H y. Qed.
+
+Record UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type : Set := make__UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type {}.
+Definition UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__cond (z : UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type) := True.
+Record UEPositioningAssistanceInfo_v1720_IEs__Type : Set :=
+  make__UEPositioningAssistanceInfo_v1720_IEs__Type {
+    UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17 : option UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Type ;
+    UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension : option UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type ;
+}.
+Definition UEPositioningAssistanceInfo_v1720_IEs__list := (
+ Opt UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Type UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__cond ::
+ Opt UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__cond ::
+ nil).
+Definition UEPositioningAssistanceInfo_v1720_IEs__cond z := 
+  opt_cond UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__cond (UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17 z) /\
+  opt_cond UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__cond (UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Format : T_Format UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__nat__Format UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1 UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F2 UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F1F2 UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__F2F1.
+
+Opaque UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__cond UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Format.
+
+Definition UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__helper : forall a : UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type, True -> True /\ make__UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type = a.
+  eq_unit_helper_tact. Qed.
+Definition UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Format : T_Format UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__cond :=
+ (* Eval compute in *) proj_format (fun _ => True) unit_format (fun _ => tt) (fun _ => make__UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Type)
+    UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__helper unit_unique (fun _ => left I).
+
+Opaque UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__cond UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Format.
+
+
+Definition UEPositioningAssistanceInfo_v1720_IEs__Format_Type := Eval cbn in seq_format_prod UEPositioningAssistanceInfo_v1720_IEs__list.
+Definition UEPositioningAssistanceInfo_v1720_IEs__Format_list : UEPositioningAssistanceInfo_v1720_IEs__Format_Type :=
+  (UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17__Format, (UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension__Format, unit_format)).
+Definition UEPositioningAssistanceInfo_v1720_IEs__list__Format := (*Eval compute in *) seq_format UEPositioningAssistanceInfo_v1720_IEs__list UEPositioningAssistanceInfo_v1720_IEs__Format_list.
+Definition UEPositioningAssistanceInfo_v1720_IEs__F1 z :=
+  (UEPositioningAssistanceInfo_v1720_IEs__ue_TxTEG_TimingErrorMarginValue_r17 z, (UEPositioningAssistanceInfo_v1720_IEs__nonCriticalExtension z, tt)).
+Definition UEPositioningAssistanceInfo_v1720_IEs__F2 (y : seq_type UEPositioningAssistanceInfo_v1720_IEs__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__UEPositioningAssistanceInfo_v1720_IEs__Type i0 i1
+  end.
+Lemma UEPositioningAssistanceInfo_v1720_IEs__F1F2_cond (z : UEPositioningAssistanceInfo_v1720_IEs__Type)
+  : UEPositioningAssistanceInfo_v1720_IEs__cond z ->
+  (seq_cond UEPositioningAssistanceInfo_v1720_IEs__list (UEPositioningAssistanceInfo_v1720_IEs__F1 z)).
+intro H. unfold UEPositioningAssistanceInfo_v1720_IEs__cond in H. simpl. auto. Qed.
+Lemma UEPositioningAssistanceInfo_v1720_IEs__F1F2_cond2 (z : UEPositioningAssistanceInfo_v1720_IEs__Type)
+ : UEPositioningAssistanceInfo_v1720_IEs__F2 (UEPositioningAssistanceInfo_v1720_IEs__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma UEPositioningAssistanceInfo_v1720_IEs__F2F1_cond (y : seq_type UEPositioningAssistanceInfo_v1720_IEs__list)
+  : seq_cond UEPositioningAssistanceInfo_v1720_IEs__list y ->
+ (UEPositioningAssistanceInfo_v1720_IEs__cond (UEPositioningAssistanceInfo_v1720_IEs__F2 y)) /\  UEPositioningAssistanceInfo_v1720_IEs__F1 (UEPositioningAssistanceInfo_v1720_IEs__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold UEPositioningAssistanceInfo_v1720_IEs__cond. simpl in *. auto.
+ - simpl. unfold UEPositioningAssistanceInfo_v1720_IEs__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition UEPositioningAssistanceInfo_v1720_IEs__Format : T_Format UEPositioningAssistanceInfo_v1720_IEs__Type UEPositioningAssistanceInfo_v1720_IEs__cond :=
+        proj2_format  UEPositioningAssistanceInfo_v1720_IEs__cond UEPositioningAssistanceInfo_v1720_IEs__list__Format
+    UEPositioningAssistanceInfo_v1720_IEs__F1 UEPositioningAssistanceInfo_v1720_IEs__F2 UEPositioningAssistanceInfo_v1720_IEs__F1F2_cond  UEPositioningAssistanceInfo_v1720_IEs__F1F2_cond2 UEPositioningAssistanceInfo_v1720_IEs__F2F1_cond.
+Opaque UEPositioningAssistanceInfo_v1720_IEs__cond UEPositioningAssistanceInfo_v1720_IEs__Format.
+

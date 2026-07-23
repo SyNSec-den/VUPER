@@ -1,0 +1,491 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Require Import NR.CSI_ReportConfigId.
+
+Opaque CSI_ReportConfigId__cond CSI_ReportConfigId__Format.
+
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__helper1 : (1 <= maxNrofNZP_CSI_RS_ResourceSetsPerConfig)%Z. unfold maxNrofNZP_CSI_RS_ResourceSetsPerConfig.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__helper2 : to_bit_sz (Z.to_nat (maxNrofNZP_CSI_RS_ResourceSetsPerConfig - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofNZP_CSI_RS_ResourceSetsPerConfig - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__cond := (fun z => (1 <= z <= maxNrofNZP_CSI_RS_ResourceSetsPerConfig)%Z).
+Require Import NR.TCI_StateId.
+
+Opaque TCI_StateId__cond TCI_StateId__Format.
+
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Type := list TCI_StateId__Type.
+
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__helper1 : (0 <= 1 <= maxNrofAP_CSI_RS_ResourcesPerSet)%Z. unfold maxNrofAP_CSI_RS_ResourcesPerSet.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__helper2 : to_bit_sz (Z.to_nat (maxNrofAP_CSI_RS_ResourcesPerSet - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofAP_CSI_RS_ResourcesPerSet - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__cond (z : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Type) :=  (1 <= Z.of_nat (length z) <= maxNrofAP_CSI_RS_ResourcesPerSet)%Z /\ (list_and TCI_StateId__cond z) .
+
+Record CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type : Set :=
+  make__CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type {
+    CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet : Z ;
+    CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info : option CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Type ;
+}.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list := (
+ Nor Z CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__cond ::
+ Opt CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Type CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__cond ::
+ nil).
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond z := 
+  CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__cond (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet z) /\
+  opt_cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__cond (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info z) /\
+  True.
+
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__helper1 : (1 <= maxNrofCSI_SSB_ResourceSetsPerConfig)%Z. unfold maxNrofCSI_SSB_ResourceSetsPerConfig.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_SSB_ResourceSetsPerConfig - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_SSB_ResourceSetsPerConfig - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__cond := (fun z => (1 <= z <= maxNrofCSI_SSB_ResourceSetsPerConfig)%Z).
+
+Inductive CSI_AssociatedReportConfigInfo__resourcesForChannel__Type : Set :=
+  | CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type -> CSI_AssociatedReportConfigInfo__resourcesForChannel__Type
+  | CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet : Z -> CSI_AssociatedReportConfigInfo__resourcesForChannel__Type
+.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__list : list typ := (
+typ_cons CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond ::
+typ_cons Z CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__cond ::
+ nil).
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__cond (c : CSI_AssociatedReportConfigInfo__resourcesForChannel__Type) := 
+  match c with
+  | CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS t => CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond t 
+  | CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet t => CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__cond t 
+  end.
+
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__len_helper1 : to_bit_sz (length CSI_AssociatedReportConfigInfo__resourcesForChannel__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__len_helper2 : 2 <= length2 CSI_AssociatedReportConfigInfo__resourcesForChannel__list.
+ simpl. lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__helper1 : (1 <= maxNrofCSI_IM_ResourceSetsPerConfig)%Z. unfold maxNrofCSI_IM_ResourceSetsPerConfig.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_IM_ResourceSetsPerConfig - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_IM_ResourceSetsPerConfig - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__cond := (fun z => (1 <= z <= maxNrofCSI_IM_ResourceSetsPerConfig)%Z).
+Lemma CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__helper1 : (1 <= maxNrofNZP_CSI_RS_ResourceSetsPerConfig)%Z. unfold maxNrofNZP_CSI_RS_ResourceSetsPerConfig.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__helper2 : to_bit_sz (Z.to_nat (maxNrofNZP_CSI_RS_ResourceSetsPerConfig - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofNZP_CSI_RS_ResourceSetsPerConfig - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__cond := (fun z => (1 <= z <= maxNrofNZP_CSI_RS_ResourceSetsPerConfig)%Z).
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__helper1 : (1 <= maxNrofNZP_CSI_RS_ResourceSetsPerConfig)%Z. unfold maxNrofNZP_CSI_RS_ResourceSetsPerConfig.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__helper2 : to_bit_sz (Z.to_nat (maxNrofNZP_CSI_RS_ResourceSetsPerConfig - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofNZP_CSI_RS_ResourceSetsPerConfig - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__cond := (fun z => (1 <= z <= maxNrofNZP_CSI_RS_ResourceSetsPerConfig)%Z).
+Require Import NR.TCI_StateId.
+
+Opaque TCI_StateId__cond TCI_StateId__Format.
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Type := list TCI_StateId__Type.
+
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__helper1 : (0 <= 1 <= maxNrofAP_CSI_RS_ResourcesPerSet)%Z. unfold maxNrofAP_CSI_RS_ResourcesPerSet.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__helper2 : to_bit_sz (Z.to_nat (maxNrofAP_CSI_RS_ResourcesPerSet - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofAP_CSI_RS_ResourcesPerSet - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__cond (z : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Type) :=  (1 <= Z.of_nat (length z) <= maxNrofAP_CSI_RS_ResourcesPerSet)%Z /\ (list_and TCI_StateId__cond z) .
+
+Record CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type : Set :=
+  make__CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type {
+    CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17 : Z ;
+    CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17 : option CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Type ;
+}.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list := (
+ Nor Z CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__cond ::
+ Opt CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__cond ::
+ nil).
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond z := 
+  CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__cond (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17 z) /\
+  opt_cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__cond (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17 z) /\
+  True.
+
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__helper1 : (1 <= maxNrofCSI_SSB_ResourceSetsPerConfigExt)%Z. unfold maxNrofCSI_SSB_ResourceSetsPerConfigExt.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_SSB_ResourceSetsPerConfigExt - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_SSB_ResourceSetsPerConfigExt - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__cond := (fun z => (1 <= z <= maxNrofCSI_SSB_ResourceSetsPerConfigExt)%Z).
+
+Inductive CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type : Set :=
+  | CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17 : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type -> CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type
+  | CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17 : Z -> CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type
+.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list : list typ := (
+typ_cons CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond ::
+typ_cons Z CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__cond ::
+ nil).
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond (c : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type) := 
+  match c with
+  | CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17 t => CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond t 
+  | CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17 t => CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__cond t 
+  end.
+
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__len_helper1 : to_bit_sz (length CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__len_helper2 : 2 <= length2 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list.
+ simpl. lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__helper1 : (1 <= maxNrofCSI_SSB_ResourceSetsPerConfigExt)%Z. unfold maxNrofCSI_SSB_ResourceSetsPerConfigExt.
+ lia. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_SSB_ResourceSetsPerConfigExt - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_SSB_ResourceSetsPerConfigExt - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__Type := Z.
+Definition CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__cond := (fun z => (1 <= z <= maxNrofCSI_SSB_ResourceSetsPerConfigExt)%Z).
+Record CSI_AssociatedReportConfigInfo__ext0O__Type : Set :=
+  make__CSI_AssociatedReportConfigInfo__ext0O__Type {
+    CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17 : option CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type ;
+    CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt : option Z ;
+}.
+Definition CSI_AssociatedReportConfigInfo__ext0O__list := (
+ Opt CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond ::
+ Opt Z CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__cond ::
+ nil).
+Definition CSI_AssociatedReportConfigInfo__ext0O__cond z := 
+  opt_cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17 z) /\
+  opt_cond CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__cond (CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt z) /\
+  True.
+
+Definition CSI_AssociatedReportConfigInfo__ext0__Type := CSI_AssociatedReportConfigInfo__ext0O__Type.
+Definition CSI_AssociatedReportConfigInfo__ext0__cond := CSI_AssociatedReportConfigInfo__ext0O__cond.
+
+Record CSI_AssociatedReportConfigInfo__Type : Set :=
+  make__CSI_AssociatedReportConfigInfo__Type {
+    CSI_AssociatedReportConfigInfo__reportConfigId : CSI_ReportConfigId__Type ;
+    CSI_AssociatedReportConfigInfo__resourcesForChannel : CSI_AssociatedReportConfigInfo__resourcesForChannel__Type ;
+    CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference : option Z ;
+    CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference : option Z ;
+    CSI_AssociatedReportConfigInfo__ext0 : option CSI_AssociatedReportConfigInfo__ext0__Type ;
+}.
+Definition CSI_AssociatedReportConfigInfo__root_list : list seq_elem := (
+ Nor CSI_ReportConfigId__Type CSI_ReportConfigId__cond ::
+ Nor CSI_AssociatedReportConfigInfo__resourcesForChannel__Type CSI_AssociatedReportConfigInfo__resourcesForChannel__cond ::
+ Opt Z CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__cond ::
+ Opt Z CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__cond ::
+ nil).
+Definition CSI_AssociatedReportConfigInfo__ext_list : list typ := (
+  typ_cons CSI_AssociatedReportConfigInfo__ext0__Type CSI_AssociatedReportConfigInfo__ext0__cond ::
+  nil).
+Definition CSI_AssociatedReportConfigInfo__cond (z : CSI_AssociatedReportConfigInfo__Type) := 
+(  CSI_ReportConfigId__cond (CSI_AssociatedReportConfigInfo__reportConfigId z) /\
+  CSI_AssociatedReportConfigInfo__resourcesForChannel__cond (CSI_AssociatedReportConfigInfo__resourcesForChannel z) /\
+  opt_cond CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__cond (CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference z) /\
+  opt_cond CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__cond (CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference z) /\
+  True) /\ 
+(  opt_cond CSI_AssociatedReportConfigInfo__ext0__cond (CSI_AssociatedReportConfigInfo__ext0 z) /\
+  True).
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__Format : T_Format Z CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__cond :=
+ ranged_int_format (1) (maxNrofNZP_CSI_RS_ResourceSetsPerConfig) CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__helper1 CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__Format.
+
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Format : T_Format CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Type CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__cond := seq_of_format TCI_StateId__Format 1 maxNrofAP_CSI_RS_ResourcesPerSet CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__helper1 CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Format.
+
+
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format_Type := Eval cbn in seq_format_prod CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format_list : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format_Type :=
+  (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet__Format, (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info__Format, unit_format)).
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list__Format := (*Eval compute in *) seq_format CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format_list.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1 z :=
+  (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__resourceSet z, (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__qcl_info z, tt)).
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2 (y : seq_type CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type i0 i1
+  end.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1F2_cond (z : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type)
+  : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond z ->
+  (seq_cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1 z)).
+intro H. unfold CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond in H. simpl. auto. Qed.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1F2_cond2 (z : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type)
+ : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2 (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2F1_cond (y : seq_type CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list)
+  : seq_cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list y ->
+ (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2 y)) /\  CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1 (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond. simpl in *. auto.
+ - simpl. unfold CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format : T_Format CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond :=
+        proj2_format  CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__list__Format
+    CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1 CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2 CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1F2_cond  CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F1F2_cond2 CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__F2F1_cond.
+Opaque CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format.
+
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__Format : T_Format Z CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__cond :=
+ ranged_int_format (1) (maxNrofCSI_SSB_ResourceSetsPerConfig) CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__helper1 CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__Format.
+
+
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__Format_Type := Eval cbn in get_formats CSI_AssociatedReportConfigInfo__resourcesForChannel__list.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__Format_list : CSI_AssociatedReportConfigInfo__resourcesForChannel__Format_Type :=
+  (CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Format, (CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet__Format, unit__Format)).
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__list__Format := Eval compute in choice_format CSI_AssociatedReportConfigInfo__resourcesForChannel__list CSI_AssociatedReportConfigInfo__resourcesForChannel__len_helper1 CSI_AssociatedReportConfigInfo__resourcesForChannel__len_helper2  CSI_AssociatedReportConfigInfo__resourcesForChannel__Format_list.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__F1 (z : CSI_AssociatedReportConfigInfo__resourcesForChannel__Type) : (choice CSI_AssociatedReportConfigInfo__resourcesForChannel__list) :=
+  match z with
+   | CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS t => existT _ 0 t
+  | CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet t => existT _ 1 t
+  end.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__g := (fun n => typ_set (get_nth_typ CSI_AssociatedReportConfigInfo__resourcesForChannel__list n)).
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__F2 (y : choice CSI_AssociatedReportConfigInfo__resourcesForChannel__list) : CSI_AssociatedReportConfigInfo__resourcesForChannel__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (CSI_AssociatedReportConfigInfo__resourcesForChannel__g n -> CSI_AssociatedReportConfigInfo__resourcesForChannel__Type) with
+    | 0 => fun (t : CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS__Type) => CSI_AssociatedReportConfigInfo__resourcesForChannel__nzp_CSI_RS t 
+    | 1 => fun (t : Z) => CSI_AssociatedReportConfigInfo__resourcesForChannel__csi_SSB_ResourceSet t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : CSI_AssociatedReportConfigInfo__resourcesForChannel__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ CSI_AssociatedReportConfigInfo__resourcesForChannel__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len CSI_AssociatedReportConfigInfo__resourcesForChannel__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return CSI_AssociatedReportConfigInfo__resourcesForChannel__Type with end) n0
+           end t0).
+
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__helper2 :  forall (y : CSI_AssociatedReportConfigInfo__resourcesForChannel__Type), CSI_AssociatedReportConfigInfo__resourcesForChannel__cond y -> choice_cond CSI_AssociatedReportConfigInfo__resourcesForChannel__list (CSI_AssociatedReportConfigInfo__resourcesForChannel__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__helper3 :  forall (y : CSI_AssociatedReportConfigInfo__resourcesForChannel__Type), CSI_AssociatedReportConfigInfo__resourcesForChannel__F2 (CSI_AssociatedReportConfigInfo__resourcesForChannel__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma CSI_AssociatedReportConfigInfo__resourcesForChannel__helper4 : (forall b : choice CSI_AssociatedReportConfigInfo__resourcesForChannel__list, choice_cond CSI_AssociatedReportConfigInfo__resourcesForChannel__list b -> CSI_AssociatedReportConfigInfo__resourcesForChannel__cond (CSI_AssociatedReportConfigInfo__resourcesForChannel__F2 b) /\ CSI_AssociatedReportConfigInfo__resourcesForChannel__F1 (CSI_AssociatedReportConfigInfo__resourcesForChannel__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length CSI_AssociatedReportConfigInfo__resourcesForChannel__F1 CSI_AssociatedReportConfigInfo__resourcesForChannel__F2.
+Definition CSI_AssociatedReportConfigInfo__resourcesForChannel__Format : T_Format CSI_AssociatedReportConfigInfo__resourcesForChannel__Type CSI_AssociatedReportConfigInfo__resourcesForChannel__cond :=
+  (* Eval compute in *) proj2_format CSI_AssociatedReportConfigInfo__resourcesForChannel__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__list__Format CSI_AssociatedReportConfigInfo__resourcesForChannel__F1 CSI_AssociatedReportConfigInfo__resourcesForChannel__F2 CSI_AssociatedReportConfigInfo__resourcesForChannel__helper2 CSI_AssociatedReportConfigInfo__resourcesForChannel__helper3 CSI_AssociatedReportConfigInfo__resourcesForChannel__helper4.
+Opaque CSI_AssociatedReportConfigInfo__resourcesForChannel__cond CSI_AssociatedReportConfigInfo__resourcesForChannel__Format.
+
+Definition CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__Format : T_Format Z CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__cond :=
+ ranged_int_format (1) (maxNrofCSI_IM_ResourceSetsPerConfig) CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__helper1 CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__cond CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__Format.
+
+Definition CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__Format : T_Format Z CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__cond :=
+ ranged_int_format (1) (maxNrofNZP_CSI_RS_ResourceSetsPerConfig) CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__helper1 CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__cond CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__Format.
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__Format : T_Format Z CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__cond :=
+ ranged_int_format (1) (maxNrofNZP_CSI_RS_ResourceSetsPerConfig) CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__helper1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__Format.
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Format : T_Format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__cond := seq_of_format TCI_StateId__Format 1 maxNrofAP_CSI_RS_ResourcesPerSet CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__helper1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Format.
+
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format_Type := Eval cbn in seq_format_prod CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format_list : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format_Type :=
+  (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17__Format, (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17__Format, unit_format)).
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list__Format := (*Eval compute in *) seq_format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format_list.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1 z :=
+  (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__resourceSet2_r17 z, (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__qcl_info2_r17 z, tt)).
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2 (y : seq_type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type i0 i1
+  end.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1F2_cond (z : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type)
+  : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond z ->
+  (seq_cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1 z)).
+intro H. unfold CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond in H. simpl. auto. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1F2_cond2 (z : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type)
+ : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2 (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2F1_cond (y : seq_type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list)
+  : seq_cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list y ->
+ (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2 y)) /\  CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1 (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond. simpl in *. auto.
+ - simpl. unfold CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format : T_Format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond :=
+        proj2_format  CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__list__Format
+    CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1F2_cond  CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F1F2_cond2 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__F2F1_cond.
+Opaque CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format.
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__Format : T_Format Z CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__cond :=
+ ranged_int_format (1) (maxNrofCSI_SSB_ResourceSetsPerConfigExt) CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__helper1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__Format.
+
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format_Type := Eval cbn in get_formats CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format_list : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format_Type :=
+  (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Format, (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17__Format, unit__Format)).
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list__Format := Eval compute in choice_format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__len_helper1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__len_helper2  CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format_list.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F1 (z : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type) : (choice CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list) :=
+  match z with
+   | CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17 t => existT _ 0 t
+  | CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17 t => existT _ 1 t
+  end.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__g := (fun n => typ_set (get_nth_typ CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list n)).
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F2 (y : choice CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list) : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__g n -> CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type) with
+    | 0 => fun (t : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17__Type) => CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__nzp_CSI_RS2_r17 t 
+    | 1 => fun (t : Z) => CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__csi_SSB_ResourceSet2_r17 t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type with end) n0
+           end t0).
+
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__helper2 :  forall (y : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type), CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond y -> choice_cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__helper3 :  forall (y : CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type), CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F2 (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__helper4 : (forall b : choice CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list, choice_cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list b -> CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F2 b) /\ CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F1 (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F2.
+Definition CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format : T_Format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Type CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond :=
+  (* Eval compute in *) proj2_format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__list__Format CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F1 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__F2 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__helper2 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__helper3 CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__helper4.
+Opaque CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__cond CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format.
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__Format : T_Format Z CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__cond :=
+ ranged_int_format (1) (maxNrofCSI_SSB_ResourceSetsPerConfigExt) CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__helper1 CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__helper2.
+
+Opaque CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__cond CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__Format.
+
+
+Definition CSI_AssociatedReportConfigInfo__ext0O__Format_Type := Eval cbn in seq_format_prod CSI_AssociatedReportConfigInfo__ext0O__list.
+Definition CSI_AssociatedReportConfigInfo__ext0O__Format_list : CSI_AssociatedReportConfigInfo__ext0O__Format_Type :=
+  (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17__Format, (CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt__Format, unit_format)).
+Definition CSI_AssociatedReportConfigInfo__ext0O__list__Format := (*Eval compute in *) seq_format CSI_AssociatedReportConfigInfo__ext0O__list CSI_AssociatedReportConfigInfo__ext0O__Format_list.
+Definition CSI_AssociatedReportConfigInfo__ext0O__F1 z :=
+  (CSI_AssociatedReportConfigInfo__ext0O__resourcesForChannel2_r17 z, (CSI_AssociatedReportConfigInfo__ext0O__csi_SSB_ResourceSetExt z, tt)).
+Definition CSI_AssociatedReportConfigInfo__ext0O__F2 (y : seq_type CSI_AssociatedReportConfigInfo__ext0O__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__CSI_AssociatedReportConfigInfo__ext0O__Type i0 i1
+  end.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__F1F2_cond (z : CSI_AssociatedReportConfigInfo__ext0O__Type)
+  : CSI_AssociatedReportConfigInfo__ext0O__cond z ->
+  (seq_cond CSI_AssociatedReportConfigInfo__ext0O__list (CSI_AssociatedReportConfigInfo__ext0O__F1 z)).
+intro H. unfold CSI_AssociatedReportConfigInfo__ext0O__cond in H. simpl. auto. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__F1F2_cond2 (z : CSI_AssociatedReportConfigInfo__ext0O__Type)
+ : CSI_AssociatedReportConfigInfo__ext0O__F2 (CSI_AssociatedReportConfigInfo__ext0O__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CSI_AssociatedReportConfigInfo__ext0O__F2F1_cond (y : seq_type CSI_AssociatedReportConfigInfo__ext0O__list)
+  : seq_cond CSI_AssociatedReportConfigInfo__ext0O__list y ->
+ (CSI_AssociatedReportConfigInfo__ext0O__cond (CSI_AssociatedReportConfigInfo__ext0O__F2 y)) /\  CSI_AssociatedReportConfigInfo__ext0O__F1 (CSI_AssociatedReportConfigInfo__ext0O__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CSI_AssociatedReportConfigInfo__ext0O__cond. simpl in *. auto.
+ - simpl. unfold CSI_AssociatedReportConfigInfo__ext0O__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CSI_AssociatedReportConfigInfo__ext0O__Format : T_Format CSI_AssociatedReportConfigInfo__ext0O__Type CSI_AssociatedReportConfigInfo__ext0O__cond :=
+        proj2_format  CSI_AssociatedReportConfigInfo__ext0O__cond CSI_AssociatedReportConfigInfo__ext0O__list__Format
+    CSI_AssociatedReportConfigInfo__ext0O__F1 CSI_AssociatedReportConfigInfo__ext0O__F2 CSI_AssociatedReportConfigInfo__ext0O__F1F2_cond  CSI_AssociatedReportConfigInfo__ext0O__F1F2_cond2 CSI_AssociatedReportConfigInfo__ext0O__F2F1_cond.
+Opaque CSI_AssociatedReportConfigInfo__ext0O__cond CSI_AssociatedReportConfigInfo__ext0O__Format.
+
+Definition CSI_AssociatedReportConfigInfo__ext0__check_all_none (b : CSI_AssociatedReportConfigInfo__ext0O__Type) : bool :=
+match b with 
+  | make__CSI_AssociatedReportConfigInfo__ext0O__Type None None  => false 
+  | _ => true 
+ end.
+Definition CSI_AssociatedReportConfigInfo__ext0__Format : T_Format CSI_AssociatedReportConfigInfo__ext0__Type CSI_AssociatedReportConfigInfo__ext0__cond :=
+  restrict_add_format CSI_AssociatedReportConfigInfo__ext0__check_all_none CSI_AssociatedReportConfigInfo__ext0O__Format.
+
+Opaque CSI_AssociatedReportConfigInfo__ext0__cond CSI_AssociatedReportConfigInfo__ext0__Format.
+
+
+Definition CSI_AssociatedReportConfigInfo__root_Format_Type := Eval cbn in seq_format_prod CSI_AssociatedReportConfigInfo__root_list.
+Definition CSI_AssociatedReportConfigInfo__root_Format_list : CSI_AssociatedReportConfigInfo__root_Format_Type :=
+  (CSI_ReportConfigId__Format, (CSI_AssociatedReportConfigInfo__resourcesForChannel__Format, (CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference__Format, (CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference__Format, unit_format)))).
+
+Definition CSI_AssociatedReportConfigInfo__ext_Format_Type := Eval cbn in get_formats CSI_AssociatedReportConfigInfo__ext_list.
+Definition CSI_AssociatedReportConfigInfo__ext_Format_list : CSI_AssociatedReportConfigInfo__ext_Format_Type :=
+  (CSI_AssociatedReportConfigInfo__ext0__Format, unit__Format).
+
+Definition CSI_AssociatedReportConfigInfo__list_type : Set := (seq_type CSI_AssociatedReportConfigInfo__root_list) * (seq_ext_type CSI_AssociatedReportConfigInfo__ext_list).
+Definition CSI_AssociatedReportConfigInfo__list_cond (z : CSI_AssociatedReportConfigInfo__list_type) : Prop :=
+        (seq_cond CSI_AssociatedReportConfigInfo__root_list (fst z)) /\ (seq_ext_cond CSI_AssociatedReportConfigInfo__ext_list (snd z)).
+Definition CSI_AssociatedReportConfigInfo__list_format : T_Format CSI_AssociatedReportConfigInfo__list_type CSI_AssociatedReportConfigInfo__list_cond :=
+ (* Eval compute in *) seq_ext_format CSI_AssociatedReportConfigInfo__root_list CSI_AssociatedReportConfigInfo__root_Format_list CSI_AssociatedReportConfigInfo__ext_list CSI_AssociatedReportConfigInfo__ext_Format_list.
+
+Opaque CSI_AssociatedReportConfigInfo__list_format.
+Definition CSI_AssociatedReportConfigInfo__F1 (z : CSI_AssociatedReportConfigInfo__Type) : CSI_AssociatedReportConfigInfo__list_type :=
+  (((CSI_AssociatedReportConfigInfo__reportConfigId z, (CSI_AssociatedReportConfigInfo__resourcesForChannel z, (CSI_AssociatedReportConfigInfo__csi_IM_ResourcesForInterference z, (CSI_AssociatedReportConfigInfo__nzp_CSI_RS_ResourcesForInterference z, tt))))), (
+(CSI_AssociatedReportConfigInfo__ext0 z, tt))).
+Definition CSI_AssociatedReportConfigInfo__F2 (y : CSI_AssociatedReportConfigInfo__list_type) : CSI_AssociatedReportConfigInfo__Type :=
+  match y with
+  | ((j0, (j1, (j2, (j3, _)))), (i0, _))=>
+    make__CSI_AssociatedReportConfigInfo__Type j0 j1 j2 j3 i0
+  end.
+Definition CSI_AssociatedReportConfigInfo__helper1 : (forall a : CSI_AssociatedReportConfigInfo__Type, CSI_AssociatedReportConfigInfo__cond a -> CSI_AssociatedReportConfigInfo__list_cond (CSI_AssociatedReportConfigInfo__F1 a)).
+                     intros. destruct a. auto. Qed.
+Definition CSI_AssociatedReportConfigInfo__helper2 : (forall a : CSI_AssociatedReportConfigInfo__Type, CSI_AssociatedReportConfigInfo__F2 (CSI_AssociatedReportConfigInfo__F1 a) = a).
+                     intros. destruct a. auto. Qed.
+Definition CSI_AssociatedReportConfigInfo__helper3 : (forall b : CSI_AssociatedReportConfigInfo__list_type, CSI_AssociatedReportConfigInfo__list_cond b -> CSI_AssociatedReportConfigInfo__cond (CSI_AssociatedReportConfigInfo__F2 b) /\ CSI_AssociatedReportConfigInfo__F1 (CSI_AssociatedReportConfigInfo__F2 b) = b).
+                     intros. destruct b as [y y1]. unfold CSI_AssociatedReportConfigInfo__cond, CSI_AssociatedReportConfigInfo__list_cond in *. simpl.
+                     split; unfold seq_type, seq_ext_type in *; simpl in y, y1; repeat destruct_prod; split_and; simpl in *; destruct_all_unit; auto; repeat (split; auto). 
+
+                     Qed.
+Definition CSI_AssociatedReportConfigInfo__Format : T_Format CSI_AssociatedReportConfigInfo__Type CSI_AssociatedReportConfigInfo__cond :=
+ proj2_format CSI_AssociatedReportConfigInfo__cond CSI_AssociatedReportConfigInfo__list_format  CSI_AssociatedReportConfigInfo__F1 CSI_AssociatedReportConfigInfo__F2 CSI_AssociatedReportConfigInfo__helper1 CSI_AssociatedReportConfigInfo__helper2 CSI_AssociatedReportConfigInfo__helper3.
+
+Opaque CSI_AssociatedReportConfigInfo__cond CSI_AssociatedReportConfigInfo__Format.
+

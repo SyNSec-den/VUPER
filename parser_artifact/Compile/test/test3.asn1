@@ -1,0 +1,36 @@
+
+EUTRA-Defs DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+S0 ::= INTEGER (1..maxI)
+
+maxI INTEGER ::= 10
+
+C1 ::= CHOICE {
+  c1 S0,
+...,
+c2 BOOLEAN
+}
+
+E1 ::= ENUMERATED {ok, bad, ..., fine, great}
+
+END
+
+
+EUTRA-2-Defs DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+IMPORTS
+  maxI,
+  T4
+FROM EUTRA-Defs;
+
+S1 ::= INTEGER (1..maxI)
+
+S2 ::= BIT STRING (SIZE (1..maxI))
+
+END
+
+

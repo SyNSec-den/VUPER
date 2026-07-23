@@ -1,0 +1,194 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Inductive RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Type : Set :=
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB2
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB3
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB6
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB9
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB12
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB15
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__spare2
+ | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__spare1
+.
+Definition RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__cond := (fun (_ : RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Type) => True).
+Lemma RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__nat__helper : to_bit_sz 7 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__nat__Format : T_Format nat (fun z => (z <= 7)) :=
+  nat_enum_format 7 RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__nat__helper.
+
+Definition RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1 t :=
+  match t with
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB2 => 0
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB3 => 1
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB6 => 2
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB9 => 3
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB12 => 4
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB15 => 5
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__spare2 => 6
+  | RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__spare1 => 7
+  end.
+Definition RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F2 n :=
+  match n with
+  | 0 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB2
+  | 1 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB3
+  | 2 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB6
+  | 3 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB9
+  | 4 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB12
+  | 5 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB15
+  | 6 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__spare2
+  | 7 => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__spare1
+  | _ => RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__dB2
+  end.
+Lemma RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1F2 : forall x : RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Type, (RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1 x <= 7) /\ RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F2 (RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1 x) = x. imp_solve. Qed.
+Lemma RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F2F1 : forall (y : nat) (H : y <= 7), RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1 (RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Type : Set :=
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s5
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s10
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s20
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s30
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s60
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s120
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s180
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s240
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s300
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare7
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare6
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare5
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare4
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare3
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare2
+ | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare1
+.
+Definition RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__cond := (fun (_ : RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Type) => True).
+Lemma RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__nat__helper : to_bit_sz 15 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__nat__Format : T_Format nat (fun z => (z <= 15)) :=
+  nat_enum_format 15 RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__nat__helper.
+
+Definition RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1 t :=
+  match t with
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s5 => 0
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s10 => 1
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s20 => 2
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s30 => 3
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s60 => 4
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s120 => 5
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s180 => 6
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s240 => 7
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s300 => 8
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare7 => 9
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare6 => 10
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare5 => 11
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare4 => 12
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare3 => 13
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare2 => 14
+  | RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare1 => 15
+  end.
+Definition RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F2 n :=
+  match n with
+  | 0 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s5
+  | 1 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s10
+  | 2 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s20
+  | 3 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s30
+  | 4 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s60
+  | 5 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s120
+  | 6 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s180
+  | 7 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s240
+  | 8 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s300
+  | 9 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare7
+  | 10 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare6
+  | 11 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare5
+  | 12 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare4
+  | 13 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare3
+  | 14 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare2
+  | 15 => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__spare1
+  | _ => RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__s5
+  end.
+Lemma RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1F2 : forall x : RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Type, (RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1 x <= 15) /\ RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F2 (RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1 x) = x. imp_solve. Qed.
+Lemma RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F2F1 : forall (y : nat) (H : y <= 15), RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1 (RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F2 y) = y. enum_solve H y. Qed.
+
+Record RRM_MeasRelaxationReportingConfig_r17__Type : Set :=
+  make__RRM_MeasRelaxationReportingConfig_r17__Type {
+    RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17 : RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Type ;
+    RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17 : RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Type ;
+}.
+Definition RRM_MeasRelaxationReportingConfig_r17__list := (
+ Nor RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Type RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__cond ::
+ Nor RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Type RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__cond ::
+ nil).
+Definition RRM_MeasRelaxationReportingConfig_r17__cond z := 
+  RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__cond (RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17 z) /\
+  RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__cond (RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17 z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Format : T_Format RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__nat__Format RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1 RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F2 RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F1F2 RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__F2F1.
+
+Opaque RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__cond RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Format.
+
+Definition RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Format : T_Format RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__nat__Format RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1 RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F2 RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F1F2 RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__F2F1.
+
+Opaque RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__cond RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Format.
+
+
+Definition RRM_MeasRelaxationReportingConfig_r17__Format_Type := Eval cbn in seq_format_prod RRM_MeasRelaxationReportingConfig_r17__list.
+Definition RRM_MeasRelaxationReportingConfig_r17__Format_list : RRM_MeasRelaxationReportingConfig_r17__Format_Type :=
+  (RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17__Format, (RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17__Format, unit_format)).
+Definition RRM_MeasRelaxationReportingConfig_r17__list__Format := (*Eval compute in *) seq_format RRM_MeasRelaxationReportingConfig_r17__list RRM_MeasRelaxationReportingConfig_r17__Format_list.
+Definition RRM_MeasRelaxationReportingConfig_r17__F1 z :=
+  (RRM_MeasRelaxationReportingConfig_r17__s_SearchDeltaP_Stationary_r17 z, (RRM_MeasRelaxationReportingConfig_r17__t_SearchDeltaP_Stationary_r17 z, tt)).
+Definition RRM_MeasRelaxationReportingConfig_r17__F2 (y : seq_type RRM_MeasRelaxationReportingConfig_r17__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__RRM_MeasRelaxationReportingConfig_r17__Type i0 i1
+  end.
+Lemma RRM_MeasRelaxationReportingConfig_r17__F1F2_cond (z : RRM_MeasRelaxationReportingConfig_r17__Type)
+  : RRM_MeasRelaxationReportingConfig_r17__cond z ->
+  (seq_cond RRM_MeasRelaxationReportingConfig_r17__list (RRM_MeasRelaxationReportingConfig_r17__F1 z)).
+intro H. unfold RRM_MeasRelaxationReportingConfig_r17__cond in H. simpl. auto. Qed.
+Lemma RRM_MeasRelaxationReportingConfig_r17__F1F2_cond2 (z : RRM_MeasRelaxationReportingConfig_r17__Type)
+ : RRM_MeasRelaxationReportingConfig_r17__F2 (RRM_MeasRelaxationReportingConfig_r17__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma RRM_MeasRelaxationReportingConfig_r17__F2F1_cond (y : seq_type RRM_MeasRelaxationReportingConfig_r17__list)
+  : seq_cond RRM_MeasRelaxationReportingConfig_r17__list y ->
+ (RRM_MeasRelaxationReportingConfig_r17__cond (RRM_MeasRelaxationReportingConfig_r17__F2 y)) /\  RRM_MeasRelaxationReportingConfig_r17__F1 (RRM_MeasRelaxationReportingConfig_r17__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold RRM_MeasRelaxationReportingConfig_r17__cond. simpl in *. auto.
+ - simpl. unfold RRM_MeasRelaxationReportingConfig_r17__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition RRM_MeasRelaxationReportingConfig_r17__Format : T_Format RRM_MeasRelaxationReportingConfig_r17__Type RRM_MeasRelaxationReportingConfig_r17__cond :=
+        proj2_format  RRM_MeasRelaxationReportingConfig_r17__cond RRM_MeasRelaxationReportingConfig_r17__list__Format
+    RRM_MeasRelaxationReportingConfig_r17__F1 RRM_MeasRelaxationReportingConfig_r17__F2 RRM_MeasRelaxationReportingConfig_r17__F1F2_cond  RRM_MeasRelaxationReportingConfig_r17__F1F2_cond2 RRM_MeasRelaxationReportingConfig_r17__F2F1_cond.
+Opaque RRM_MeasRelaxationReportingConfig_r17__cond RRM_MeasRelaxationReportingConfig_r17__Format.
+

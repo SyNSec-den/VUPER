@@ -1,0 +1,2277 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Require Import NR.FreqBandIndicatorNR.
+
+Opaque FreqBandIndicatorNR__cond FreqBandIndicatorNR__Format.
+
+Inductive BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Type : Set :=
+ | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n16
+ | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n24
+ | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n32
+ | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n48
+ | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n64
+.
+Definition BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__cond := (fun (_ : BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__nat__helper : to_bit_sz 4 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 4)) :=
+  nat_enum_format 4 BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n16 => 0
+  | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n24 => 1
+  | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n32 => 2
+  | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n48 => 3
+  | BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n64 => 4
+  end.
+Definition BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n16
+  | 1 => BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n24
+  | 2 => BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n32
+  | 3 => BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n48
+  | 4 => BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n64
+  | _ => BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__n16
+  end.
+Lemma BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1F2 : forall x : BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Type, (BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1 x <= 4) /\ BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F2 (BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F2F1 : forall (y : nat) (H : y <= 4), BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1 (BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Type : Set :=
+ | BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value1
+ | BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value2
+.
+Definition BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__cond := (fun (_ : BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value1 => 0
+  | BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value2 => 1
+  end.
+Definition BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value1
+  | 1 => BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value2
+  | _ => BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__value1
+  end.
+Lemma BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1F2 : forall x : BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Type, (BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1 x <= 1) /\ BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F2 (BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F2F1 : forall (y : nat) (H : y <= 1), BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1 (BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Record BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type : Set :=
+  make__BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type {
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16 : option BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Type ;
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16 : option BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Type ;
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16 : option BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Type ;
+}.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list := (
+ Opt BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__cond ::
+ Opt BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__cond ::
+ Opt BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond z := 
+  opt_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16 z) /\
+  True.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Record BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type : Set :=
+  make__BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type {
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16 : option BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Type ;
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16 : option BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Type ;
+}.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list := (
+ Opt BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__cond ::
+ Opt BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond z := 
+  opt_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16 z) /\
+  True.
+
+
+Inductive BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type : Set :=
+  | BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16 : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type -> BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type
+  | BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16 : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type -> BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type
+.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list : list typ := (
+typ_cons BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond ::
+typ_cons BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond (c : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type) := 
+  match c with
+  | BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16 t => BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond t 
+  | BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16 t => BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond t 
+  end.
+
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__len_helper1 : to_bit_sz (length BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__len_helper2 : 2 <= length2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list.
+ simpl. lia. Qed.
+Inductive BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Type : Set :=
+ | BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__supported
+.
+Definition BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__cond := (fun (_ : BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__supported
+  | _ => BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1F2 : forall x : BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Type, (BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1 x <= 0) /\ BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F2 (BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1 (BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__sl_Reception_r16__Type : Set :=
+  make__BandSidelink_r16__sl_Reception_r16__Type {
+    BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16 : BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Type ;
+    BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16 : BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Type ;
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16 : option BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type ;
+    BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16 : option BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Type ;
+}.
+Definition BandSidelink_r16__sl_Reception_r16__list := (
+ Nor BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Type BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__cond ::
+ Nor BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Type BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__cond ::
+ Opt BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond ::
+ Opt BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Type BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_Reception_r16__cond z := 
+  BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__cond (BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16 z) /\
+  BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__cond (BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__cond (BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16 z) /\
+  True.
+
+Inductive BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Type : Set :=
+ | BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n8
+ | BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n16
+.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__cond := (fun (_ : BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n8 => 0
+  | BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n16 => 1
+  end.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n8
+  | 1 => BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n16
+  | _ => BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__n8
+  end.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1F2 : forall x : BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Type, (BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1 x <= 1) /\ BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F2F1 : forall (y : nat) (H : y <= 1), BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Record BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type : Set :=
+  make__BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type {
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Type ;
+}.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list := (
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__cond ::
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__cond ::
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond z := 
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16 z) /\
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16 z) /\
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16 z) /\
+  True.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Type := bit_string_fixed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Record BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type : Set :=
+  make__BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type {
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Type ;
+}.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list := (
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__cond ::
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond z := 
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16 z) /\
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16 z) /\
+  True.
+
+
+Inductive BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type : Set :=
+  | BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16 : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type -> BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type
+  | BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16 : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type -> BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type
+.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list : list typ := (
+typ_cons BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond ::
+typ_cons BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond (c : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type) := 
+  match c with
+  | BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16 t => BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond t 
+  | BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16 t => BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond t 
+  end.
+
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__len_helper1 : to_bit_sz (length BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__len_helper2 : 2 <= length2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list.
+ simpl. lia. Qed.
+Inductive BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Type : Set :=
+ | BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__supported
+.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__cond := (fun (_ : BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__supported
+  | _ => BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1F2 : forall x : BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Type, (BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1 x <= 0) /\ BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Type : Set :=
+ | BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__supported
+.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__cond := (fun (_ : BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Type) => True).
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__supported
+  | _ => BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__supported
+  end.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1F2 : forall x : BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Type, (BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1 x <= 0) /\ BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__sl_TransmissionMode1_r16__Type : Set :=
+  make__BandSidelink_r16__sl_TransmissionMode1_r16__Type {
+    BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16 : BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16 : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Type ;
+}.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__list := (
+ Nor BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__cond ::
+ Nor BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond ::
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__cond ::
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__cond z := 
+  BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16 z) /\
+  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16 z) /\
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16 z) /\
+  True.
+
+Inductive BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Type : Set :=
+ | BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__supported
+.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__cond := (fun (_ : BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Type) => True).
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__nat__helper.
+
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__supported
+  | _ => BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__supported
+  end.
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1F2 : forall x : BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Type, (BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1 x <= 0) /\ BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F2 (BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1 (BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Type : Set :=
+ | BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__supported
+.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__cond := (fun (_ : BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Type) => True).
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__nat__helper.
+
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__supported
+  | _ => BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__supported
+  end.
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1F2 : forall x : BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Type, (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1 x <= 0) /\ BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F2 (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1 (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Type : Set :=
+ | BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__supported
+.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__cond := (fun (_ : BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Type) => True).
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__nat__helper.
+
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__supported
+  | _ => BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__supported
+  end.
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1F2 : forall x : BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Type, (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1 x <= 0) /\ BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F2 (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1 (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__sync_Sidelink_r16__Type : Set :=
+  make__BandSidelink_r16__sync_Sidelink_r16__Type {
+    BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16 : option BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Type ;
+    BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16 : option BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Type ;
+    BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16 : option BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Type ;
+}.
+Definition BandSidelink_r16__sync_Sidelink_r16__list := (
+ Opt BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Type BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__cond ::
+ Opt BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Type BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__cond ::
+ Opt BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Type BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__cond ::
+ nil).
+Definition BandSidelink_r16__sync_Sidelink_r16__cond z := 
+  opt_cond BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__cond (BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16 z) /\
+  opt_cond BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__cond (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16 z) /\
+  opt_cond BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__cond (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16 z) /\
+  True.
+
+Inductive BandSidelink_r16__sl_Tx_256QAM_r16__Type : Set :=
+ | BandSidelink_r16__sl_Tx_256QAM_r16__supported
+.
+Definition BandSidelink_r16__sl_Tx_256QAM_r16__cond := (fun (_ : BandSidelink_r16__sl_Tx_256QAM_r16__Type) => True).
+Lemma BandSidelink_r16__sl_Tx_256QAM_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__sl_Tx_256QAM_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__sl_Tx_256QAM_r16__nat__helper.
+
+Definition BandSidelink_r16__sl_Tx_256QAM_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__sl_Tx_256QAM_r16__supported => 0
+  end.
+Definition BandSidelink_r16__sl_Tx_256QAM_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__sl_Tx_256QAM_r16__supported
+  | _ => BandSidelink_r16__sl_Tx_256QAM_r16__supported
+  end.
+Lemma BandSidelink_r16__sl_Tx_256QAM_r16__F1F2 : forall x : BandSidelink_r16__sl_Tx_256QAM_r16__Type, (BandSidelink_r16__sl_Tx_256QAM_r16__F1 x <= 0) /\ BandSidelink_r16__sl_Tx_256QAM_r16__F2 (BandSidelink_r16__sl_Tx_256QAM_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__sl_Tx_256QAM_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__sl_Tx_256QAM_r16__F1 (BandSidelink_r16__sl_Tx_256QAM_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Type : Set :=
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n5
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n15
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n25
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n32
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n35
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n45
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n50
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n64
+.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__cond := (fun (_ : BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Type) => True).
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__nat__helper : to_bit_sz 7 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__nat__Format : T_Format nat (fun z => (z <= 7)) :=
+  nat_enum_format 7 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__nat__helper.
+
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1 t :=
+  match t with
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n5 => 0
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n15 => 1
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n25 => 2
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n32 => 3
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n35 => 4
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n45 => 5
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n50 => 6
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n64 => 7
+  end.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n5
+  | 1 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n15
+  | 2 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n25
+  | 3 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n32
+  | 4 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n35
+  | 5 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n45
+  | 6 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n50
+  | 7 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n64
+  | _ => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__n5
+  end.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1F2 : forall x : BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Type, (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1 x <= 7) /\ BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F2 (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F2F1 : forall (y : nat) (H : y <= 7), BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1 (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Type : Set :=
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n4
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n8
+ | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n16
+.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__cond := (fun (_ : BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Type) => True).
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__nat__helper : to_bit_sz 2 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__nat__Format : T_Format nat (fun z => (z <= 2)) :=
+  nat_enum_format 2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__nat__helper.
+
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1 t :=
+  match t with
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n4 => 0
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n8 => 1
+  | BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n16 => 2
+  end.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n4
+  | 1 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n8
+  | 2 => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n16
+  | _ => BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__n4
+  end.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1F2 : forall x : BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Type, (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1 x <= 2) /\ BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F2 (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F2F1 : forall (y : nat) (H : y <= 2), BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1 (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type : Set :=
+  make__BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type {
+    BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber : BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Type ;
+    BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber : BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Type ;
+}.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__list := (
+ Nor BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Type BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__cond ::
+ Nor BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Type BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__cond ::
+ nil).
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond z := 
+  BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__cond (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber z) /\
+  BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__cond (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber z) /\
+  True.
+
+Inductive BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Type : Set :=
+ | BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__supported
+.
+Definition BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__cond := (fun (_ : BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__supported
+  | _ => BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1F2 : forall x : BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Type, (BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1 x <= 0) /\ BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F2 (BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1 (BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__enb_sync_Sidelink_r16__Type : Set :=
+ | BandSidelink_r16__enb_sync_Sidelink_r16__supported
+.
+Definition BandSidelink_r16__enb_sync_Sidelink_r16__cond := (fun (_ : BandSidelink_r16__enb_sync_Sidelink_r16__Type) => True).
+Lemma BandSidelink_r16__enb_sync_Sidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__enb_sync_Sidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__enb_sync_Sidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__enb_sync_Sidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__enb_sync_Sidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__enb_sync_Sidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__enb_sync_Sidelink_r16__supported
+  | _ => BandSidelink_r16__enb_sync_Sidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__enb_sync_Sidelink_r16__F1F2 : forall x : BandSidelink_r16__enb_sync_Sidelink_r16__Type, (BandSidelink_r16__enb_sync_Sidelink_r16__F1 x <= 0) /\ BandSidelink_r16__enb_sync_Sidelink_r16__F2 (BandSidelink_r16__enb_sync_Sidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__enb_sync_Sidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__enb_sync_Sidelink_r16__F1 (BandSidelink_r16__enb_sync_Sidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n8
+ | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n16
+.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__cond := (fun (_ : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n8 => 0
+  | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n16 => 1
+  end.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n8
+  | 1 => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n16
+  | _ => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__n8
+  end.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1F2 : forall x : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Type, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1 x <= 1) /\ BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F2 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F2F1 : forall (y : nat) (H : y <= 1), BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__supported
+.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__cond := (fun (_ : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__supported => 0
+  end.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__supported
+  | _ => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__supported
+  end.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1F2 : forall x : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Type, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1 x <= 0) /\ BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F2 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__supported
+.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__cond := (fun (_ : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__supported
+  | _ => BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1F2 : forall x : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Type, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1 x <= 0) /\ BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F2 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type : Set :=
+  make__BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type {
+    BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16 : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Type ;
+    BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16 : option BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Type ;
+    BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16 : option BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Type ;
+}.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list := (
+ Nor BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__cond ::
+ Opt BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__cond ::
+ Opt BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__cond ::
+ nil).
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond z := 
+  BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__cond (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__cond (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16 z) /\
+  opt_cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__cond (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16 z) /\
+  True.
+
+Inductive BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__supported
+.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__cond := (fun (_ : BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__supported
+  | _ => BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1F2 : forall x : BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Type, (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1 x <= 0) /\ BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F2 (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1 (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time1
+ | BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time2
+.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__cond := (fun (_ : BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time1 => 0
+  | BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time2 => 1
+  end.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time1
+  | 1 => BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time2
+  | _ => BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__time1
+  end.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1F2 : forall x : BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Type, (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1 x <= 1) /\ BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F2 (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F2F1 : forall (y : nat) (H : y <= 1), BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1 (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type : Set :=
+  make__BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type {
+    BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16 : option BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Type ;
+    BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16 : BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Type ;
+}.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__list := (
+ Opt BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Type BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__cond ::
+ Nor BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Type BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__cond ::
+ nil).
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond z := 
+  opt_cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__cond (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16 z) /\
+  BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__cond (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16 z) /\
+  True.
+
+Inductive BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__supported
+.
+Definition BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__cond := (fun (_ : BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__supported
+  | _ => BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1F2 : forall x : BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Type, (BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1 x <= 0) /\ BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F2 (BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1 (BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__supported
+.
+Definition BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__cond := (fun (_ : BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__supported => 0
+  end.
+Definition BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__supported
+  | _ => BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__supported
+  end.
+Lemma BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1F2 : forall x : BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Type, (BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1 x <= 0) /\ BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F2 (BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1 (BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Type : Set :=
+ | BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__supported
+.
+Definition BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__cond := (fun (_ : BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Type) => True).
+Lemma BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__nat__helper.
+
+Definition BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__supported => 0
+  end.
+Definition BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__supported
+  | _ => BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__supported
+  end.
+Lemma BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1F2 : forall x : BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Type, (BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1 x <= 0) /\ BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F2 (BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1 (BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext0O__Type : Set :=
+  make__BandSidelink_r16__ext0O__Type {
+    BandSidelink_r16__ext0O__sl_TransmissionMode2_r16 : option BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type ;
+    BandSidelink_r16__ext0O__congestionControlSidelink_r16 : option BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type ;
+    BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16 : option BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Type ;
+    BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16 : option BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Type ;
+    BandSidelink_r16__ext0O__sl_Rx_256QAM_r16 : option BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Type ;
+}.
+Definition BandSidelink_r16__ext0O__list := (
+ Opt BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond ::
+ Opt BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond ::
+ Opt BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Type BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__cond ::
+ Opt BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Type BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__cond ::
+ Opt BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Type BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__cond ::
+ nil).
+Definition BandSidelink_r16__ext0O__cond z := 
+  opt_cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16 z) /\
+  opt_cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond (BandSidelink_r16__ext0O__congestionControlSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__cond (BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__cond (BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__cond (BandSidelink_r16__ext0O__sl_Rx_256QAM_r16 z) /\
+  True.
+
+Definition BandSidelink_r16__ext0__Type := BandSidelink_r16__ext0O__Type.
+Definition BandSidelink_r16__ext0__cond := BandSidelink_r16__ext0O__cond.
+
+Inductive BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Type : Set :=
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc2
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc3
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare6
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare5
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare4
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare3
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare2
+ | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare1
+.
+Definition BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__cond := (fun (_ : BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Type) => True).
+Lemma BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__nat__helper : to_bit_sz 7 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__nat__Format : T_Format nat (fun z => (z <= 7)) :=
+  nat_enum_format 7 BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__nat__helper.
+
+Definition BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1 t :=
+  match t with
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc2 => 0
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc3 => 1
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare6 => 2
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare5 => 3
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare4 => 4
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare3 => 5
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare2 => 6
+  | BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare1 => 7
+  end.
+Definition BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc2
+  | 1 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc3
+  | 2 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare6
+  | 3 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare5
+  | 4 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare4
+  | 5 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare3
+  | 6 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare2
+  | 7 => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__spare1
+  | _ => BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__pc2
+  end.
+Lemma BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1F2 : forall x : BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Type, (BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1 x <= 7) /\ BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F2 (BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F2F1 : forall (y : nat) (H : y <= 7), BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1 (BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext1O__Type : Set :=
+  make__BandSidelink_r16__ext1O__Type {
+    BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16 : option BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Type ;
+}.
+Definition BandSidelink_r16__ext1O__list := (
+ Opt BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Type BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__cond ::
+ nil).
+Definition BandSidelink_r16__ext1O__cond z := 
+  opt_cond BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__cond (BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16 z) /\
+  True.
+
+Definition BandSidelink_r16__ext1__Type := BandSidelink_r16__ext1O__Type.
+Definition BandSidelink_r16__ext1__cond := BandSidelink_r16__ext1O__cond.
+
+Inductive BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n8
+ | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n16
+.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__nat__helper : to_bit_sz 1 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__nat__Format : T_Format nat (fun z => (z <= 1)) :=
+  nat_enum_format 1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n8 => 0
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n16 => 1
+  end.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n8
+  | 1 => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n16
+  | _ => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__n8
+  end.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Type, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1 x <= 1) /\ BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F2F1 : forall (y : nat) (H : y <= 1), BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F2 y) = y. enum_solve H y. Qed.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Type := bit_string_fixed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Type := bit_string_fixed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Type := bit_string_fixed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Record BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type : Set :=
+  make__BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type {
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Type ;
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Type ;
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Type ;
+}.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list := (
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__cond ::
+ nil).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond z := 
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17 z) /\
+  True.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Type := bit_string_fixed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Type := bit_string_fixed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__cond := (fun z : bit_string_fixed => (fst z) = Z.to_nat 16 /\ bit_string_len_prop (fst z) (snd z)).
+Record BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type : Set :=
+  make__BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type {
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Type ;
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Type ;
+}.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list := (
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__cond ::
+ nil).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond z := 
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17 z) /\
+  True.
+
+
+Inductive BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type : Set :=
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17 : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type -> BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17 : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type -> BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type
+.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list : list typ := (
+typ_cons BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond ::
+typ_cons BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond ::
+ nil).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond (c : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type) := 
+  match c with
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17 t => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond t 
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17 t => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond t 
+  end.
+
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__len_helper1 : to_bit_sz (length BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__len_helper2 : 2 <= length2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list.
+ simpl. lia. Qed.
+Inductive BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__supported
+.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__supported
+  | _ => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Type, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__supported
+.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__supported
+  | _ => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Type, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type : Set :=
+  make__BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type {
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17 : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Type ;
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type ;
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Type ;
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Type ;
+}.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list := (
+ Nor BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__cond ::
+ nil).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond z := 
+  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17 z) /\
+  True.
+
+Inductive BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__supported
+.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__supported
+  | _ => BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Type, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F2 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__supported
+.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__supported
+  | _ => BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Type, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F2 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__supported
+.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__supported
+  | _ => BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Type, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F2 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__supported
+.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__cond := (fun (_ : BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__supported
+  | _ => BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1F2 : forall x : BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Type, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F2 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type : Set :=
+  make__BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type {
+    BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17 : option BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Type ;
+    BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17 : option BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Type ;
+    BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17 : option BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Type ;
+    BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17 : option BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Type ;
+}.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__list := (
+ Opt BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Type BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Type BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Type BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Type BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__cond ::
+ nil).
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond z := 
+  opt_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__cond (BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__cond (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__cond (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__cond (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17 z) /\
+  True.
+
+Inductive BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Type : Set :=
+ | BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__supported
+.
+Definition BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__cond := (fun (_ : BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Type) => True).
+Lemma BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__nat__helper.
+
+Definition BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__supported
+  | _ => BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__supported
+  end.
+Lemma BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1F2 : forall x : BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Type, (BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1 x <= 0) /\ BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F2 (BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1 (BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__supported
+.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__cond := (fun (_ : BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__supported
+  | _ => BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1F2 : forall x : BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Type, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F2 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__supported
+.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__cond := (fun (_ : BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__supported
+  | _ => BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1F2 : forall x : BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Type, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F2 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n5
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n15
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n25
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n32
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n35
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n45
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n50
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n64
+.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__cond := (fun (_ : BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__nat__helper : to_bit_sz 7 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__nat__Format : T_Format nat (fun z => (z <= 7)) :=
+  nat_enum_format 7 BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n5 => 0
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n15 => 1
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n25 => 2
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n32 => 3
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n35 => 4
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n45 => 5
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n50 => 6
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n64 => 7
+  end.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n5
+  | 1 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n15
+  | 2 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n25
+  | 3 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n32
+  | 4 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n35
+  | 5 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n45
+  | 6 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n50
+  | 7 => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n64
+  | _ => BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__n5
+  end.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1F2 : forall x : BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Type, (BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1 x <= 7) /\ BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F2 (BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F2F1 : forall (y : nat) (H : y <= 7), BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1 (BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__supported
+.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__cond := (fun (_ : BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__supported
+  | _ => BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1F2 : forall x : BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Type, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F2 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F2 y) = y. enum_solve H y. Qed.
+
+Inductive BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Type : Set :=
+ | BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__supported
+.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__cond := (fun (_ : BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Type) => True).
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__nat__helper.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1 t :=
+  match t with
+  | BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__supported => 0
+  end.
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F2 n :=
+  match n with
+  | 0 => BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__supported
+  | _ => BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__supported
+  end.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1F2 : forall x : BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Type, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1 x <= 0) /\ BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F2 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1 x) = x. imp_solve. Qed.
+Lemma BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F2F1 : forall (y : nat) (H : y <= 0), BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1 (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F2 y) = y. enum_solve H y. Qed.
+
+Record BandSidelink_r16__ext2O__Type : Set :=
+  make__BandSidelink_r16__ext2O__Type {
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17 : option BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type ;
+    BandSidelink_r16__ext2O__sync_Sidelink_v1710 : option BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type ;
+    BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710 : option BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Type ;
+    BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17 : option BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Type ;
+    BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17 : option BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Type ;
+    BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17 : option BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Type ;
+    BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17 : option BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Type ;
+    BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17 : option BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Type ;
+}.
+Definition BandSidelink_r16__ext2O__list := (
+ Opt BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond ::
+ Opt BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond ::
+ Opt BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Type BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__cond ::
+ Opt BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Type BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__cond ::
+ Opt BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Type BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__cond ::
+ Opt BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Type BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__cond ::
+ Opt BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Type BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__cond ::
+ Opt BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Type BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__cond ::
+ nil).
+Definition BandSidelink_r16__ext2O__cond z := 
+  opt_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond (BandSidelink_r16__ext2O__sync_Sidelink_v1710 z) /\
+  opt_cond BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__cond (BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710 z) /\
+  opt_cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__cond (BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__cond (BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__cond (BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__cond (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17 z) /\
+  opt_cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__cond (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17 z) /\
+  True.
+
+Definition BandSidelink_r16__ext2__Type := BandSidelink_r16__ext2O__Type.
+Definition BandSidelink_r16__ext2__cond := BandSidelink_r16__ext2O__cond.
+
+Record BandSidelink_r16__Type : Set :=
+  make__BandSidelink_r16__Type {
+    BandSidelink_r16__freqBandSidelink_r16 : FreqBandIndicatorNR__Type ;
+    BandSidelink_r16__sl_Reception_r16 : option BandSidelink_r16__sl_Reception_r16__Type ;
+    BandSidelink_r16__sl_TransmissionMode1_r16 : option BandSidelink_r16__sl_TransmissionMode1_r16__Type ;
+    BandSidelink_r16__sync_Sidelink_r16 : option BandSidelink_r16__sync_Sidelink_r16__Type ;
+    BandSidelink_r16__sl_Tx_256QAM_r16 : option BandSidelink_r16__sl_Tx_256QAM_r16__Type ;
+    BandSidelink_r16__psfch_FormatZeroSidelink_r16 : option BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type ;
+    BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16 : option BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Type ;
+    BandSidelink_r16__enb_sync_Sidelink_r16 : option BandSidelink_r16__enb_sync_Sidelink_r16__Type ;
+    BandSidelink_r16__ext0 : option BandSidelink_r16__ext0__Type ;
+    BandSidelink_r16__ext1 : option BandSidelink_r16__ext1__Type ;
+    BandSidelink_r16__ext2 : option BandSidelink_r16__ext2__Type ;
+}.
+Definition BandSidelink_r16__root_list : list seq_elem := (
+ Nor FreqBandIndicatorNR__Type FreqBandIndicatorNR__cond ::
+ Opt BandSidelink_r16__sl_Reception_r16__Type BandSidelink_r16__sl_Reception_r16__cond ::
+ Opt BandSidelink_r16__sl_TransmissionMode1_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__cond ::
+ Opt BandSidelink_r16__sync_Sidelink_r16__Type BandSidelink_r16__sync_Sidelink_r16__cond ::
+ Opt BandSidelink_r16__sl_Tx_256QAM_r16__Type BandSidelink_r16__sl_Tx_256QAM_r16__cond ::
+ Opt BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond ::
+ Opt BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Type BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__cond ::
+ Opt BandSidelink_r16__enb_sync_Sidelink_r16__Type BandSidelink_r16__enb_sync_Sidelink_r16__cond ::
+ nil).
+Definition BandSidelink_r16__ext_list : list typ := (
+  typ_cons BandSidelink_r16__ext0__Type BandSidelink_r16__ext0__cond ::
+  typ_cons BandSidelink_r16__ext1__Type BandSidelink_r16__ext1__cond ::
+  typ_cons BandSidelink_r16__ext2__Type BandSidelink_r16__ext2__cond ::
+  nil).
+Definition BandSidelink_r16__cond (z : BandSidelink_r16__Type) := 
+(  FreqBandIndicatorNR__cond (BandSidelink_r16__freqBandSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Reception_r16__cond (BandSidelink_r16__sl_Reception_r16 z) /\
+  opt_cond BandSidelink_r16__sl_TransmissionMode1_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16 z) /\
+  opt_cond BandSidelink_r16__sync_Sidelink_r16__cond (BandSidelink_r16__sync_Sidelink_r16 z) /\
+  opt_cond BandSidelink_r16__sl_Tx_256QAM_r16__cond (BandSidelink_r16__sl_Tx_256QAM_r16 z) /\
+  opt_cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond (BandSidelink_r16__psfch_FormatZeroSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__cond (BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16 z) /\
+  opt_cond BandSidelink_r16__enb_sync_Sidelink_r16__cond (BandSidelink_r16__enb_sync_Sidelink_r16 z) /\
+  True) /\ 
+(  opt_cond BandSidelink_r16__ext0__cond (BandSidelink_r16__ext0 z) /\
+  opt_cond BandSidelink_r16__ext1__cond (BandSidelink_r16__ext1 z) /\
+  opt_cond BandSidelink_r16__ext2__cond (BandSidelink_r16__ext2 z) /\
+  True).
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__nat__Format BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1 BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F2 BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F1F2 BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__cond BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__nat__Format BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1 BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F2 BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F1F2 BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__cond BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Format.
+
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format_list : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format_Type :=
+  (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16__Format, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16__Format, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16__Format, unit_format))).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format_list.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1 z :=
+  (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_15kHz_r16 z, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_30kHz_r16 z, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__scs_60kHz_r16 z, tt))).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2 (y : seq_type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type i0 i1 i2
+  end.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1F2_cond (z : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type)
+  : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond z ->
+  (seq_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1F2_cond2 (z : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type)
+ : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2 (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2F1_cond (y : seq_type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list)
+  : seq_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list y ->
+ (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2 y)) /\  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1 (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond :=
+        proj2_format  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__list__Format
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1F2_cond  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F1F2_cond2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__F2F1_cond.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Format.
+
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format_list : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format_Type :=
+  (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16__Format, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16__Format, unit_format)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format_list.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1 z :=
+  (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_60kHz_r16 z, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__scs_120kHz_r16 z, tt)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2 (y : seq_type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type i0 i1
+  end.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1F2_cond (z : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type)
+  : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond z ->
+  (seq_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1F2_cond2 (z : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type)
+ : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2 (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2F1_cond (y : seq_type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list)
+  : seq_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list y ->
+ (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2 y)) /\  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1 (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond :=
+        proj2_format  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__list__Format
+    BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1F2_cond  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F1F2_cond2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__F2F1_cond.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format.
+
+
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format_Type := Eval cbn in get_formats BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format_list : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format_Type :=
+  (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Format, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Format, unit__Format)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list__Format := Eval compute in choice_format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__len_helper1 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__len_helper2  BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format_list.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F1 (z : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type) : (choice BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list) :=
+  match z with
+   | BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16 t => existT _ 0 t
+  | BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16 t => existT _ 1 t
+  end.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__g := (fun n => typ_set (get_nth_typ BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list n)).
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F2 (y : choice BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list) : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__g n -> BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type) with
+    | 0 => fun (t : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16__Type) => BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr1_r16 t 
+    | 1 => fun (t : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16__Type) => BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__fr2_r16 t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type with end) n0
+           end t0).
+
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__helper2 :  forall (y : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type), BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond y -> choice_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__helper3 :  forall (y : BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type), BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F2 (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__helper4 : (forall b : choice BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list, choice_cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list b -> BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F2 b) /\ BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F1 (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F1 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F2.
+Definition BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Type BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond :=
+  (* Eval compute in *) proj2_format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__list__Format BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F1 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__F2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__helper2 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__helper3 BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__helper4.
+Opaque BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__cond BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format.
+
+Definition BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__nat__Format BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1 BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F2 BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F1F2 BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__cond BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Format.
+
+
+Definition BandSidelink_r16__sl_Reception_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sl_Reception_r16__list.
+Definition BandSidelink_r16__sl_Reception_r16__Format_list : BandSidelink_r16__sl_Reception_r16__Format_Type :=
+  (BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16__Format, (BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16__Format, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16__Format, (BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16__Format, unit_format)))).
+Definition BandSidelink_r16__sl_Reception_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sl_Reception_r16__list BandSidelink_r16__sl_Reception_r16__Format_list.
+Definition BandSidelink_r16__sl_Reception_r16__F1 z :=
+  (BandSidelink_r16__sl_Reception_r16__harq_RxProcessSidelink_r16 z, (BandSidelink_r16__sl_Reception_r16__pscch_RxSidelink_r16 z, (BandSidelink_r16__sl_Reception_r16__scs_CP_PatternRxSidelink_r16 z, (BandSidelink_r16__sl_Reception_r16__extendedCP_RxSidelink_r16 z, tt)))).
+Definition BandSidelink_r16__sl_Reception_r16__F2 (y : seq_type BandSidelink_r16__sl_Reception_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__BandSidelink_r16__sl_Reception_r16__Type i0 i1 i2 i3
+  end.
+Lemma BandSidelink_r16__sl_Reception_r16__F1F2_cond (z : BandSidelink_r16__sl_Reception_r16__Type)
+  : BandSidelink_r16__sl_Reception_r16__cond z ->
+  (seq_cond BandSidelink_r16__sl_Reception_r16__list (BandSidelink_r16__sl_Reception_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sl_Reception_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__F1F2_cond2 (z : BandSidelink_r16__sl_Reception_r16__Type)
+ : BandSidelink_r16__sl_Reception_r16__F2 (BandSidelink_r16__sl_Reception_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_Reception_r16__F2F1_cond (y : seq_type BandSidelink_r16__sl_Reception_r16__list)
+  : seq_cond BandSidelink_r16__sl_Reception_r16__list y ->
+ (BandSidelink_r16__sl_Reception_r16__cond (BandSidelink_r16__sl_Reception_r16__F2 y)) /\  BandSidelink_r16__sl_Reception_r16__F1 (BandSidelink_r16__sl_Reception_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sl_Reception_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sl_Reception_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sl_Reception_r16__Format : T_Format BandSidelink_r16__sl_Reception_r16__Type BandSidelink_r16__sl_Reception_r16__cond :=
+        proj2_format  BandSidelink_r16__sl_Reception_r16__cond BandSidelink_r16__sl_Reception_r16__list__Format
+    BandSidelink_r16__sl_Reception_r16__F1 BandSidelink_r16__sl_Reception_r16__F2 BandSidelink_r16__sl_Reception_r16__F1F2_cond  BandSidelink_r16__sl_Reception_r16__F1F2_cond2 BandSidelink_r16__sl_Reception_r16__F2F1_cond.
+Opaque BandSidelink_r16__sl_Reception_r16__cond BandSidelink_r16__sl_Reception_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__nat__Format BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F1F2 BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Format.
+
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format_list : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format_Type :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16__Format, unit_format))).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format_list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1 z :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_15kHz_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_30kHz_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__scs_60kHz_r16 z, tt))).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2 (y : seq_type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type i0 i1 i2
+  end.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1F2_cond (z : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type)
+  : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond z ->
+  (seq_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1F2_cond2 (z : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type)
+ : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2F1_cond (y : seq_type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list)
+  : seq_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list y ->
+ (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2 y)) /\  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond :=
+        proj2_format  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__list__Format
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1F2_cond  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F1F2_cond2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__F2F1_cond.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Format.
+
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format_list : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format_Type :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16__Format, unit_format)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format_list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1 z :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_60kHz_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__scs_120kHz_r16 z, tt)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2 (y : seq_type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type i0 i1
+  end.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1F2_cond (z : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type)
+  : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond z ->
+  (seq_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1F2_cond2 (z : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type)
+ : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2F1_cond (y : seq_type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list)
+  : seq_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list y ->
+ (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2 y)) /\  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond :=
+        proj2_format  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__list__Format
+    BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1F2_cond  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F1F2_cond2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__F2F1_cond.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format.
+
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format_Type := Eval cbn in get_formats BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format_list : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format_Type :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Format, unit__Format)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list__Format := Eval compute in choice_format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__len_helper1 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__len_helper2  BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format_list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F1 (z : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type) : (choice BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list) :=
+  match z with
+   | BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16 t => existT _ 0 t
+  | BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16 t => existT _ 1 t
+  end.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__g := (fun n => typ_set (get_nth_typ BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list n)).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F2 (y : choice BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list) : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__g n -> BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type) with
+    | 0 => fun (t : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16__Type) => BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr1_r16 t 
+    | 1 => fun (t : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16__Type) => BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__fr2_r16 t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type with end) n0
+           end t0).
+
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__helper2 :  forall (y : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type), BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond y -> choice_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__helper3 :  forall (y : BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type), BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__helper4 : (forall b : choice BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list, choice_cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list b -> BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F2 b) /\ BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F2.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond :=
+  (* Eval compute in *) proj2_format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__list__Format BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__helper2 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__helper3 BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__helper4.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__nat__Format BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F1F2 BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Format.
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__nat__Format BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F1F2 BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Format.
+
+
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sl_TransmissionMode1_r16__list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__Format_list : BandSidelink_r16__sl_TransmissionMode1_r16__Format_Type :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16__Format, unit_format)))).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sl_TransmissionMode1_r16__list BandSidelink_r16__sl_TransmissionMode1_r16__Format_list.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__F1 z :=
+  (BandSidelink_r16__sl_TransmissionMode1_r16__harq_TxProcessModeOneSidelink_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16__scs_CP_PatternTxSidelinkModeOne_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16__extendedCP_TxSidelink_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16__harq_ReportOnPUCCH_r16 z, tt)))).
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__F2 (y : seq_type BandSidelink_r16__sl_TransmissionMode1_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__BandSidelink_r16__sl_TransmissionMode1_r16__Type i0 i1 i2 i3
+  end.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__F1F2_cond (z : BandSidelink_r16__sl_TransmissionMode1_r16__Type)
+  : BandSidelink_r16__sl_TransmissionMode1_r16__cond z ->
+  (seq_cond BandSidelink_r16__sl_TransmissionMode1_r16__list (BandSidelink_r16__sl_TransmissionMode1_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sl_TransmissionMode1_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__F1F2_cond2 (z : BandSidelink_r16__sl_TransmissionMode1_r16__Type)
+ : BandSidelink_r16__sl_TransmissionMode1_r16__F2 (BandSidelink_r16__sl_TransmissionMode1_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sl_TransmissionMode1_r16__F2F1_cond (y : seq_type BandSidelink_r16__sl_TransmissionMode1_r16__list)
+  : seq_cond BandSidelink_r16__sl_TransmissionMode1_r16__list y ->
+ (BandSidelink_r16__sl_TransmissionMode1_r16__cond (BandSidelink_r16__sl_TransmissionMode1_r16__F2 y)) /\  BandSidelink_r16__sl_TransmissionMode1_r16__F1 (BandSidelink_r16__sl_TransmissionMode1_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sl_TransmissionMode1_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sl_TransmissionMode1_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sl_TransmissionMode1_r16__Format : T_Format BandSidelink_r16__sl_TransmissionMode1_r16__Type BandSidelink_r16__sl_TransmissionMode1_r16__cond :=
+        proj2_format  BandSidelink_r16__sl_TransmissionMode1_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__list__Format
+    BandSidelink_r16__sl_TransmissionMode1_r16__F1 BandSidelink_r16__sl_TransmissionMode1_r16__F2 BandSidelink_r16__sl_TransmissionMode1_r16__F1F2_cond  BandSidelink_r16__sl_TransmissionMode1_r16__F1F2_cond2 BandSidelink_r16__sl_TransmissionMode1_r16__F2F1_cond.
+Opaque BandSidelink_r16__sl_TransmissionMode1_r16__cond BandSidelink_r16__sl_TransmissionMode1_r16__Format.
+
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Format : T_Format BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__nat__Format BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1 BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F2 BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F1F2 BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__F2F1.
+
+Opaque BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__cond BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Format.
+
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Format : T_Format BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__nat__Format BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F2 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F1F2 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__F2F1.
+
+Opaque BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__cond BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Format.
+
+Definition BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Format : T_Format BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__nat__Format BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F2 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F1F2 BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__F2F1.
+
+Opaque BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__cond BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Format.
+
+
+Definition BandSidelink_r16__sync_Sidelink_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__sync_Sidelink_r16__list.
+Definition BandSidelink_r16__sync_Sidelink_r16__Format_list : BandSidelink_r16__sync_Sidelink_r16__Format_Type :=
+  (BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16__Format, (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16__Format, (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16__Format, unit_format))).
+Definition BandSidelink_r16__sync_Sidelink_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__sync_Sidelink_r16__list BandSidelink_r16__sync_Sidelink_r16__Format_list.
+Definition BandSidelink_r16__sync_Sidelink_r16__F1 z :=
+  (BandSidelink_r16__sync_Sidelink_r16__gNB_Sync_r16 z, (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r16 z, (BandSidelink_r16__sync_Sidelink_r16__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r16 z, tt))).
+Definition BandSidelink_r16__sync_Sidelink_r16__F2 (y : seq_type BandSidelink_r16__sync_Sidelink_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__BandSidelink_r16__sync_Sidelink_r16__Type i0 i1 i2
+  end.
+Lemma BandSidelink_r16__sync_Sidelink_r16__F1F2_cond (z : BandSidelink_r16__sync_Sidelink_r16__Type)
+  : BandSidelink_r16__sync_Sidelink_r16__cond z ->
+  (seq_cond BandSidelink_r16__sync_Sidelink_r16__list (BandSidelink_r16__sync_Sidelink_r16__F1 z)).
+intro H. unfold BandSidelink_r16__sync_Sidelink_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__sync_Sidelink_r16__F1F2_cond2 (z : BandSidelink_r16__sync_Sidelink_r16__Type)
+ : BandSidelink_r16__sync_Sidelink_r16__F2 (BandSidelink_r16__sync_Sidelink_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__sync_Sidelink_r16__F2F1_cond (y : seq_type BandSidelink_r16__sync_Sidelink_r16__list)
+  : seq_cond BandSidelink_r16__sync_Sidelink_r16__list y ->
+ (BandSidelink_r16__sync_Sidelink_r16__cond (BandSidelink_r16__sync_Sidelink_r16__F2 y)) /\  BandSidelink_r16__sync_Sidelink_r16__F1 (BandSidelink_r16__sync_Sidelink_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__sync_Sidelink_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__sync_Sidelink_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__sync_Sidelink_r16__Format : T_Format BandSidelink_r16__sync_Sidelink_r16__Type BandSidelink_r16__sync_Sidelink_r16__cond :=
+        proj2_format  BandSidelink_r16__sync_Sidelink_r16__cond BandSidelink_r16__sync_Sidelink_r16__list__Format
+    BandSidelink_r16__sync_Sidelink_r16__F1 BandSidelink_r16__sync_Sidelink_r16__F2 BandSidelink_r16__sync_Sidelink_r16__F1F2_cond  BandSidelink_r16__sync_Sidelink_r16__F1F2_cond2 BandSidelink_r16__sync_Sidelink_r16__F2F1_cond.
+Opaque BandSidelink_r16__sync_Sidelink_r16__cond BandSidelink_r16__sync_Sidelink_r16__Format.
+
+Definition BandSidelink_r16__sl_Tx_256QAM_r16__Format : T_Format BandSidelink_r16__sl_Tx_256QAM_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__sl_Tx_256QAM_r16__nat__Format BandSidelink_r16__sl_Tx_256QAM_r16__F1 BandSidelink_r16__sl_Tx_256QAM_r16__F2 BandSidelink_r16__sl_Tx_256QAM_r16__F1F2 BandSidelink_r16__sl_Tx_256QAM_r16__F2F1.
+
+Opaque BandSidelink_r16__sl_Tx_256QAM_r16__cond BandSidelink_r16__sl_Tx_256QAM_r16__Format.
+
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Format : T_Format BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__nat__Format BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F1F2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__F2F1.
+
+Opaque BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Format.
+
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Format : T_Format BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__nat__Format BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F1F2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__F2F1.
+
+Opaque BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Format.
+
+
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__psfch_FormatZeroSidelink_r16__list.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format_list : BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format_Type :=
+  (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber__Format, (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber__Format, unit_format)).
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__psfch_FormatZeroSidelink_r16__list BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format_list.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1 z :=
+  (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_RxNumber z, (BandSidelink_r16__psfch_FormatZeroSidelink_r16__psfch_TxNumber z, tt)).
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2 (y : seq_type BandSidelink_r16__psfch_FormatZeroSidelink_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type i0 i1
+  end.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1F2_cond (z : BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type)
+  : BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond z ->
+  (seq_cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__list (BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1 z)).
+intro H. unfold BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1F2_cond2 (z : BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type)
+ : BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2 (BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2F1_cond (y : seq_type BandSidelink_r16__psfch_FormatZeroSidelink_r16__list)
+  : seq_cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__list y ->
+ (BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond (BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2 y)) /\  BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1 (BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format : T_Format BandSidelink_r16__psfch_FormatZeroSidelink_r16__Type BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond :=
+        proj2_format  BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__list__Format
+    BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1 BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1F2_cond  BandSidelink_r16__psfch_FormatZeroSidelink_r16__F1F2_cond2 BandSidelink_r16__psfch_FormatZeroSidelink_r16__F2F1_cond.
+Opaque BandSidelink_r16__psfch_FormatZeroSidelink_r16__cond BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format.
+
+Definition BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Format : T_Format BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__nat__Format BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1 BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F2 BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F1F2 BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__cond BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Format.
+
+Definition BandSidelink_r16__enb_sync_Sidelink_r16__Format : T_Format BandSidelink_r16__enb_sync_Sidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__enb_sync_Sidelink_r16__nat__Format BandSidelink_r16__enb_sync_Sidelink_r16__F1 BandSidelink_r16__enb_sync_Sidelink_r16__F2 BandSidelink_r16__enb_sync_Sidelink_r16__F1F2 BandSidelink_r16__enb_sync_Sidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__enb_sync_Sidelink_r16__cond BandSidelink_r16__enb_sync_Sidelink_r16__Format.
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Format : T_Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__nat__Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F1F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Format.
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Format : T_Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__nat__Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F1F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Format.
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Format : T_Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__nat__Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F1F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Format.
+
+
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format_list : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format_Type :=
+  (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16__Format, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16__Format, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16__Format, unit_format))).
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format_list.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1 z :=
+  (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__harq_TxProcessModeTwoSidelink_r16 z, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__scs_CP_PatternTxSidelinkModeTwo_r16 z, (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__dl_openLoopPC_Sidelink_r16 z, tt))).
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2 (y : seq_type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type i0 i1 i2
+  end.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1F2_cond (z : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type)
+  : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond z ->
+  (seq_cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1 z)).
+intro H. unfold BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1F2_cond2 (z : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type)
+ : BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2F1_cond (y : seq_type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list)
+  : seq_cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list y ->
+ (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2 y)) /\  BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1 (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format : T_Format BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Type BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond :=
+        proj2_format  BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__list__Format
+    BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1F2_cond  BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F1F2_cond2 BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__F2F1_cond.
+Opaque BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__cond BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format.
+
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Format : T_Format BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__nat__Format BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F2 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F1F2 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Format.
+
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Format : T_Format BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__nat__Format BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F2 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F1F2 BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Format.
+
+
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext0O__congestionControlSidelink_r16__list.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format_list : BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format_Type :=
+  (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16__Format, (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16__Format, unit_format)).
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext0O__congestionControlSidelink_r16__list BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format_list.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1 z :=
+  (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_ReportSidelink_r16 z, (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cbr_CR_TimeLimitSidelink_r16 z, tt)).
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2 (y : seq_type BandSidelink_r16__ext0O__congestionControlSidelink_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type i0 i1
+  end.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1F2_cond (z : BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type)
+  : BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond z ->
+  (seq_cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__list (BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1 z)).
+intro H. unfold BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1F2_cond2 (z : BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type)
+ : BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2 (BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2F1_cond (y : seq_type BandSidelink_r16__ext0O__congestionControlSidelink_r16__list)
+  : seq_cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__list y ->
+ (BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond (BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2 y)) /\  BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1 (BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format : T_Format BandSidelink_r16__ext0O__congestionControlSidelink_r16__Type BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond :=
+        proj2_format  BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__list__Format
+    BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1 BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2 BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1F2_cond  BandSidelink_r16__ext0O__congestionControlSidelink_r16__F1F2_cond2 BandSidelink_r16__ext0O__congestionControlSidelink_r16__F2F1_cond.
+Opaque BandSidelink_r16__ext0O__congestionControlSidelink_r16__cond BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format.
+
+Definition BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Format : T_Format BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__nat__Format BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1 BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F2 BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F1F2 BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__cond BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Format.
+
+Definition BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Format : T_Format BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__nat__Format BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1 BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F2 BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F1F2 BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__cond BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Format.
+
+Definition BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Format : T_Format BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__nat__Format BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1 BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F2 BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F1F2 BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__F2F1.
+
+Opaque BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__cond BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Format.
+
+
+Definition BandSidelink_r16__ext0O__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext0O__list.
+Definition BandSidelink_r16__ext0O__Format_list : BandSidelink_r16__ext0O__Format_Type :=
+  (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16__Format, (BandSidelink_r16__ext0O__congestionControlSidelink_r16__Format, (BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16__Format, (BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16__Format, (BandSidelink_r16__ext0O__sl_Rx_256QAM_r16__Format, unit_format))))).
+Definition BandSidelink_r16__ext0O__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext0O__list BandSidelink_r16__ext0O__Format_list.
+Definition BandSidelink_r16__ext0O__F1 z :=
+  (BandSidelink_r16__ext0O__sl_TransmissionMode2_r16 z, (BandSidelink_r16__ext0O__congestionControlSidelink_r16 z, (BandSidelink_r16__ext0O__fewerSymbolSlotSidelink_r16 z, (BandSidelink_r16__ext0O__sl_openLoopPC_RSRP_ReportSidelink_r16 z, (BandSidelink_r16__ext0O__sl_Rx_256QAM_r16 z, tt))))).
+Definition BandSidelink_r16__ext0O__F2 (y : seq_type BandSidelink_r16__ext0O__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, _)))))=>
+    make__BandSidelink_r16__ext0O__Type i0 i1 i2 i3 i4
+  end.
+Lemma BandSidelink_r16__ext0O__F1F2_cond (z : BandSidelink_r16__ext0O__Type)
+  : BandSidelink_r16__ext0O__cond z ->
+  (seq_cond BandSidelink_r16__ext0O__list (BandSidelink_r16__ext0O__F1 z)).
+intro H. unfold BandSidelink_r16__ext0O__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext0O__F1F2_cond2 (z : BandSidelink_r16__ext0O__Type)
+ : BandSidelink_r16__ext0O__F2 (BandSidelink_r16__ext0O__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext0O__F2F1_cond (y : seq_type BandSidelink_r16__ext0O__list)
+  : seq_cond BandSidelink_r16__ext0O__list y ->
+ (BandSidelink_r16__ext0O__cond (BandSidelink_r16__ext0O__F2 y)) /\  BandSidelink_r16__ext0O__F1 (BandSidelink_r16__ext0O__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext0O__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext0O__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext0O__Format : T_Format BandSidelink_r16__ext0O__Type BandSidelink_r16__ext0O__cond :=
+        proj2_format  BandSidelink_r16__ext0O__cond BandSidelink_r16__ext0O__list__Format
+    BandSidelink_r16__ext0O__F1 BandSidelink_r16__ext0O__F2 BandSidelink_r16__ext0O__F1F2_cond  BandSidelink_r16__ext0O__F1F2_cond2 BandSidelink_r16__ext0O__F2F1_cond.
+Opaque BandSidelink_r16__ext0O__cond BandSidelink_r16__ext0O__Format.
+
+Definition BandSidelink_r16__ext0__check_all_none (b : BandSidelink_r16__ext0O__Type) : bool :=
+match b with 
+  | make__BandSidelink_r16__ext0O__Type None None None None None  => false 
+  | _ => true 
+ end.
+Definition BandSidelink_r16__ext0__Format : T_Format BandSidelink_r16__ext0__Type BandSidelink_r16__ext0__cond :=
+  restrict_add_format BandSidelink_r16__ext0__check_all_none BandSidelink_r16__ext0O__Format.
+
+Opaque BandSidelink_r16__ext0__cond BandSidelink_r16__ext0__Format.
+
+Definition BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Format : T_Format BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__nat__Format BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1 BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F2 BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F1F2 BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__F2F1.
+
+Opaque BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__cond BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Format.
+
+
+Definition BandSidelink_r16__ext1O__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext1O__list.
+Definition BandSidelink_r16__ext1O__Format_list : BandSidelink_r16__ext1O__Format_Type :=
+  (BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16__Format, unit_format).
+Definition BandSidelink_r16__ext1O__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext1O__list BandSidelink_r16__ext1O__Format_list.
+Definition BandSidelink_r16__ext1O__F1 z :=
+  (BandSidelink_r16__ext1O__ue_PowerClassSidelink_r16 z, tt).
+Definition BandSidelink_r16__ext1O__F2 (y : seq_type BandSidelink_r16__ext1O__list) :=
+  match y with
+  | (i0, _)=>
+    make__BandSidelink_r16__ext1O__Type i0
+  end.
+Lemma BandSidelink_r16__ext1O__F1F2_cond (z : BandSidelink_r16__ext1O__Type)
+  : BandSidelink_r16__ext1O__cond z ->
+  (seq_cond BandSidelink_r16__ext1O__list (BandSidelink_r16__ext1O__F1 z)).
+intro H. unfold BandSidelink_r16__ext1O__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext1O__F1F2_cond2 (z : BandSidelink_r16__ext1O__Type)
+ : BandSidelink_r16__ext1O__F2 (BandSidelink_r16__ext1O__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext1O__F2F1_cond (y : seq_type BandSidelink_r16__ext1O__list)
+  : seq_cond BandSidelink_r16__ext1O__list y ->
+ (BandSidelink_r16__ext1O__cond (BandSidelink_r16__ext1O__F2 y)) /\  BandSidelink_r16__ext1O__F1 (BandSidelink_r16__ext1O__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext1O__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext1O__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext1O__Format : T_Format BandSidelink_r16__ext1O__Type BandSidelink_r16__ext1O__cond :=
+        proj2_format  BandSidelink_r16__ext1O__cond BandSidelink_r16__ext1O__list__Format
+    BandSidelink_r16__ext1O__F1 BandSidelink_r16__ext1O__F2 BandSidelink_r16__ext1O__F1F2_cond  BandSidelink_r16__ext1O__F1F2_cond2 BandSidelink_r16__ext1O__F2F1_cond.
+Opaque BandSidelink_r16__ext1O__cond BandSidelink_r16__ext1O__Format.
+
+Definition BandSidelink_r16__ext1__check_all_none (b : BandSidelink_r16__ext1O__Type) : bool :=
+match b with 
+  | make__BandSidelink_r16__ext1O__Type None  => false 
+  | _ => true 
+ end.
+Definition BandSidelink_r16__ext1__Format : T_Format BandSidelink_r16__ext1__Type BandSidelink_r16__ext1__cond :=
+  restrict_add_format BandSidelink_r16__ext1__check_all_none BandSidelink_r16__ext1O__Format.
+
+Opaque BandSidelink_r16__ext1__cond BandSidelink_r16__ext1__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__nat__Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F1F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Format.
+
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format_list : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format_Type :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17__Format, unit_format))).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format_list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1 z :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_15kHz_r17 z, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_30kHz_r17 z, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__scs_60kHz_r17 z, tt))).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2 (y : seq_type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type i0 i1 i2
+  end.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1F2_cond (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type)
+  : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond z ->
+  (seq_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1 z)).
+intro H. unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1F2_cond2 (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type)
+ : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2F1_cond (y : seq_type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list)
+  : seq_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list y ->
+ (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2 y)) /\  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond :=
+        proj2_format  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__list__Format
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1F2_cond  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F1F2_cond2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__F2F1_cond.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__cond := (* Eval compute in *) bit_string_fixed_format 16.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Format.
+
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format_list : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format_Type :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17__Format, unit_format)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format_list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1 z :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_60kHz_r17 z, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__scs_120kHz_r17 z, tt)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2 (y : seq_type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type i0 i1
+  end.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1F2_cond (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type)
+  : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond z ->
+  (seq_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1 z)).
+intro H. unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1F2_cond2 (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type)
+ : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2F1_cond (y : seq_type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list)
+  : seq_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list y ->
+ (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2 y)) /\  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond :=
+        proj2_format  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__list__Format
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1F2_cond  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F1F2_cond2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__F2F1_cond.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format.
+
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format_Type := Eval cbn in get_formats BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format_list : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format_Type :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Format, unit__Format)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list__Format := Eval compute in choice_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__len_helper1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__len_helper2  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format_list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F1 (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type) : (choice BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list) :=
+  match z with
+   | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17 t => existT _ 0 t
+  | BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17 t => existT _ 1 t
+  end.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__g := (fun n => typ_set (get_nth_typ BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list n)).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F2 (y : choice BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list) : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__g n -> BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type) with
+    | 0 => fun (t : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17__Type) => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr1_r17 t 
+    | 1 => fun (t : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17__Type) => BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__fr2_r17 t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type with end) n0
+           end t0).
+
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__helper2 :  forall (y : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type), BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond y -> choice_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__helper3 :  forall (y : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type), BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__helper4 : (forall b : choice BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list, choice_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list b -> BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F2 b) /\ BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F2.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond :=
+  (* Eval compute in *) proj2_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__list__Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__helper2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__helper3 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__helper4.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__nat__Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F1F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__nat__Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F1F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Format.
+
+
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format_list : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format_Type :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17__Format, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17__Format, unit_format)))).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format_list.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1 z :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__harq_TxProcessModeTwoSidelink_r17 z, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__scs_CP_PatternTxSidelinkModeTwo_r17 z, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__extendedCP_Mode2Random_r17 z, (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__dl_openLoopPC_Sidelink_r17 z, tt)))).
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2 (y : seq_type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type i0 i1 i2 i3
+  end.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1F2_cond (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type)
+  : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond z ->
+  (seq_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1 z)).
+intro H. unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1F2_cond2 (z : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type)
+ : BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2F1_cond (y : seq_type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list)
+  : seq_cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list y ->
+ (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2 y)) /\  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1 (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format : T_Format BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Type BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond :=
+        proj2_format  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__list__Format
+    BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1F2_cond  BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F1F2_cond2 BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__F2F1_cond.
+Opaque BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__cond BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Format : T_Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__nat__Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1 BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F1F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Format : T_Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__nat__Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F1F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Format : T_Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__nat__Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F1F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Format.
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Format : T_Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__nat__Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F1F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Format.
+
+
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext2O__sync_Sidelink_v1710__list.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format_list : BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format_Type :=
+  (BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17__Format, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17__Format, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17__Format, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17__Format, unit_format)))).
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext2O__sync_Sidelink_v1710__list BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format_list.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1 z :=
+  (BandSidelink_r16__ext2O__sync_Sidelink_v1710__sync_GNSS_r17 z, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_Sync_r17 z, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNB_ENB_r17 z, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__gNB_GNSS_UE_SyncWithPriorityOnGNSS_r17 z, tt)))).
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2 (y : seq_type BandSidelink_r16__ext2O__sync_Sidelink_v1710__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, _))))=>
+    make__BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type i0 i1 i2 i3
+  end.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1F2_cond (z : BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type)
+  : BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond z ->
+  (seq_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__list (BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1 z)).
+intro H. unfold BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1F2_cond2 (z : BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type)
+ : BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2F1_cond (y : seq_type BandSidelink_r16__ext2O__sync_Sidelink_v1710__list)
+  : seq_cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__list y ->
+ (BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond (BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2 y)) /\  BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1 (BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format : T_Format BandSidelink_r16__ext2O__sync_Sidelink_v1710__Type BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond :=
+        proj2_format  BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__list__Format
+    BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1 BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1F2_cond  BandSidelink_r16__ext2O__sync_Sidelink_v1710__F1F2_cond2 BandSidelink_r16__ext2O__sync_Sidelink_v1710__F2F1_cond.
+Opaque BandSidelink_r16__ext2O__sync_Sidelink_v1710__cond BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format.
+
+Definition BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Format : T_Format BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__nat__Format BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1 BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F2 BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F1F2 BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__F2F1.
+
+Opaque BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__cond BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Format.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Format : T_Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__nat__Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1 BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F1F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Format.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Format : T_Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__nat__Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1 BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F1F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Format.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Format : T_Format BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__nat__Format BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1 BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F2 BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F1F2 BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__cond BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Format.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Format : T_Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__nat__Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F1F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Format.
+
+Definition BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Format : T_Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__nat__Format BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F1F2 BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__F2F1.
+
+Opaque BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__cond BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Format.
+
+
+Definition BandSidelink_r16__ext2O__Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__ext2O__list.
+Definition BandSidelink_r16__ext2O__Format_list : BandSidelink_r16__ext2O__Format_Type :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17__Format, (BandSidelink_r16__ext2O__sync_Sidelink_v1710__Format, (BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710__Format, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17__Format, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17__Format, (BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17__Format, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17__Format, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17__Format, unit_format)))))))).
+Definition BandSidelink_r16__ext2O__list__Format := (*Eval compute in *) seq_format BandSidelink_r16__ext2O__list BandSidelink_r16__ext2O__Format_list.
+Definition BandSidelink_r16__ext2O__F1 z :=
+  (BandSidelink_r16__ext2O__sl_TransmissionMode2_RandomResourceSelection_r17 z, (BandSidelink_r16__ext2O__sync_Sidelink_v1710 z, (BandSidelink_r16__ext2O__enb_sync_Sidelink_v1710 z, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_PreferredMode2Sidelink_r17 z, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_NonPreferredMode2Sidelink_r17 z, (BandSidelink_r16__ext2O__rx_IUC_Scheme2_Mode2Sidelink_r17 z, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_r17 z, (BandSidelink_r16__ext2O__rx_IUC_Scheme1_SCI_ExplicitReq_r17 z, tt)))))))).
+Definition BandSidelink_r16__ext2O__F2 (y : seq_type BandSidelink_r16__ext2O__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, (i5, (i6, (i7, _))))))))=>
+    make__BandSidelink_r16__ext2O__Type i0 i1 i2 i3 i4 i5 i6 i7
+  end.
+Lemma BandSidelink_r16__ext2O__F1F2_cond (z : BandSidelink_r16__ext2O__Type)
+  : BandSidelink_r16__ext2O__cond z ->
+  (seq_cond BandSidelink_r16__ext2O__list (BandSidelink_r16__ext2O__F1 z)).
+intro H. unfold BandSidelink_r16__ext2O__cond in H. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__F1F2_cond2 (z : BandSidelink_r16__ext2O__Type)
+ : BandSidelink_r16__ext2O__F2 (BandSidelink_r16__ext2O__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma BandSidelink_r16__ext2O__F2F1_cond (y : seq_type BandSidelink_r16__ext2O__list)
+  : seq_cond BandSidelink_r16__ext2O__list y ->
+ (BandSidelink_r16__ext2O__cond (BandSidelink_r16__ext2O__F2 y)) /\  BandSidelink_r16__ext2O__F1 (BandSidelink_r16__ext2O__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold BandSidelink_r16__ext2O__cond. simpl in *. auto.
+ - simpl. unfold BandSidelink_r16__ext2O__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition BandSidelink_r16__ext2O__Format : T_Format BandSidelink_r16__ext2O__Type BandSidelink_r16__ext2O__cond :=
+        proj2_format  BandSidelink_r16__ext2O__cond BandSidelink_r16__ext2O__list__Format
+    BandSidelink_r16__ext2O__F1 BandSidelink_r16__ext2O__F2 BandSidelink_r16__ext2O__F1F2_cond  BandSidelink_r16__ext2O__F1F2_cond2 BandSidelink_r16__ext2O__F2F1_cond.
+Opaque BandSidelink_r16__ext2O__cond BandSidelink_r16__ext2O__Format.
+
+Definition BandSidelink_r16__ext2__check_all_none (b : BandSidelink_r16__ext2O__Type) : bool :=
+match b with 
+  | make__BandSidelink_r16__ext2O__Type None None None None None None None None  => false 
+  | _ => true 
+ end.
+Definition BandSidelink_r16__ext2__Format : T_Format BandSidelink_r16__ext2__Type BandSidelink_r16__ext2__cond :=
+  restrict_add_format BandSidelink_r16__ext2__check_all_none BandSidelink_r16__ext2O__Format.
+
+Opaque BandSidelink_r16__ext2__cond BandSidelink_r16__ext2__Format.
+
+
+Definition BandSidelink_r16__root_Format_Type := Eval cbn in seq_format_prod BandSidelink_r16__root_list.
+Definition BandSidelink_r16__root_Format_list : BandSidelink_r16__root_Format_Type :=
+  (FreqBandIndicatorNR__Format, (BandSidelink_r16__sl_Reception_r16__Format, (BandSidelink_r16__sl_TransmissionMode1_r16__Format, (BandSidelink_r16__sync_Sidelink_r16__Format, (BandSidelink_r16__sl_Tx_256QAM_r16__Format, (BandSidelink_r16__psfch_FormatZeroSidelink_r16__Format, (BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16__Format, (BandSidelink_r16__enb_sync_Sidelink_r16__Format, unit_format)))))))).
+
+Definition BandSidelink_r16__ext_Format_Type := Eval cbn in get_formats BandSidelink_r16__ext_list.
+Definition BandSidelink_r16__ext_Format_list : BandSidelink_r16__ext_Format_Type :=
+  (BandSidelink_r16__ext0__Format, (BandSidelink_r16__ext1__Format, (BandSidelink_r16__ext2__Format, unit__Format))).
+
+Definition BandSidelink_r16__list_type : Set := (seq_type BandSidelink_r16__root_list) * (seq_ext_type BandSidelink_r16__ext_list).
+Definition BandSidelink_r16__list_cond (z : BandSidelink_r16__list_type) : Prop :=
+        (seq_cond BandSidelink_r16__root_list (fst z)) /\ (seq_ext_cond BandSidelink_r16__ext_list (snd z)).
+Definition BandSidelink_r16__list_format : T_Format BandSidelink_r16__list_type BandSidelink_r16__list_cond :=
+ (* Eval compute in *) seq_ext_format BandSidelink_r16__root_list BandSidelink_r16__root_Format_list BandSidelink_r16__ext_list BandSidelink_r16__ext_Format_list.
+
+Opaque BandSidelink_r16__list_format.
+Definition BandSidelink_r16__F1 (z : BandSidelink_r16__Type) : BandSidelink_r16__list_type :=
+  (((BandSidelink_r16__freqBandSidelink_r16 z, (BandSidelink_r16__sl_Reception_r16 z, (BandSidelink_r16__sl_TransmissionMode1_r16 z, (BandSidelink_r16__sync_Sidelink_r16 z, (BandSidelink_r16__sl_Tx_256QAM_r16 z, (BandSidelink_r16__psfch_FormatZeroSidelink_r16 z, (BandSidelink_r16__lowSE_64QAM_MCS_TableSidelink_r16 z, (BandSidelink_r16__enb_sync_Sidelink_r16 z, tt))))))))), (
+(BandSidelink_r16__ext0 z, (BandSidelink_r16__ext1 z, (BandSidelink_r16__ext2 z, tt))))).
+Definition BandSidelink_r16__F2 (y : BandSidelink_r16__list_type) : BandSidelink_r16__Type :=
+  match y with
+  | ((j0, (j1, (j2, (j3, (j4, (j5, (j6, (j7, _)))))))), (i0, (i1, (i2, _))))=>
+    make__BandSidelink_r16__Type j0 j1 j2 j3 j4 j5 j6 j7 i0 i1 i2
+  end.
+Definition BandSidelink_r16__helper1 : (forall a : BandSidelink_r16__Type, BandSidelink_r16__cond a -> BandSidelink_r16__list_cond (BandSidelink_r16__F1 a)).
+                     intros. destruct a. auto. Qed.
+Definition BandSidelink_r16__helper2 : (forall a : BandSidelink_r16__Type, BandSidelink_r16__F2 (BandSidelink_r16__F1 a) = a).
+                     intros. destruct a. auto. Qed.
+Definition BandSidelink_r16__helper3 : (forall b : BandSidelink_r16__list_type, BandSidelink_r16__list_cond b -> BandSidelink_r16__cond (BandSidelink_r16__F2 b) /\ BandSidelink_r16__F1 (BandSidelink_r16__F2 b) = b).
+                     intros. destruct b as [y y1]. unfold BandSidelink_r16__cond, BandSidelink_r16__list_cond in *. simpl.
+                     split; unfold seq_type, seq_ext_type in *; simpl in y, y1; repeat destruct_prod; split_and; simpl in *; destruct_all_unit; auto; repeat (split; auto). 
+
+                     Qed.
+Definition BandSidelink_r16__Format : T_Format BandSidelink_r16__Type BandSidelink_r16__cond :=
+ proj2_format BandSidelink_r16__cond BandSidelink_r16__list_format  BandSidelink_r16__F1 BandSidelink_r16__F2 BandSidelink_r16__helper1 BandSidelink_r16__helper2 BandSidelink_r16__helper3.
+
+Opaque BandSidelink_r16__cond BandSidelink_r16__Format.
+

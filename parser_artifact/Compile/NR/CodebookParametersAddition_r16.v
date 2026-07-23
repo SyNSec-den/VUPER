@@ -1,0 +1,562 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 : (0 <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z. unfold maxNrofCSI_RS_ResourcesAlt_1_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Type := Z.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond := (fun z => (0 <= z <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Type := list Z.
+
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 : (0 <= 1 <= maxNrofCSI_RS_ResourcesExt_r16)%Z. unfold maxNrofCSI_RS_ResourcesExt_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesExt_r16 - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesExt_r16 - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__cond (z : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Type) :=  (1 <= Z.of_nat (length z) <= maxNrofCSI_RS_ResourcesExt_r16)%Z /\ (list_and CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond z) .
+
+Record CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type {
+    CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16 : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list := (
+ Nor CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond z := 
+  CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__cond (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16 z) /\
+  True.
+
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 : (0 <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z. unfold maxNrofCSI_RS_ResourcesAlt_1_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Type := Z.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond := (fun z => (0 <= z <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Type := list Z.
+
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 : (0 <= 1 <= maxNrofCSI_RS_ResourcesExt_r16)%Z. unfold maxNrofCSI_RS_ResourcesExt_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesExt_r16 - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesExt_r16 - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__cond (z : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Type) :=  (1 <= Z.of_nat (length z) <= maxNrofCSI_RS_ResourcesExt_r16)%Z /\ (list_and CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond z) .
+
+Record CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type {
+    CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16 : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list := (
+ Nor CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond z := 
+  CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__cond (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16 z) /\
+  True.
+
+Inductive CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Type : Set :=
+ | CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__supported
+.
+Definition CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__cond := (fun (_ : CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Type) => True).
+Lemma CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__nat__helper.
+
+Definition CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1 t :=
+  match t with
+  | CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__supported => 0
+  end.
+Definition CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F2 n :=
+  match n with
+  | 0 => CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__supported
+  | _ => CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__supported
+  end.
+Lemma CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1F2 : forall x : CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Type, (CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1 x <= 0) /\ CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F2 (CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1 x) = x. imp_solve. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F2F1 : forall (y : nat) (H : y <= 0), CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1 (CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Type : Set :=
+ | CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__supported
+.
+Definition CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__cond := (fun (_ : CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Type) => True).
+Lemma CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__nat__helper.
+
+Definition CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1 t :=
+  match t with
+  | CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__supported => 0
+  end.
+Definition CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F2 n :=
+  match n with
+  | 0 => CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__supported
+  | _ => CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__supported
+  end.
+Lemma CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1F2 : forall x : CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Type, (CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1 x <= 0) /\ CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F2 (CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1 x) = x. imp_solve. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F2F1 : forall (y : nat) (H : y <= 0), CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1 (CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F2 y) = y. enum_solve H y. Qed.
+
+Inductive CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Type : Set :=
+ | CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__supported
+.
+Definition CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__cond := (fun (_ : CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Type) => True).
+Lemma CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__nat__helper.
+
+Definition CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1 t :=
+  match t with
+  | CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__supported => 0
+  end.
+Definition CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F2 n :=
+  match n with
+  | 0 => CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__supported
+  | _ => CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__supported
+  end.
+Lemma CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1F2 : forall x : CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Type, (CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1 x <= 0) /\ CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F2 (CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1 x) = x. imp_solve. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F2F1 : forall (y : nat) (H : y <= 0), CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1 (CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record CodebookParametersAddition_r16__etype2_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__etype2_r16__Type {
+    CodebookParametersAddition_r16__etype2_r16__etype2R1_r16 : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type ;
+    CodebookParametersAddition_r16__etype2_r16__etype2R2_r16 : option CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type ;
+    CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16 : option CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Type ;
+    CodebookParametersAddition_r16__etype2_r16__rank3_4_r16 : option CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Type ;
+    CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16 : option CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__etype2_r16__list := (
+ Nor CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Type CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Type CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Type CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__etype2_r16__cond z := 
+  CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__cond (CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__cond (CodebookParametersAddition_r16__etype2_r16__rank3_4_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__cond (CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16 z) /\
+  True.
+
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 : (0 <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z. unfold maxNrofCSI_RS_ResourcesAlt_1_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Type := Z.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond := (fun z => (0 <= z <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type := list Z.
+
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 : (0 <= 1 <= maxNrofCSI_RS_ResourcesExt_r16)%Z. unfold maxNrofCSI_RS_ResourcesExt_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesExt_r16 - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesExt_r16 - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond (z : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type) :=  (1 <= Z.of_nat (length z) <= maxNrofCSI_RS_ResourcesExt_r16)%Z /\ (list_and CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond z) .
+
+Record CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type {
+    CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16 : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list := (
+ Nor CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond z := 
+  CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16 z) /\
+  True.
+
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 : (0 <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z. unfold maxNrofCSI_RS_ResourcesAlt_1_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesAlt_1_r16 - 0))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Type := Z.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond := (fun z => (0 <= z <= maxNrofCSI_RS_ResourcesAlt_1_r16)%Z).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type := list Z.
+
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 : (0 <= 1 <= maxNrofCSI_RS_ResourcesExt_r16)%Z. unfold maxNrofCSI_RS_ResourcesExt_r16.
+ lia. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper2 : to_bit_sz (Z.to_nat (maxNrofCSI_RS_ResourcesExt_r16 - 1)) <= INT_MAX_LEN.
+unfold to_bit_sz, INT_MAX_LEN. 
+        assert (H : (0 <= (maxNrofCSI_RS_ResourcesExt_r16 - 1))%Z). { apply Zorder.Zle_minus_le_0. apply CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper1. }
+        assert (G := log2_same _ H). rewrite <- G.
+        simpl. lia. Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond (z : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type) :=  (1 <= Z.of_nat (length z) <= maxNrofCSI_RS_ResourcesExt_r16)%Z /\ (list_and CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond z) .
+
+Record CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type {
+    CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16 : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list := (
+ Nor CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond z := 
+  CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16 z) /\
+  True.
+
+Inductive CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Type : Set :=
+ | CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__supported
+.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__cond := (fun (_ : CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Type) => True).
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__nat__helper : to_bit_sz 0 <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia.
+Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__nat__Format : T_Format nat (fun z => (z <= 0)) :=
+  nat_enum_format 0 CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__nat__helper.
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1 t :=
+  match t with
+  | CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__supported => 0
+  end.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F2 n :=
+  match n with
+  | 0 => CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__supported
+  | _ => CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__supported
+  end.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1F2 : forall x : CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Type, (CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1 x <= 0) /\ CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F2 (CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1 x) = x. imp_solve. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F2F1 : forall (y : nat) (H : y <= 0), CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1 (CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F2 y) = y. enum_solve H y. Qed.
+
+Record CodebookParametersAddition_r16__etype2_PS_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__etype2_PS_r16__Type {
+    CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16 : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type ;
+    CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16 : option CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type ;
+    CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16 : option CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__list := (
+ Nor CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__cond z := 
+  CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16 z) /\
+  True.
+
+Record CodebookParametersAddition_r16__Type : Set :=
+  make__CodebookParametersAddition_r16__Type {
+    CodebookParametersAddition_r16__etype2_r16 : option CodebookParametersAddition_r16__etype2_r16__Type ;
+    CodebookParametersAddition_r16__etype2_PS_r16 : option CodebookParametersAddition_r16__etype2_PS_r16__Type ;
+}.
+Definition CodebookParametersAddition_r16__list := (
+ Opt CodebookParametersAddition_r16__etype2_r16__Type CodebookParametersAddition_r16__etype2_r16__cond ::
+ Opt CodebookParametersAddition_r16__etype2_PS_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__cond ::
+ nil).
+Definition CodebookParametersAddition_r16__cond z := 
+  opt_cond CodebookParametersAddition_r16__etype2_r16__cond (CodebookParametersAddition_r16__etype2_r16 z) /\
+  opt_cond CodebookParametersAddition_r16__etype2_PS_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16 z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format : T_Format Z CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond :=
+ ranged_int_format (0) (maxNrofCSI_RS_ResourcesAlt_1_r16) CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format.
+
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__cond := seq_of_format CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format 1 maxNrofCSI_RS_ResourcesExt_r16 CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__cond CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format_list : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16__Format, unit_format).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format_list.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__supportedCSI_RS_ResourceListAdd_r16 z, tt).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2 (y : seq_type CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list) :=
+  match y with
+  | (i0, _)=>
+    make__CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type i0
+  end.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1F2_cond (z : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type)
+  : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type)
+ : CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2 (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list)
+  : seq_cond CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list y ->
+ (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2 y)) /\  CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1 (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__list__Format
+    CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1 CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2 CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1F2_cond  CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F1F2_cond2 CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__cond CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format : T_Format Z CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond :=
+ ranged_int_format (0) (maxNrofCSI_RS_ResourcesAlt_1_r16) CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format.
+
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__cond := seq_of_format CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format 1 maxNrofCSI_RS_ResourcesExt_r16 CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format_list : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16__Format, unit_format).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format_list.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__supportedCSI_RS_ResourceListAdd_r16 z, tt).
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2 (y : seq_type CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list) :=
+  match y with
+  | (i0, _)=>
+    make__CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type i0
+  end.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1F2_cond (z : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type)
+  : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type)
+ : CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2 (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list)
+  : seq_cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list y ->
+ (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2 y)) /\  CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1 (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Type CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__list__Format
+    CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1 CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2 CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1F2_cond  CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F1F2_cond2 CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__cond CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__nat__Format CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1 CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F2 CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F1F2 CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__F2F1.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__cond CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__nat__Format CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1 CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F2 CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F1F2 CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__F2F1.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__cond CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__nat__Format CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1 CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F2 CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F1F2 CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__F2F1.
+
+Opaque CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__cond CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__etype2_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__etype2_r16__list.
+Definition CodebookParametersAddition_r16__etype2_r16__Format_list : CodebookParametersAddition_r16__etype2_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16__Format, (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16__Format, (CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16__Format, (CodebookParametersAddition_r16__etype2_r16__rank3_4_r16__Format, (CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16__Format, unit_format))))).
+Definition CodebookParametersAddition_r16__etype2_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__etype2_r16__list CodebookParametersAddition_r16__etype2_r16__Format_list.
+Definition CodebookParametersAddition_r16__etype2_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_r16__etype2R1_r16 z, (CodebookParametersAddition_r16__etype2_r16__etype2R2_r16 z, (CodebookParametersAddition_r16__etype2_r16__paramComb7_8_r16 z, (CodebookParametersAddition_r16__etype2_r16__rank3_4_r16 z, (CodebookParametersAddition_r16__etype2_r16__amplitudeSubsetRestriction_r16 z, tt))))).
+Definition CodebookParametersAddition_r16__etype2_r16__F2 (y : seq_type CodebookParametersAddition_r16__etype2_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, _)))))=>
+    make__CodebookParametersAddition_r16__etype2_r16__Type i0 i1 i2 i3 i4
+  end.
+Lemma CodebookParametersAddition_r16__etype2_r16__F1F2_cond (z : CodebookParametersAddition_r16__etype2_r16__Type)
+  : CodebookParametersAddition_r16__etype2_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__etype2_r16__list (CodebookParametersAddition_r16__etype2_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__etype2_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__etype2_r16__Type)
+ : CodebookParametersAddition_r16__etype2_r16__F2 (CodebookParametersAddition_r16__etype2_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__etype2_r16__list)
+  : seq_cond CodebookParametersAddition_r16__etype2_r16__list y ->
+ (CodebookParametersAddition_r16__etype2_r16__cond (CodebookParametersAddition_r16__etype2_r16__F2 y)) /\  CodebookParametersAddition_r16__etype2_r16__F1 (CodebookParametersAddition_r16__etype2_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__etype2_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__etype2_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__etype2_r16__Format : T_Format CodebookParametersAddition_r16__etype2_r16__Type CodebookParametersAddition_r16__etype2_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__etype2_r16__cond CodebookParametersAddition_r16__etype2_r16__list__Format
+    CodebookParametersAddition_r16__etype2_r16__F1 CodebookParametersAddition_r16__etype2_r16__F2 CodebookParametersAddition_r16__etype2_r16__F1F2_cond  CodebookParametersAddition_r16__etype2_r16__F1F2_cond2 CodebookParametersAddition_r16__etype2_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__etype2_r16__cond CodebookParametersAddition_r16__etype2_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format : T_Format Z CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond :=
+ ranged_int_format (0) (maxNrofCSI_RS_ResourcesAlt_1_r16) CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format.
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Format : T_Format CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond := seq_of_format CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format 1 maxNrofCSI_RS_ResourcesExt_r16 CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format_list : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Format, unit_format).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format_list.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16 z, tt).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2 (y : seq_type CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list) :=
+  match y with
+  | (i0, _)=>
+    make__CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type i0
+  end.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1F2_cond (z : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type)
+  : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type)
+ : CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2 (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list)
+  : seq_cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list y ->
+ (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2 y)) /\  CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1 (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format : T_Format CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__list__Format
+    CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1 CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2 CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1F2_cond  CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F1F2_cond2 CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format : T_Format Z CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond :=
+ ranged_int_format (0) (maxNrofCSI_RS_ResourcesAlt_1_r16) CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper1 CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format.
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Format : T_Format CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond := seq_of_format CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__seq_of__Format 1 maxNrofCSI_RS_ResourcesExt_r16 CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper1 CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__helper2.
+
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format_list : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16__Format, unit_format).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format_list.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__supportedCSI_RS_ResourceListAdd_r16 z, tt).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2 (y : seq_type CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list) :=
+  match y with
+  | (i0, _)=>
+    make__CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type i0
+  end.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1F2_cond (z : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type)
+  : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type)
+ : CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2 (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list)
+  : seq_cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list y ->
+ (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2 y)) /\  CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1 (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format : T_Format CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__list__Format
+    CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1 CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2 CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1F2_cond  CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F1F2_cond2 CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format.
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Format : T_Format CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Type (fun _ => True) :=
+(* Eval compute in *) proj3_format CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__nat__Format CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1 CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F2 CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F1F2 CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__F2F1.
+
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__etype2_PS_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__etype2_PS_r16__list.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__Format_list : CodebookParametersAddition_r16__etype2_PS_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16__Format, (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16__Format, (CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16__Format, unit_format))).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__etype2_PS_r16__list CodebookParametersAddition_r16__etype2_PS_r16__Format_list.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_PS_r16__etype2R1_PortSelection_r16 z, (CodebookParametersAddition_r16__etype2_PS_r16__etype2R2_PortSelection_r16 z, (CodebookParametersAddition_r16__etype2_PS_r16__rank3_4_r16 z, tt))).
+Definition CodebookParametersAddition_r16__etype2_PS_r16__F2 (y : seq_type CodebookParametersAddition_r16__etype2_PS_r16__list) :=
+  match y with
+  | (i0, (i1, (i2, _)))=>
+    make__CodebookParametersAddition_r16__etype2_PS_r16__Type i0 i1 i2
+  end.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__F1F2_cond (z : CodebookParametersAddition_r16__etype2_PS_r16__Type)
+  : CodebookParametersAddition_r16__etype2_PS_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__etype2_PS_r16__list (CodebookParametersAddition_r16__etype2_PS_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__etype2_PS_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__etype2_PS_r16__Type)
+ : CodebookParametersAddition_r16__etype2_PS_r16__F2 (CodebookParametersAddition_r16__etype2_PS_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__etype2_PS_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__etype2_PS_r16__list)
+  : seq_cond CodebookParametersAddition_r16__etype2_PS_r16__list y ->
+ (CodebookParametersAddition_r16__etype2_PS_r16__cond (CodebookParametersAddition_r16__etype2_PS_r16__F2 y)) /\  CodebookParametersAddition_r16__etype2_PS_r16__F1 (CodebookParametersAddition_r16__etype2_PS_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__etype2_PS_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__etype2_PS_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__etype2_PS_r16__Format : T_Format CodebookParametersAddition_r16__etype2_PS_r16__Type CodebookParametersAddition_r16__etype2_PS_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__etype2_PS_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__list__Format
+    CodebookParametersAddition_r16__etype2_PS_r16__F1 CodebookParametersAddition_r16__etype2_PS_r16__F2 CodebookParametersAddition_r16__etype2_PS_r16__F1F2_cond  CodebookParametersAddition_r16__etype2_PS_r16__F1F2_cond2 CodebookParametersAddition_r16__etype2_PS_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__etype2_PS_r16__cond CodebookParametersAddition_r16__etype2_PS_r16__Format.
+
+
+Definition CodebookParametersAddition_r16__Format_Type := Eval cbn in seq_format_prod CodebookParametersAddition_r16__list.
+Definition CodebookParametersAddition_r16__Format_list : CodebookParametersAddition_r16__Format_Type :=
+  (CodebookParametersAddition_r16__etype2_r16__Format, (CodebookParametersAddition_r16__etype2_PS_r16__Format, unit_format)).
+Definition CodebookParametersAddition_r16__list__Format := (*Eval compute in *) seq_format CodebookParametersAddition_r16__list CodebookParametersAddition_r16__Format_list.
+Definition CodebookParametersAddition_r16__F1 z :=
+  (CodebookParametersAddition_r16__etype2_r16 z, (CodebookParametersAddition_r16__etype2_PS_r16 z, tt)).
+Definition CodebookParametersAddition_r16__F2 (y : seq_type CodebookParametersAddition_r16__list) :=
+  match y with
+  | (i0, (i1, _))=>
+    make__CodebookParametersAddition_r16__Type i0 i1
+  end.
+Lemma CodebookParametersAddition_r16__F1F2_cond (z : CodebookParametersAddition_r16__Type)
+  : CodebookParametersAddition_r16__cond z ->
+  (seq_cond CodebookParametersAddition_r16__list (CodebookParametersAddition_r16__F1 z)).
+intro H. unfold CodebookParametersAddition_r16__cond in H. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__F1F2_cond2 (z : CodebookParametersAddition_r16__Type)
+ : CodebookParametersAddition_r16__F2 (CodebookParametersAddition_r16__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma CodebookParametersAddition_r16__F2F1_cond (y : seq_type CodebookParametersAddition_r16__list)
+  : seq_cond CodebookParametersAddition_r16__list y ->
+ (CodebookParametersAddition_r16__cond (CodebookParametersAddition_r16__F2 y)) /\  CodebookParametersAddition_r16__F1 (CodebookParametersAddition_r16__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold CodebookParametersAddition_r16__cond. simpl in *. auto.
+ - simpl. unfold CodebookParametersAddition_r16__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition CodebookParametersAddition_r16__Format : T_Format CodebookParametersAddition_r16__Type CodebookParametersAddition_r16__cond :=
+        proj2_format  CodebookParametersAddition_r16__cond CodebookParametersAddition_r16__list__Format
+    CodebookParametersAddition_r16__F1 CodebookParametersAddition_r16__F2 CodebookParametersAddition_r16__F1F2_cond  CodebookParametersAddition_r16__F1F2_cond2 CodebookParametersAddition_r16__F2F1_cond.
+Opaque CodebookParametersAddition_r16__cond CodebookParametersAddition_r16__Format.
+

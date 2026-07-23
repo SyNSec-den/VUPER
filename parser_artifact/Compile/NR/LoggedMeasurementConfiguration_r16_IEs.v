@@ -1,0 +1,244 @@
+Require Import ASN1Parser.ExtrOCaml.ExtractHelper.
+
+Require Import NR.NR_RRC_Definitions.
+Require Import NR.TraceReference_r16.
+
+Opaque TraceReference_r16__cond TraceReference_r16__Format.
+
+Definition LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Type := octet_string.
+Definition LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__cond := (fun bs : octet_string => (Z.of_nat (length bs) = 2)%Z).
+Definition LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Type := octet_string.
+Definition LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__cond := (fun bs : octet_string => (Z.of_nat (length bs) = 1)%Z).
+Require Import NR.AbsoluteTimeInfo_r16.
+
+Opaque AbsoluteTimeInfo_r16__cond AbsoluteTimeInfo_r16__Format.
+
+Require Import NR.AreaConfiguration_r16.
+
+Opaque AreaConfiguration_r16__cond AreaConfiguration_r16__Format.
+
+Require Import NR.PLMN_IdentityList2_r16.
+
+Opaque PLMN_IdentityList2_r16__cond PLMN_IdentityList2_r16__Format.
+
+Require Import NR.SetupRelease.
+Require Import NR.BT_NameList_r16.
+Definition LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Type := SetupRelease__Type BT_NameList_r16__Type.
+Definition LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__cond := SetupRelease__cond _ BT_NameList_r16__cond.
+Definition LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Type LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__cond := SetupRelease__Format _ _ BT_NameList_r16__Format.
+Opaque LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__cond LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Format.
+
+Require Import NR.SetupRelease.
+Require Import NR.WLAN_NameList_r16.
+Definition LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Type := SetupRelease__Type WLAN_NameList_r16__Type.
+Definition LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__cond := SetupRelease__cond _ WLAN_NameList_r16__cond.
+Definition LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Type LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__cond := SetupRelease__Format _ _ WLAN_NameList_r16__Format.
+Opaque LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__cond LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Format.
+
+Require Import NR.SetupRelease.
+Require Import NR.Sensor_NameList_r16.
+Definition LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Type := SetupRelease__Type Sensor_NameList_r16__Type.
+Definition LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__cond := SetupRelease__cond _ Sensor_NameList_r16__cond.
+Definition LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Type LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__cond := SetupRelease__Format _ _ Sensor_NameList_r16__Format.
+Opaque LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__cond LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Format.
+
+Require Import NR.LoggingDuration_r16.
+
+Opaque LoggingDuration_r16__cond LoggingDuration_r16__Format.
+
+Require Import NR.LoggedPeriodicalReportConfig_r16.
+
+Opaque LoggedPeriodicalReportConfig_r16__cond LoggedPeriodicalReportConfig_r16__Format.
+
+Require Import NR.LoggedEventTriggerConfig_r16.
+
+Opaque LoggedEventTriggerConfig_r16__cond LoggedEventTriggerConfig_r16__Format.
+
+
+Inductive LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type : Set :=
+  | LoggedMeasurementConfiguration_r16_IEs__reportType__root__periodical : LoggedPeriodicalReportConfig_r16__Type -> LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type
+  | LoggedMeasurementConfiguration_r16_IEs__reportType__root__eventTriggered : LoggedEventTriggerConfig_r16__Type -> LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type
+.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__list : list typ := (
+typ_cons LoggedPeriodicalReportConfig_r16__Type LoggedPeriodicalReportConfig_r16__cond ::
+typ_cons LoggedEventTriggerConfig_r16__Type LoggedEventTriggerConfig_r16__cond ::
+ nil).
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond (c : LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type) := 
+  match c with
+  | LoggedMeasurementConfiguration_r16_IEs__reportType__root__periodical t => LoggedPeriodicalReportConfig_r16__cond t 
+  | LoggedMeasurementConfiguration_r16_IEs__reportType__root__eventTriggered t => LoggedEventTriggerConfig_r16__cond t 
+  end.
+
+Lemma LoggedMeasurementConfiguration_r16_IEs__reportType__root__len_helper1 : to_bit_sz (length LoggedMeasurementConfiguration_r16_IEs__reportType__root__list - 1) <= INT_MAX_LEN.
+  unfold to_bit_sz, INT_MAX_LEN. simpl. lia. Qed.
+Lemma LoggedMeasurementConfiguration_r16_IEs__reportType__root__len_helper2 : 2 <= length2 LoggedMeasurementConfiguration_r16_IEs__reportType__root__list.
+ simpl. lia. Qed.
+
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Type : Set := Empty_set.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__ext__cond (c : LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Type) := True.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__Type : Set := LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type + LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Type.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__cond :=
+  sum_cond LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond LoggedMeasurementConfiguration_r16_IEs__reportType__ext__cond.
+Require Import NR.LoggedMeasurementConfiguration_v1700_IEs.
+
+Opaque LoggedMeasurementConfiguration_v1700_IEs__cond LoggedMeasurementConfiguration_v1700_IEs__Format.
+
+Record LoggedMeasurementConfiguration_r16_IEs__Type : Set :=
+  make__LoggedMeasurementConfiguration_r16_IEs__Type {
+    LoggedMeasurementConfiguration_r16_IEs__traceReference_r16 : TraceReference_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16 : LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16 : LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__absoluteTimeInfo_r16 : AbsoluteTimeInfo_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__areaConfiguration_r16 : option AreaConfiguration_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__plmn_IdentityList_r16 : option PLMN_IdentityList2_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16 : option LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16 : option LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16 : option LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__loggingDuration_r16 : LoggingDuration_r16__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__reportType : LoggedMeasurementConfiguration_r16_IEs__reportType__Type ;
+    LoggedMeasurementConfiguration_r16_IEs__lateNonCriticalExtension : option octet_string ;
+    LoggedMeasurementConfiguration_r16_IEs__nonCriticalExtension : option LoggedMeasurementConfiguration_v1700_IEs__Type ;
+}.
+Definition LoggedMeasurementConfiguration_r16_IEs__list := (
+ Nor TraceReference_r16__Type TraceReference_r16__cond ::
+ Nor LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Type LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__cond ::
+ Nor LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Type LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__cond ::
+ Nor AbsoluteTimeInfo_r16__Type AbsoluteTimeInfo_r16__cond ::
+ Opt AreaConfiguration_r16__Type AreaConfiguration_r16__cond ::
+ Opt PLMN_IdentityList2_r16__Type PLMN_IdentityList2_r16__cond ::
+ Opt LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Type LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__cond ::
+ Opt LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Type LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__cond ::
+ Opt LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Type LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__cond ::
+ Nor LoggingDuration_r16__Type LoggingDuration_r16__cond ::
+ Nor LoggedMeasurementConfiguration_r16_IEs__reportType__Type LoggedMeasurementConfiguration_r16_IEs__reportType__cond ::
+ Opt octet_string (fun (b : octet_string) => length b < Nat.pow 2 14) ::
+ Opt LoggedMeasurementConfiguration_v1700_IEs__Type LoggedMeasurementConfiguration_v1700_IEs__cond ::
+ nil).
+Definition LoggedMeasurementConfiguration_r16_IEs__cond z := 
+  TraceReference_r16__cond (LoggedMeasurementConfiguration_r16_IEs__traceReference_r16 z) /\
+  LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__cond (LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16 z) /\
+  LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__cond (LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16 z) /\
+  AbsoluteTimeInfo_r16__cond (LoggedMeasurementConfiguration_r16_IEs__absoluteTimeInfo_r16 z) /\
+  opt_cond AreaConfiguration_r16__cond (LoggedMeasurementConfiguration_r16_IEs__areaConfiguration_r16 z) /\
+  opt_cond PLMN_IdentityList2_r16__cond (LoggedMeasurementConfiguration_r16_IEs__plmn_IdentityList_r16 z) /\
+  opt_cond LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__cond (LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16 z) /\
+  opt_cond LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__cond (LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16 z) /\
+  opt_cond LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__cond (LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16 z) /\
+  LoggingDuration_r16__cond (LoggedMeasurementConfiguration_r16_IEs__loggingDuration_r16 z) /\
+  LoggedMeasurementConfiguration_r16_IEs__reportType__cond (LoggedMeasurementConfiguration_r16_IEs__reportType z) /\
+  opt_cond (fun (b : octet_string) => length b < Nat.pow 2 14) (LoggedMeasurementConfiguration_r16_IEs__lateNonCriticalExtension z) /\
+  opt_cond LoggedMeasurementConfiguration_v1700_IEs__cond (LoggedMeasurementConfiguration_r16_IEs__nonCriticalExtension z) /\
+  True.
+
+
+Opaque Byte.to_nat Byte.of_nat.
+Opaque bind_parse restrict_parse proj_parse return_parse.
+Opaque restrict_serialize proj_serialize sigma_serialize append_serialize proj2_serialize.
+
+Opaque read_n_nat read_unit.
+Opaque put_n_nat put_unit. 
+
+Opaque opt_bind opt_serialize dft_serialize prepend_serialize list_serial.
+Opaque opt_parse list_parse dft_parse fail_parse append_parse
+  bind_parse return_parse.
+
+Opaque Z.to_nat Z.of_nat Z.sub Z.add Z.le Z.lt Z.pow Z.opp Z.ltb.
+Opaque Nat.mul Nat.shiftr Nat.shiftl Nat.div Nat.modulo Nat.leb Nat.ltb Nat.add
+  Nat.sub Nat.land Nat.lor Nat.eqb  Nat.log2 Nat.pow Nat.even PeanoNat.Nat.lnot.
+Opaque Compare_dec.le_dec Compare_dec.le_lt_dec ZArith_dec.Z_le_dec lt_eq_lt_dec_new. 
+Opaque sumbool_and1 list_and list_and_cons list_cons_S flg_add. 
+
+Opaque list_to_len.
+   Opaque length Compare_dec.le_dec Compare_dec.lt_dec PeanoNat.Nat.eq_dec.
+   Opaque bool__Format int__Format octet_string_nc__Format bit_string_nc__Format.
+
+   Opaque ByteIdx_to_nat nat_to_ByteIdx add_opt list_bool_format normally_small_len_det_format
+  get_byte_len to_parse_skip  open_typ_serialize open_typ_parse open_type_to_len.
+  
+
+Opaque seq_cond seq_ext_cond choice_cond.
+Definition LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Type LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__cond := (* Eval compute in *) octet_string_fixed_format 2.
+Opaque LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__cond LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Format.
+
+Definition LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Type LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__cond := (* Eval compute in *) octet_string_fixed_format 1.
+Opaque LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__cond LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Format.
+
+Opaque LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__cond LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Format.
+
+Opaque LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__cond LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Format.
+
+Opaque LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__cond LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Format.
+
+
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format_Type := Eval cbn in get_formats LoggedMeasurementConfiguration_r16_IEs__reportType__root__list.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format_list : LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format_Type :=
+  (LoggedPeriodicalReportConfig_r16__Format, (LoggedEventTriggerConfig_r16__Format, unit__Format)).
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__list__Format := Eval compute in choice_format LoggedMeasurementConfiguration_r16_IEs__reportType__root__list LoggedMeasurementConfiguration_r16_IEs__reportType__root__len_helper1 LoggedMeasurementConfiguration_r16_IEs__reportType__root__len_helper2  LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format_list.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__F1 (z : LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type) : (choice LoggedMeasurementConfiguration_r16_IEs__reportType__root__list) :=
+  match z with
+   | LoggedMeasurementConfiguration_r16_IEs__reportType__root__periodical t => existT _ 0 t
+  | LoggedMeasurementConfiguration_r16_IEs__reportType__root__eventTriggered t => existT _ 1 t
+  end.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__g := (fun n => typ_set (get_nth_typ LoggedMeasurementConfiguration_r16_IEs__reportType__root__list n)).
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__F2 (y : choice LoggedMeasurementConfiguration_r16_IEs__reportType__root__list) : LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type :=
+  let (x0, t0) := y in
+    (match x0 as n return  (LoggedMeasurementConfiguration_r16_IEs__reportType__root__g n -> LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type) with
+    | 0 => fun (t : LoggedPeriodicalReportConfig_r16__Type) => LoggedMeasurementConfiguration_r16_IEs__reportType__root__periodical t 
+    | 1 => fun (t : LoggedEventTriggerConfig_r16__Type) => LoggedMeasurementConfiguration_r16_IEs__reportType__root__eventTriggered t 
+ | (S (S n0)) => (fun (x' : nat) (t'' : LoggedMeasurementConfiguration_r16_IEs__reportType__root__g (S (S x'))) =>let t' :=
+           eq_rect (get_nth_typ LoggedMeasurementConfiguration_r16_IEs__reportType__root__list (S (S x')))
+           (fun t' : typ => typ_set t') t'' empty_typ
+           (get_nth_typ_ge_len LoggedMeasurementConfiguration_r16_IEs__reportType__root__list (S (S x'))
+           (le_n_S _ _ (le_n_S _ _ (le_0_n x')))) in match t' return LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type with end) n0
+           end t0).
+
+Lemma LoggedMeasurementConfiguration_r16_IEs__reportType__root__helper2 :  forall (y : LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type), LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond y -> choice_cond LoggedMeasurementConfiguration_r16_IEs__reportType__root__list (LoggedMeasurementConfiguration_r16_IEs__reportType__root__F1 y).
+  choice_helper_tact_dec y. Qed.
+
+Lemma LoggedMeasurementConfiguration_r16_IEs__reportType__root__helper3 :  forall (y : LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type), LoggedMeasurementConfiguration_r16_IEs__reportType__root__F2 (LoggedMeasurementConfiguration_r16_IEs__reportType__root__F1 y) = y.
+  choice_helper_tact_dec y. Qed.
+
+Transparent length.
+Lemma LoggedMeasurementConfiguration_r16_IEs__reportType__root__helper4 : (forall b : choice LoggedMeasurementConfiguration_r16_IEs__reportType__root__list, choice_cond LoggedMeasurementConfiguration_r16_IEs__reportType__root__list b -> LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond (LoggedMeasurementConfiguration_r16_IEs__reportType__root__F2 b) /\ LoggedMeasurementConfiguration_r16_IEs__reportType__root__F1 (LoggedMeasurementConfiguration_r16_IEs__reportType__root__F2 b) = b).
+Proof. intros. destruct b as [x t]; split; choice_helper_tact0 H x t. Qed.
+Opaque length LoggedMeasurementConfiguration_r16_IEs__reportType__root__F1 LoggedMeasurementConfiguration_r16_IEs__reportType__root__F2.
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__reportType__root__Type LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond :=
+  (* Eval compute in *) proj2_format LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond LoggedMeasurementConfiguration_r16_IEs__reportType__root__list__Format LoggedMeasurementConfiguration_r16_IEs__reportType__root__F1 LoggedMeasurementConfiguration_r16_IEs__reportType__root__F2 LoggedMeasurementConfiguration_r16_IEs__reportType__root__helper2 LoggedMeasurementConfiguration_r16_IEs__reportType__root__helper3 LoggedMeasurementConfiguration_r16_IEs__reportType__root__helper4.
+Opaque LoggedMeasurementConfiguration_r16_IEs__reportType__root__cond LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format.
+
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Type LoggedMeasurementConfiguration_r16_IEs__reportType__ext__cond := empty_format.
+Opaque LoggedMeasurementConfiguration_r16_IEs__reportType__ext__cond LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Format.
+
+Definition LoggedMeasurementConfiguration_r16_IEs__reportType__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__reportType__Type LoggedMeasurementConfiguration_r16_IEs__reportType__cond := sum_format LoggedMeasurementConfiguration_r16_IEs__reportType__root__Format LoggedMeasurementConfiguration_r16_IEs__reportType__ext__Format.
+Opaque LoggedMeasurementConfiguration_r16_IEs__reportType__cond LoggedMeasurementConfiguration_r16_IEs__reportType__Format.
+
+
+Definition LoggedMeasurementConfiguration_r16_IEs__Format_Type := Eval cbn in seq_format_prod LoggedMeasurementConfiguration_r16_IEs__list.
+Definition LoggedMeasurementConfiguration_r16_IEs__Format_list : LoggedMeasurementConfiguration_r16_IEs__Format_Type :=
+  (TraceReference_r16__Format, (LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16__Format, (LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16__Format, (AbsoluteTimeInfo_r16__Format, (AreaConfiguration_r16__Format, (PLMN_IdentityList2_r16__Format, (LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16__Format, (LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16__Format, (LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16__Format, (LoggingDuration_r16__Format, (LoggedMeasurementConfiguration_r16_IEs__reportType__Format, (octet_string_nc__Format, (LoggedMeasurementConfiguration_v1700_IEs__Format, unit_format))))))))))))).
+Definition LoggedMeasurementConfiguration_r16_IEs__list__Format := (*Eval compute in *) seq_format LoggedMeasurementConfiguration_r16_IEs__list LoggedMeasurementConfiguration_r16_IEs__Format_list.
+Definition LoggedMeasurementConfiguration_r16_IEs__F1 z :=
+  (LoggedMeasurementConfiguration_r16_IEs__traceReference_r16 z, (LoggedMeasurementConfiguration_r16_IEs__traceRecordingSessionRef_r16 z, (LoggedMeasurementConfiguration_r16_IEs__tce_Id_r16 z, (LoggedMeasurementConfiguration_r16_IEs__absoluteTimeInfo_r16 z, (LoggedMeasurementConfiguration_r16_IEs__areaConfiguration_r16 z, (LoggedMeasurementConfiguration_r16_IEs__plmn_IdentityList_r16 z, (LoggedMeasurementConfiguration_r16_IEs__bt_NameList_r16 z, (LoggedMeasurementConfiguration_r16_IEs__wlan_NameList_r16 z, (LoggedMeasurementConfiguration_r16_IEs__sensor_NameList_r16 z, (LoggedMeasurementConfiguration_r16_IEs__loggingDuration_r16 z, (LoggedMeasurementConfiguration_r16_IEs__reportType z, (LoggedMeasurementConfiguration_r16_IEs__lateNonCriticalExtension z, (LoggedMeasurementConfiguration_r16_IEs__nonCriticalExtension z, tt))))))))))))).
+Definition LoggedMeasurementConfiguration_r16_IEs__F2 (y : seq_type LoggedMeasurementConfiguration_r16_IEs__list) :=
+  match y with
+  | (i0, (i1, (i2, (i3, (i4, (i5, (i6, (i7, (i8, (i9, (i10, (i11, (i12, _)))))))))))))=>
+    make__LoggedMeasurementConfiguration_r16_IEs__Type i0 i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11 i12
+  end.
+Lemma LoggedMeasurementConfiguration_r16_IEs__F1F2_cond (z : LoggedMeasurementConfiguration_r16_IEs__Type)
+  : LoggedMeasurementConfiguration_r16_IEs__cond z ->
+  (seq_cond LoggedMeasurementConfiguration_r16_IEs__list (LoggedMeasurementConfiguration_r16_IEs__F1 z)).
+intro H. unfold LoggedMeasurementConfiguration_r16_IEs__cond in H. simpl. auto. Qed.
+Lemma LoggedMeasurementConfiguration_r16_IEs__F1F2_cond2 (z : LoggedMeasurementConfiguration_r16_IEs__Type)
+ : LoggedMeasurementConfiguration_r16_IEs__F2 (LoggedMeasurementConfiguration_r16_IEs__F1 z) = z.
+destruct z. simpl. auto. Qed.
+Lemma LoggedMeasurementConfiguration_r16_IEs__F2F1_cond (y : seq_type LoggedMeasurementConfiguration_r16_IEs__list)
+  : seq_cond LoggedMeasurementConfiguration_r16_IEs__list y ->
+ (LoggedMeasurementConfiguration_r16_IEs__cond (LoggedMeasurementConfiguration_r16_IEs__F2 y)) /\  LoggedMeasurementConfiguration_r16_IEs__F1 (LoggedMeasurementConfiguration_r16_IEs__F2 y) = y.
+  intro H. split; unfold seq_type in y; simpl in y; repeat destruct_prod.
+ - unfold LoggedMeasurementConfiguration_r16_IEs__cond. simpl in *. auto.
+ - simpl. unfold LoggedMeasurementConfiguration_r16_IEs__F1. simpl. destruct_all_unit. auto.   Qed.
+Definition LoggedMeasurementConfiguration_r16_IEs__Format : T_Format LoggedMeasurementConfiguration_r16_IEs__Type LoggedMeasurementConfiguration_r16_IEs__cond :=
+        proj2_format  LoggedMeasurementConfiguration_r16_IEs__cond LoggedMeasurementConfiguration_r16_IEs__list__Format
+    LoggedMeasurementConfiguration_r16_IEs__F1 LoggedMeasurementConfiguration_r16_IEs__F2 LoggedMeasurementConfiguration_r16_IEs__F1F2_cond  LoggedMeasurementConfiguration_r16_IEs__F1F2_cond2 LoggedMeasurementConfiguration_r16_IEs__F2F1_cond.
+Opaque LoggedMeasurementConfiguration_r16_IEs__cond LoggedMeasurementConfiguration_r16_IEs__Format.
+
