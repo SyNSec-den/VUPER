@@ -232,6 +232,23 @@ Next, use `opam switch import vuper_env.export` to set up the environment.
 
 ## Steps
 
+### 0. Build the base `asn1parser` library (one-time setup)
+
+The generated project (e.g. `NR17`) depends on the base formalization in
+`asn1parser/` (its `_CoqProject` references it via `-R ../../asn1parser/src
+ASN1Parser`). This library is not pre-built and has no `Makefile` checked in,
+so it must be compiled once before step 6 below, otherwise `make` fails with
+an error like:
+```
+No rule to make target '../../asn1parser/src/ExtrOCaml/ExtractHelper.vo'
+```
+Build it with:
+```
+cd asn1parser && coq_makefile -f _CoqProject -o Makefile && make
+```
+This only needs to be done once (or whenever `asn1parser/` changes) — it does
+not need to be repeated for each ASN.1 project you compile.
+
 In `Compile/` there is a compiler that takes an ASN.1 definition as
 input and outputs serializer/parser functions in Coq.
 

@@ -1434,7 +1434,13 @@ let gen_import_list (import_l : asn1_import_list list) =
                   (fun a ->
                     match a with
                     | Val_Import val_name ->
-                       Printf.sprintf "Definition %s := (* Eval compute in *) %s.\n"
+                       (* The Eval compute is required: it inlines the imported
+                          constant's literal value into the alias, so that a
+                          single `unfold` in downstream helper lemmas exposes
+                          the literal to lia. A plain alias leaves an opaque
+                          cross-module constant behind and lia fails with
+                          "Cannot find witness". *)
+                       Printf.sprintf "Definition %s := Eval compute in %s.\n"
                          val_name val_name
                     | Type_Import _ -> "" )
                   import_def_list))
