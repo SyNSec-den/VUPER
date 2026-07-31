@@ -1,0 +1,1 @@
+../ttcn3/bin/compiler --asn1enc test.asn1

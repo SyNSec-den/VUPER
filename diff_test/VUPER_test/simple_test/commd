@@ -1,0 +1,1 @@
+../asn1c-v790/bin/asn1c test.asn1 -c -jer -uper -genMake

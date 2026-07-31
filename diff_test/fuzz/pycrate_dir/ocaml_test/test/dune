@@ -1,0 +1,6 @@
+(executable
+ (name test) 
+ (modules test)
+ (libraries formats)
+ (ocamlopt_flags (:standard -inline 50)))
+

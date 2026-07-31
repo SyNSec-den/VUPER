@@ -1,0 +1,13 @@
+Foo DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+S1 ::= CHOICE {
+   b1 BOOLEAN,
+   ...,
+   [[ b2 BOOLEAN,
+       b3 BOOLEAN
+   ]]
+}
+
+END

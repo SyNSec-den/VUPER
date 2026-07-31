@@ -1,0 +1,17 @@
+(executable
+ (name test) 
+ (modules test)
+ (libraries formats)
+ (ocamlopt_flags (:standard -inline 50)))
+
+(executable
+ (name time_test) 
+ (modules time_test)
+ (libraries formats mtime.clock.os)
+ (ocamlopt_flags (:standard -inline 50)))
+
+(executable
+ (name all_test) 
+ (modules all_test)
+ (libraries formats)
+ (ocamlopt_flags (:standard -inline 50)))

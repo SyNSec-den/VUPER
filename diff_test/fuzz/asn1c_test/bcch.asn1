@@ -1,0 +1,35 @@
+NR-RRC-Definitions DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+BCCH-BCH-Message ::=            SEQUENCE {
+    message                         BCCH-BCH-MessageType
+}
+
+BCCH-BCH-MessageType ::=        CHOICE {
+    mib                             MIB,
+    messageClassExtension           SEQUENCE {}
+}
+
+
+MIB ::=                             SEQUENCE {
+    systemFrameNumber                   BIT STRING (SIZE (6)),
+    subCarrierSpacingCommon             ENUMERATED {scs15or60, scs30or120},
+    ssb-SubcarrierOffset                INTEGER (0..15),
+    dmrs-TypeA-Position                 ENUMERATED {pos2, pos3},
+    pdcch-ConfigSIB1                    PDCCH-ConfigSIB1,
+    cellBarred                          ENUMERATED {barred, notBarred},
+    intraFreqReselection                ENUMERATED {allowed, notAllowed},
+    spare                               BIT STRING (SIZE (1))
+}
+
+PDCCH-ConfigSIB1 ::=                SEQUENCE {
+    controlResourceSetZero              ControlResourceSetZero,
+    searchSpaceZero                     SearchSpaceZero
+}
+
+ControlResourceSetZero ::=                  INTEGER (0..15)
+
+SearchSpaceZero ::=                 INTEGER (0..15)
+
+END

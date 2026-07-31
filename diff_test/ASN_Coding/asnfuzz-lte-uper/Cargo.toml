@@ -1,0 +1,26 @@
+
+
+#[[bin]]
+#name = "run"
+#path = "src/bin/run.rs"
+[package]
+name = "asnfuzz_lte_uper"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "asnfuzz_lte_uper"
+path = "src/lib.rs"
+
+#[lib]
+#name = "asnfuzz_rrc_uper"
+crate-type = ["staticlib"]
+
+[dependencies]
+asnfuzzgen-codecs = { version = "0.1", path = "../asnfuzzgen/codecs" }
+asnfuzzgen-codecs-derive = { version = "0.1", path = "../asnfuzzgen/codecs_derive" }
+bitvec = { version = "1.0" }
+entropic = { version = "0.1", features = ["derive", "bitvec"] }
+log = { version = "0.4" }
+rand = "0.9.0-alpha.2"
+itertools = "0.13.0"

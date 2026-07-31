@@ -1,0 +1,81 @@
+# Compiler/linker outputs
+*.o
+*.a
+*.so
+*.so.*
+main-test
+main_test
+time-test
+
+# OCaml build artifacts
+**/_build/
+
+# Rust/Cargo build artifacts
+**/target/
+
+# CMake build artifacts
+/fuzz/srsRAN_asn1/build/
+/fuzz_lte/srsRAN_4G_test/srsRAN_4G/build/
+
+# Python bytecode cache
+**/__pycache__/
+
+# AFL++ output directories (crash findings and corpus)
+**/output_dir/
+**/fuzzing-results/
+**/crashes/
+**/queue/
+
+# Large pre-compiled third-party SDKs (not part of this project)
+/fuzz/obj_sys/
+/fuzz/oss_dir/
+
+# TITAN runtime SDK — only the ITS harness (test_its) is tracked; NR TITAN uses LFS for large generated files
+/fuzz/titan_asn1/
+/fuzz/titan_asn1/bin/
+/fuzz/titan_asn1/doc/
+/fuzz/titan_asn1/etc/
+/fuzz/titan_asn1/help/
+/fuzz/titan_asn1/include/
+/fuzz/titan_asn1/lib/
+/fuzz/titan_asn1/man/
+/fuzz/titan_asn1/demo/
+/fuzz/titan_asn1/test/
+/fuzz/titan_asn1/test_asn/
+/fuzz/titan_asn1/*.zip
+/fuzz/titan_asn1/*.tgz
+/fuzz_its/titan_asn1/bin/
+/fuzz_its/titan_asn1/doc/
+/fuzz_its/titan_asn1/etc/
+/fuzz_its/titan_asn1/help/
+/fuzz_its/titan_asn1/include/
+/fuzz_its/titan_asn1/lib/
+/fuzz_its/titan_asn1/man/
+/fuzz_its/titan_asn1/demo/
+/fuzz_its/titan_asn1/test/
+/fuzz_its/titan_asn1/test_asn/
+
+# asn1tools disk caches (generated at runtime)
+fuzz_its/asn1tool_test/jer_cache/
+fuzz_its/asn1tool_test/uper_cache/
+
+# Duplicate / old srsRAN directory
+/fuzz_lte/srsRAN_4G_test/srsRAN_4G_old/
+
+# ASNFuzzGen codecs dependency — tracked: the Dockerfile COPYs ASN_Coding/ and
+# builds the Rust mutator in-image, so the path dependency must be present.
+
+# OCaml reference variants not used by any fuzz harness
+/fuzz/ocaml_test_new/
+/fuzz/ocaml_test_print/
+/fuzz/ocaml_test_ul/
+/fuzz/ocaml_test_ul1740/
+/fuzz/ocaml_test_ul_print/
+/fuzz_its/verified_format_print/
+
+# Miscellaneous
+*~
+trace.log.*
+*.zip
+fastresume.bin
+a.txt

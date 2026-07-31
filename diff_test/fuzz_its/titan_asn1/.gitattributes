@@ -1,0 +1,1 @@
+ttcn3-11.0.0-linux64-gcc11-ubuntu_22.04.4_lts_foss.tgz filter=lfs diff=lfs merge=lfs -text

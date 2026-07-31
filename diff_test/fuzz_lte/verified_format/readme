@@ -1,0 +1,8 @@
+This is a explanation of how to use the python script to generate printable records and types.
+
+Simply run it. It will generate a file name FormatPrint
+
+need to remove coq_buffer and coq_position in FormatPrint.
+
+To extract something 
+`Extraction "../../ExtrTest/src/FormatTest.ml" x__Format.`
