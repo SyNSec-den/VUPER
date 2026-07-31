@@ -17,7 +17,8 @@ Each fuzzer harness follows the same pattern:
 
 ## Docker Setup
 
-The Docker image `afl_ocaml_c_fuzz` contains AFL++, OCaml 4.11.2+afl, pycrate, and other dependencies.
+The Docker image `afl_ocaml_c_fuzz` contains AFL++, an OCaml 4.14 opam switch (`vuper`), pycrate,
+asn1tools, `cargo-afl`, and both pre-built ASNFuzzGen mutators.
 
 ### Start the container
 
@@ -404,9 +405,19 @@ cat /fuzz_its/input_dir/input1 | python3 main_test.py
 
 ### 4. ITS TITAN
 
-
 **Source:** `/fuzz_its/titan_asn1/test_its/`
 
+> **Requires the TITAN SDK, which is not included in this repository.** Only the harness sources
+> are tracked here; the TITAN runtime headers and libraries (`TTCN3.hh`, `libttcn3.a`, …) are not
+> redistributed. Without them the build fails immediately with:
+>
+> ```
+> ./CAM_PDU_Descriptions.hh:24:10: fatal error: 'TTCN3.hh' file not found
+> ```
+>
+> Install Eclipse TITAN (`ttcn3-11.0.0-linux64-gcc11-ubuntu_22.04.4_lts_foss`) into
+> `/fuzz_its/titan_asn1/` so that `include/` and `lib/` sit alongside `test_its/`, then compile as
+> below. Every other ITS fuzzer works without it.
 
 #### Compile
 
@@ -474,7 +485,7 @@ echo $?   # 0 = agree, 6 (SIGABRT) = disagree (panic = differential mismatch)
 ## Interpreting Fuzzer Output
 
 AFL stores findings in the output directory:
-- `default/crashes/` — inputs where the two parsers disagreed (true differential findings)
+- `default/crashes/` — inputs where the two parsers disagreed (candidate differential findings)
 - `default/queue/` — all interesting inputs found so far
 - `default/fuzzer_stats` — live statistics (exec/s, corpus size, crash count)
 
@@ -483,6 +494,35 @@ To replay an ITS crash (example for asn1c):
 ```bash
 cat /fuzz_its/output_dir/asn1c/default/crashes/id:000000,* | /fuzz_its/asn1c_test/main-test
 ```
+
+A genuine differential exits with **SIGABRT (134)** — the harness reaching its `abort()` — or, for
+the Rust `rasn` harness, a panic. Always confirm a replay before counting a finding.
+
+### Two ways to get crashes that are not differentials
+
+**AddressSanitizer startup failures.** The ITS and LTE `asn1c` harnesses enable
+`-fsanitize=address` (the 5G harness has it commented out). On Linux 6.x, ASan's shadow mapping
+intermittently collides with the kernel's increased ASLR entropy and the process dies with
+**SIGSEGV (139) before `main` runs** — on roughly one launch in five, on identical input. AFL logs
+these as crashes. A replay under `gdb` shows the giveaway backtrace:
+
+```
+#4 __asan::Allocator::InitLinkerInitialized(...)
+#5 __asan::AsanInitInternal()
+#6 /lib64/ld-linux-x86-64.so.2
+```
+
+To avoid it, disable ASLR for the target — start the container with
+`--security-opt seccomp=unconfined` and launch through `setarch $(uname -m) -R` — or set
+`vm.mmap_rnd_bits=28` on the host. (Docker's default seccomp profile blocks the `personality`
+syscall, so `setarch` fails with `Operation not permitted` without that flag.) Alternatively, drop
+`-fsanitize=address` from the harness Makefile, at the cost of losing memory-error detection.
+
+**A missing reference decoder.** If a reference binary has not been built, the harnesses do not
+fail cleanly — they report disagreements. `rasn` is the worst case: `ocaml_decode` discards the
+spawn error and returns `None`, so every successful decode of a *valid* message looks like a
+mismatch. If a fuzzer starts finding crashes immediately and constantly, verify the reference
+binary exists before believing any of it.
 
 ---
 
