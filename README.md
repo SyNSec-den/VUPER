@@ -1,6 +1,6 @@
 # VUPER — Verified ASN.1 UPER Parser
 
-This repo also hosts the extended version of the VUPER paper. 
+This repo also hosts the extended version of the VUPER paper at [vuper-extended.pdf](vuper-extended.pdf)
 
 VUPER is a formally verified parser for ASN.1 **Unaligned Packed Encoding Rules** (UPER), the
 encoding used by 3GPP for 5G NR-RRC and LTE signalling and by ETSI for ITS messages. The parser
