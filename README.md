@@ -1,5 +1,7 @@
 # VUPER — Verified ASN.1 UPER Parser
 
+This repo also hosts the extended version of the VUPER paper. 
+
 VUPER is a formally verified parser for ASN.1 **Unaligned Packed Encoding Rules** (UPER), the
 encoding used by 3GPP for 5G NR-RRC and LTE signalling and by ETSI for ITS messages. The parser
 and its correctness proofs are written in Coq, extracted to OCaml, and then differentially tested
@@ -73,41 +75,6 @@ Follow the prerequisites section of the `diff_test` README before running any fu
 | LTE EUTRA-RRC (TS 36.331) | `DL-DCCH-Message` | asn1c, pycrate, srsRAN 4G |
 | ETSI ITS (EN 302 637-2) | `CAM` | asn1c, pycrate, asn1tools, rasn, TITAN |
 
----
-
-## Status
-
-Ten of the eleven harnesses have been built and run end-to-end from a clean image; each agrees
-with the verified reference on its seed inputs. Both ASNFuzzGen mutators load and drive AFL++.
-
-| Harness | Status |
-| --- | --- |
-| 5G asn1c / pycrate / srsRAN | working |
-| LTE asn1c / pycrate / srsRAN 4G | working |
-| ITS asn1c / pycrate / asn1tools / rasn | working |
-| ITS TITAN | **not buildable — see below** |
-
-### Known limitations
-
-**ITS TITAN cannot be built from this repository.** The harness sources in
-`diff_test/fuzz_its/titan_asn1/test_its/` are present, but the TITAN runtime SDK that provides
-`TTCN3.hh` is not redistributed here, so the build fails with `fatal error: 'TTCN3.hh' file not
-found`. Install the TITAN SDK separately to use this harness.
-
-**The ITS and LTE `asn1c` harnesses are compiled with AddressSanitizer** (`-fsanitize=address` in
-their Makefiles; the 5G harness has it commented out). On Linux 6.x kernels, ASan's shadow-memory
-mapping intermittently fails at process startup because of the increased ASLR entropy, producing a
-SIGSEGV *before `main` runs*. AFL++ records those as crashes, so a fraction of reported findings
-from these two harnesses can be startup noise rather than genuine decoder disagreements. Mitigate
-by disabling ASLR for the target — run the container with `--security-opt seccomp=unconfined` and
-launch through `setarch $(uname -m) -R` — or by lowering `vm.mmap_rnd_bits` to `28` on the host.
-
-**Reference decoders are not pre-compiled.** A harness whose reference binary is missing does not
-fail cleanly. The `rasn` harness in particular treats a failed subprocess spawn exactly like a
-decoder rejection and will report `differential mismatch` on entirely valid input. Build all six
-reference decoders first, as described in the `diff_test` README.
-
----
 
 ## Repository size
 
