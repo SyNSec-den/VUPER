@@ -2,6 +2,9 @@
 
 This repo also hosts the extended version of the VUPER paper at [vuper-extended.pdf](vuper-extended.pdf)
 
+> [!IMPORTANT]
+> **A verified Rust rewrite of VUPER in Verus is underway**. Currently, the rewrite's performance exceeds the open source C/Rust ASN.1 implementations (asn1c and rasn), and fixes some existing issue with VUPER (like fragmentation). We will release it soon. 
+
 VUPER is a formally verified parser for ASN.1 **Unaligned Packed Encoding Rules** (UPER), the
 encoding used by 3GPP for 5G NR-RRC and LTE signalling and by ETSI for ITS messages. The parser
 and its correctness proofs are written in Coq, extracted to OCaml, and then differentially tested
